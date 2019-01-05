@@ -50,6 +50,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=1;
         constraints.weighty=4;
         constraints.fill=GridBagConstraints.BOTH;
+        constraints.insets=new Insets(0,0,2,2);
         layout.setConstraints(funchild[0],constraints);
         gspve.add(funchild[0]);
 
@@ -58,6 +59,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=4;
         constraints.weighty=4;
         constraints.fill=GridBagConstraints.BOTH;
+        constraints.insets=new Insets(0,0,2,0);
         layout.setConstraints(funchild[1],constraints);
         gspve.add(funchild[1]);
 
@@ -66,6 +68,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=1;
         constraints.weighty=1;
         constraints.fill=GridBagConstraints.BOTH;
+        constraints.insets=new Insets(0,0,0,2);
         layout.setConstraints(funchild[2],constraints);
         gspve.add(funchild[2]);
 
@@ -74,6 +77,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=4;
         constraints.weighty=1;
         constraints.fill=GridBagConstraints.BOTH;
+        constraints.insets=new Insets(0,0,0,0);
         layout.setConstraints(funchild[3],constraints);
         gspve.add(funchild[3]);
     }
