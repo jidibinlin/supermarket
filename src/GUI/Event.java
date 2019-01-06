@@ -4,6 +4,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Event {
+
+
+
+
 }
 class MouseListen extends MouseAdapter {//鼠标事件监听总类
 
@@ -19,7 +23,7 @@ class MouseListen extends MouseAdapter {//鼠标事件监听总类
 
 
         if (e.getButton() == MouseEvent.BUTTON2) {
-            System.out.printf("right button pressed");
+            System.out.println("right button pressed");
         }
     }
 }
