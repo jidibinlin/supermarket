@@ -6,4 +6,7 @@ public class Main {
         g.mainInterface();
         FinanceManage f=new FinanceManage();
     }
+
+
 }
+
