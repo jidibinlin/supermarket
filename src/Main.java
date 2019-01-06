@@ -7,7 +7,5 @@ public class Main {
         FinanceManage f=new FinanceManage();
         f.selesVolumeCollect();
     }
-
-
 }
 

@@ -81,4 +81,8 @@ class Layout {//各个窗口的布局管理
         layout.setConstraints(funchild[3],constraints);
         gspve.add(funchild[3]);
     }
+
+    static void funcTable(JTable table,JScrollPane funchild){
+        funchild.add(table,BorderLayout.CENTER);
+    }
 }

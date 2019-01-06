@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Vector;
 
 public class FunctionModel {
     JPanel[] pan=null;
@@ -17,5 +18,10 @@ public class FunctionModel {
     static JScrollPane[] addfunchild(){
         JScrollPane[] funchild={new JScrollPane(),new JScrollPane(),new JScrollPane(),new JScrollPane()};
         return funchild;
+    }
+
+    JTable tableCreate(Vector rowData,Vector columnNames){
+        JTable table=new JTable(rowData,columnNames);
+        return table;
     }
 }
