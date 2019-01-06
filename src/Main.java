@@ -5,6 +5,7 @@ public class Main {
         GUI g= new GUI();
         g.mainInterface();
         FinanceManage f=new FinanceManage();
+        f.selesVolumeCollect();
     }
 
 
