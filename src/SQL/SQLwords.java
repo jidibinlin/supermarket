@@ -9,8 +9,8 @@ public class SQLwords {
 
 
     //select 方法
-    public String select(String targets,String tables,String lowerResult,String conditions,String grReult,String orResult) {
-        result=" select "+targets+" from "+tables+lowerResult+" where "+conditions+grReult+orResult+";";
+    public String select(String targets,String tables,String lowerResult, String as ,String conditions,String grReult,String orResult) {
+        result=" select "+targets+" from "+tables+lowerResult+as+" where "+conditions+grReult+orResult+";";
         return result;
     }
 
@@ -35,13 +35,13 @@ public class SQLwords {
 
     //delete方法
     public String delete(String targets,String tables,String conditions){
-        result=" delete "+targets+" from "+tables+" where "+conditions;
+        result=" delete "+targets+" from "+tables+" where "+conditions+";";
         return result;
     }
 
     //insert方法
     public String insert(String tables,String attributies,String data){
-        result=" insert into "+tables+"("+attributies+") values "+data;
+        result=" insert into "+tables+"("+attributies+") values "+data+";";
         return result;
     }
 
