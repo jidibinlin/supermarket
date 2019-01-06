@@ -17,11 +17,19 @@ public class FunctionModel {
     }
     static JScrollPane[] addfunchild(){
         JScrollPane[] funchild={new JScrollPane(),new JScrollPane(),new JScrollPane(),new JScrollPane()};
+        Layout.tableFuncLayout(funchild[1],FunctionModel.tableCreate());
         return funchild;
     }
 
-    JTable tableCreate(Vector rowData,Vector columnNames){
-        JTable table=new JTable(rowData,columnNames);
+    static JTable tableCreate(){
+        Object[] columnTitle={"姓名","年龄","性别"};
+        Object[][] tableDate={
+                new Object[]{"李清照","29","女"},
+                new Object[]{"李清照","29","女"},
+                new Object[]{"李清照","29","女"}
+        };
+
+        JTable table=new JTable(tableDate,columnTitle);
         return table;
     }
 }
