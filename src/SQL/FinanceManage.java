@@ -224,7 +224,7 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
-    //不同品牌的同类产品销量比较
+    //不同品牌的同类产品销量比较.
 
     public void compare_with_same_kind(){
         try {
