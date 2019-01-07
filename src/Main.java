@@ -6,6 +6,7 @@ public class Main {
         g.integrate();
         FinanceManage f=new FinanceManage();
         f.selesVolumeCollect();
+        f.productCompare_Desc();
     }
 }
 
