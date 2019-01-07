@@ -9,18 +9,20 @@ public class TabSwitch extends MouseAdapter{//选项卡切换
 
     CardLayout carLayout=null;
     JButton tab=null;
-    JPanel pan=null;
+    JPanel CardPanel_funcPanel=null;
+    JPanel CardPanel=null;
 
     TabSwitch(){};
-    TabSwitch(CardLayout carlayout,JButton tab,JPanel pan){
+    TabSwitch(CardLayout carlayout,JButton tab,JPanel CardPanel,JPanel CardPanel_funcPanel){
         this.carLayout=carlayout;
         this.tab=tab;
-        this.pan=pan;
+        this.CardPanel_funcPanel=CardPanel_funcPanel;
+        this.CardPanel=CardPanel;
     }
 
-    public void mousePressed(MouseEvent e) {//选项卡鼠标时间监听
+    public void mousePressed(MouseEvent e) {//选项卡鼠标事件监听
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
-            carLayout.show(pan,tab.getName());
+            carLayout.show(CardPanel,tab.getText());
         }
 
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
@@ -32,21 +34,6 @@ public class TabSwitch extends MouseAdapter{//选项卡切换
             System.out.printf("right button pressed");
         }
     }
-    public void tabAdd(CardLayout carlayout,JPanel control,String[] panName,Color[] bgColor,JButton tab[]) {//选项卡添加
-        GridLayout layout = new GridLayout(1, 5);
-        control.setLayout(layout);
-        Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.BOLD, 20);//选项卡自体设置
-        for (int i = 0; i < 5; i++) {
-            control.add(tab[i]);
-            tab[i].setVisible(true);
-            tab[i].setFont(f);
-        }
 
-        for (int i = 0; i < 5; i++) {
-            //tab[i] = new JButton();
-            tab[i].setBackground(bgColor[i]);//选项卡背景设置
-            tab[i].setName(panName[i]);
-        }
-    }
 
 }
