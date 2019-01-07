@@ -325,7 +325,7 @@ public class FinanceManage {
         try {
             seResult=sql.select(" * "," Manu "," manuName='康帅傅';","  ","  ");
             //result=sql.select(" * "," Manu ","","  "," manuName='康帅傅'; ","  ","  ");
-            System.out.println(seResult);
+           // System.out.println(seResult);
             stmt = connect.getConnection().createStatement();
             rs=stmt.executeQuery(seResult);
             System.out.println("manuNum"+"manuName"+"manuLoc"+"manuTel");
@@ -344,7 +344,7 @@ public class FinanceManage {
         try {
             seResult=sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Manu,Product ","  Manu.manuNum=Product.manuNum; ","  ","  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-            System.out.println(seResult);
+            //System.out.println(seResult);
             stmt = connect.getConnection().createStatement();
             rs=stmt.executeQuery(seResult);
             System.out.println("Product.proNum"+"Product.proName"+"Manu.manuName"+"Manu.manuLoc"+"Manu.manuTel");
@@ -357,24 +357,42 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-//select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
+           //查询指定商品的供应商
+    public void select_manu_of_apponited_product(){
+        try {
+            seResult=sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Manu,Product ","  Manu.manuNum=Product.manuNum and Product.proName='恰宝矿泉水'; ","  ","  ");
+            //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+            //System.out.println(seResult);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(seResult);
+            System.out.println("Product.proNum"+"Product.proName"+"Manu.manuName"+"Manu.manuLoc"+"Manu.manuTel");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("Product.proName")+rs.getString("Manu.manuName")+rs.getString("Manu.manuLoc")+rs.getString("Manu.manuTel"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+            //查询指定供货商的所有商品
+    public void select_all_product_from_apponited_manu(){
+        try {
+            seResult=sql.select(" Product.proNum,Product.proName,manuName "," Product,Manu "," Product.manuNum=Manu.manuNum and Product.manuNum='M03'; ","  ","  ");
+            //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+           // System.out.println(seResult);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(seResult);
+            System.out.println("Product.proNum"+"Product.proName"+"manuName");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("Product.proName")+rs.getString("manuName"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
 //select 模板
 //    public void (){
 //        try {
