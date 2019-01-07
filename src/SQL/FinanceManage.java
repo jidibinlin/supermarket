@@ -22,12 +22,18 @@ public class FinanceManage {
 //            connect.release(stmt);
 //        }
 //    }
-//
-//    //select模板
+//    select 模板
 //    public void (){
 //        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
 //            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(  );
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
 //        }catch(Exception e){
 //            e.printStackTrace();
 //        }finally{
@@ -122,17 +128,6 @@ public class FinanceManage {
         }
     }
 
-
-//    select Product.proNum,proName,counts
-//    from Product,
-//						(select Shopping.proNum,sum(number) counts
-//    from Shopping
-//    where shopDate='2018-12-15'
-//    group by proNum) AS PRO
-//    where PRO.proNum=Product.proNum
-//    order by counts Desc;
-
-
     //指定日期查询----降序
     public void somedayCheack_Desc(){
         try {
@@ -176,9 +171,9 @@ public class FinanceManage {
             System.out.println(result);
             stmt = connect.getConnection().createStatement();
             rs=stmt.executeQuery(result);
-            System.out.println();
+            System.out.println("Product.proNum\t"+"proName\t\t\t"+"counts\t");
             while(rs.next()){
-                System.out.println(rs.getString();
+                System.out.println(rs.getString("Product.proNum")+"\t\t\t\t"+rs.getString("proName")+"\t"+rs.getString("counts")+"\t");
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -186,24 +181,4 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-
-    public void (){
-        try {
-            seResult=sql.select("  ","  ","  ","  ","  ");
-            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-            System.out.println(result);
-            stmt = connect.getConnection().createStatement();
-            rs=stmt.executeQuery(result);
-            System.out.println();
-            while(rs.next()){
-                System.out.println(rs.getString();
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            connect.release(stmt,rs);
-        }
-    }
-
-    //
 }

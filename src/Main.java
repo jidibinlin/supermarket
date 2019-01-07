@@ -6,7 +6,7 @@ public class Main {
         g.mainInterface();
         FinanceManage f=new FinanceManage();
         f.selesVolumeCollect();
-        f.somedayCheack();
+        f.somedaysCheck();
     }
 }
 
