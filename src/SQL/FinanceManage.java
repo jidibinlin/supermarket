@@ -132,7 +132,7 @@ public class FinanceManage {
     }
 
     //指定日期查询----降序
-    public void somedayCheack_Desc() {
+    public void apponited_date_cheack_Desc() {
         try {
             seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
             result = sql.select("Product.proNum,proName,counts", "Product,", seResult, "AS PRO", "PRO.proNum=Product.proNum", "", " order by counts Desc");
@@ -150,7 +150,7 @@ public class FinanceManage {
     }
 
     //指定日期查询----升序
-    public void somedayCheack_Asc() {
+    public void apponited_date_check_Asc() {
         try {
             seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
             result = sql.select("Product.proNum,proName,counts", "Product,", seResult, "AS PRO", "PRO.proNum=Product.proNum", "", " order by counts Asc;");
@@ -167,51 +167,13 @@ public class FinanceManage {
         }
     }
 
-    //指定日期段查询----升序
-    public void somedaysCheck_Asc() {
-        try {
-            seResult = sql.select("  Shopping.proNum,sum(number) counts ", " Shopping ", " shopDate<='2018-12-15' and shopDate>='2018-12-13' ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO  ", "  PRO.proNum=Product.proNum  ", "  ", " order by counts Asc ;");
-            System.out.println(result);
-            stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
-            System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
-            while (rs.next()) {
-                System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt, rs);
-        }
-    }
-
-    //指定日期段查询----降序
-    public void somedaysCheck_Desc() {
-        try {
-            seResult = sql.select("  Shopping.proNum,sum(number) counts ", " Shopping ", " shopDate<='2018-12-15' and shopDate>='2018-12-13' ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO  ", "  PRO.proNum=Product.proNum  ", "  ", " order by counts Desc ;");
-            System.out.println(result);
-            stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
-            System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
-            while (rs.next()) {
-                System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt, rs);
-        }
-    }
-
     //指定商品销量统计（比较）
     //升序
-    public void productCompare_Asc() {
+    public void apppnited_product_compare_Asc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
             result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('P1','P2') ", "  ", " order by counts ASC;");
-            System.out.println(result);
+           // System.out.println(result);
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
@@ -226,11 +188,11 @@ public class FinanceManage {
     }
 
     //降序
-    public void productCompare_Desc() {
+    public void apponited_product_compare_Desc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
             result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('P1','P2') ", "  ", " order by counts DESC;");
-            System.out.println(result);
+            //System.out.println(result);
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
@@ -245,11 +207,11 @@ public class FinanceManage {
     }
 
     //指定商品销量统计
-    public void productSell_Asc() {
+    public void apponited_product_sell_Asc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping "," group by proNum ", "  ");
             result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and PRO.proNum ", "  ", " order by counts ASC;");
-            System.out.println(result);
+           // System.out.println(result);
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
@@ -262,5 +224,228 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
+    //不同品牌的同类产品销量比较
+
+    public void compare_with_same_kind(){
+        try {
+            seResult=sql.select(" Shopping.proNum,sum(number) counts "," Shopping "," group by proNum ","  ");
+            result=sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Product,Manu, ",seResult,"  AS PRO "," PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and Product.proName like '%矿泉水'  ","  ","  ");
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Product.proNum"+"proName"+"counts"+"Manu.manuName"+"Manu.manuLoc"+"Manu.manuTel");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("proName")+rs.getString("counts")+rs.getString("Manu.manuName")+rs.getString("Manu.manuLoc")+rs.getString("Manu.manuTel"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+
+    //盈利管理
+        //全局
+    public void whole_profit_manage (){
+        try {
+            seResult=sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum "," Shopping,Purchase "," Shopping.proNum=Purchase.proNum "," group by proNum; ","  ");
+            result=sql.select(" Product.proNum,proName,profitSum "," Product, ",seResult," AS PRO "," PRO.proNum=Product.proNum ","  "," order by profitSum; ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Product.proNum"+"proName"+"profitSum");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("proName")+rs.getString("profitSum"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+        //指定日期段或当日
+    public void apponited_profit_manage (){
+        try {
+            seResult=sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum "," Shopping,Purchase "," Shopping.proNum=Purchase.proNum and shopDate<='2018-12-15' and shopDate>'2018-12-13' "," group by proNum","  ");
+            result=sql.select(" Product.proNum,proName,profitSum "," Product, ",seResult," AS PRO "," PRO.proNum=Product.proNum ","  "," order by profitSum; ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Product.proNum"+"proName"+"profitSum");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("proName")+rs.getString("profitSum"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+        //指定商品盈利
+    public void apponited_product_profit(){
+        try {
+            seResult=sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum "," Shopping,Purchase "," Shopping.proNum=Purchase.proNum "," group by proNum","  ");
+            result=sql.select(" Product.proNum,proName,profitSum "," Product, ",seResult," AS PRO "," PRO.proNum=Product.proNum and Product.proNum='P6' ","  "," order by profitSum; ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Product.proNum"+"proName"+"profitSum");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("proName")+rs.getString("profitSum"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+    //比较商品盈利
+    public void compare_product_profit(){
+        try {
+            seResult=sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum "," Shopping,Purchase "," Shopping.proNum=Purchase.proNum "," group by proNum","  ");
+            result=sql.select(" Product.proNum,proName,profitSum "," Product, ",seResult," AS PRO "," PRO.proNum=Product.proNum and Product.proName like '%矿泉水' ","  "," order by profitSum; ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Product.proNum"+"proName"+"profitSum");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("proName")+rs.getString("profitSum"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+
+//供货商管理
+    //供货商信息查询
+        //仅本表内查询
+            //查询指定商家的信息
+    public void manu_info_select(){
+        try {
+            seResult=sql.select(" * "," Manu "," manuName='康帅傅';","  ","  ");
+            //result=sql.select(" * "," Manu ","","  "," manuName='康帅傅'; ","  ","  ");
+            System.out.println(seResult);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(seResult);
+            System.out.println("manuNum"+"manuName"+"manuLoc"+"manuTel");
+            while(rs.next()){
+                System.out.println(rs.getString("manuNum")+rs.getString("manuName")+rs.getString("manuLoc")+rs.getString("manuTel"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+//select 模板
+//    public void (){
+//        try {
+//            seResult=sql.select("  ","  ","  ","  ","  ");
+//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+//            System.out.println(result);
+//            stmt = connect.getConnection().createStatement();
+//            rs=stmt.executeQuery(result);
+//            System.out.println();
+//            while(rs.next()){
+//                System.out.println(rs.getString();
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            connect.release(stmt,rs);
+//        }
+//    }
+
 
 }
