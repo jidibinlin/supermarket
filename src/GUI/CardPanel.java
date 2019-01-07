@@ -52,11 +52,12 @@ class ControlPanel {
         Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.BOLD, 20);//选项卡自体设置
         layout.setHgap(3);
         layout.setHgap(3);
+        String [] Scolor={"blue","grey","brown","green","orange"};
         for (int i = 0; i < 5; i++) {
             this.controlPanel.add(tab[i]);
             tab[i].setVisible(true);
             tab[i].setFont(f);
-            tab[i].setBackground(color.getColor("grey"));//选项卡背景设置
+            tab[i].setBackground(color.getColor(Scolor[i]));//选项卡背景设置
         }
 
     }

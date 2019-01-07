@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class ColorDefined {
     private Color blue=new Color(147,224,225);
-    private Color grey=new Color(151,151,151);
-    private Color brown=new Color(91,74,66);
+    private Color grey=new Color(225,233,220);
+    private Color brown=new Color(224,160,158);
     private Color green=new Color(179,197,135);
-    private Color orange=new Color(220,87,18);
+    private Color orange=new Color(243,244,246);
 
 
     public Color getColor(String chose){

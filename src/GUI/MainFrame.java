@@ -48,8 +48,9 @@ public class MainFrame {
     }
 
     void showScrollPanelFunc(FuncPanel[] funcPanel){
+        String[] color={"blue","grey","brown","green","orange"};
         for(int i=0;i<5;i++){
-            funcPanel[i].chartShowPanel();
+            funcPanel[i].chartShowPanel(color[i]);
         }
     }
 }
