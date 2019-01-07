@@ -27,7 +27,7 @@ public class CardPanel {
         CardPanel_funcPanel[2].setBackground(color.getColor("brown"));
         CardPanel_funcPanel[3].setBackground(color.getColor("green"));
         CardPanel_funcPanel[4].setBackground(color.getColor("orange"));
-        layout = Layout.mainInterfaceLayout(CardPanel, CardPanel_funcPanel);
+        layout = Layout.mainInterfaceLayout(CardPanel, CardPanel_funcPanel);//设置卡片布局
     }
 
 }

@@ -1,12 +1,14 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
 
 public class FuncPanel {
-    private JScrollPane[] funcPanel ={new JScrollPane(),new JScrollPane(),new JScrollPane(),new JScrollPane(),};
+    private JScrollPane[] funcScrollPanel ={new JScrollPane(),new JScrollPane(),new JScrollPane(),new JScrollPane(),};
 
-    public JScrollPane[] getFuncPanel() {
-        return funcPanel;
+    public JScrollPane[] getfuncPanel() {
+        return funcScrollPanel;
     }
 
     public void selectFuncPanel(){
@@ -14,7 +16,8 @@ public class FuncPanel {
     }
 
     public void chartShowPanel(){
-
+            Table table=new Table();
+            funcScrollPanel[1].setViewportView(table.getTable());
     }
 
     public void chartChosePanel(){
@@ -22,6 +25,19 @@ public class FuncPanel {
     }
 
     public void updateFuncPanel(){
+
+    }
+}
+
+
+class Table{
+
+    private JTable table =new JTable();
+
+    public JTable getTable(){
+        return table;
+    }
+    public void setTable(){
 
     }
 }

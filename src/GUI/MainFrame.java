@@ -20,11 +20,10 @@ public class MainFrame {
         control.tabAdd();//像控制面板中添加tab
         mainframe.add(control.getControlPanel(), BorderLayout.NORTH);//将控制面板添加到主界面的最上方
         mainframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//防止worning窗口关闭主窗口
-        FuncPanel[] funcPanel={new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),};
+        FuncPanel[] funcPanel={new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),new FuncPanel(),};//5张卡片
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
-
-
+        showScrollPanelFunc(funcPanel);
         this.switchadd(cardMother.getLayout(), control.getTab(), cardMother.getCardPanel(), cardMother.getCardPanel_funcPanel());//选项卡切换功能
         funcchildadd(cardMother,funcPanel);
         mainframe.add(cardMother.getCardPanel(), BorderLayout.CENTER);//将cardMother添加到主界面的中央
@@ -34,7 +33,7 @@ public class MainFrame {
 
     private void closeWindow() {
         mainframe.addWindowListener(new CloseWindowSpecial());
-    }
+    }//关闭窗口
 
     void switchadd(CardLayout carlayout, JButton[] tab, JPanel CardPanel, JPanel[] CardPanel_funcPanel) {
         for (int i = 0; i < 5; i++) {
@@ -44,10 +43,13 @@ public class MainFrame {
 
     private void funcchildadd(CardPanel cardMother,FuncPanel[] funcPanel){
         for(int i=0;i<5;i++){
-            Layout.funcLayout(cardMother.getCardPanel_funcPanel()[i],funcPanel[i].getFuncPanel());
+            Layout.funcLayout(cardMother.getCardPanel_funcPanel()[i],funcPanel[i].getfuncPanel());
         }
-
     }
 
-
+    void showScrollPanelFunc(FuncPanel[] funcPanel){
+        for(int i=0;i<5;i++){
+            funcPanel[i].chartShowPanel();
+        }
+    }
 }
