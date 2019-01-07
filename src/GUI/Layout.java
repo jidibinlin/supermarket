@@ -28,15 +28,14 @@ class Layout {//各个窗口的布局管理
         diaTran.add(message);
     }
 
-    static CardLayout mainInterfaceLayout(JFrame fratran, JPanel[] pan,String[] panName) {//主界面卡片布局管理
+    static CardLayout mainInterfaceLayout(JPanel CardPanel, JPanel[] CardPael_funcPanel) {//主界面卡片布局管理
         CardLayout layout = new CardLayout();
-        fratran.add(pan[0], BorderLayout.CENTER);
-        pan[0].setLayout(layout);
-        pan[0].add(panName[0],pan[1]);
-        pan[0].add(panName[1],pan[2]);
-        pan[0].add(panName[2],pan[3]);
-        pan[0].add(panName[3],pan[4]);
-        pan[0].add(panName[4],pan[5]);
+        CardPanel.setLayout(layout);
+        CardPanel.add("商品管理",CardPael_funcPanel[0]);
+        CardPanel.add("员工管理",CardPael_funcPanel[1]);
+        CardPanel.add("库存管理",CardPael_funcPanel[2]);
+        CardPanel.add("财务管理",CardPael_funcPanel[3]);
+        CardPanel.add("客户信息管理",CardPael_funcPanel[4]);
         return layout;
     }
 
