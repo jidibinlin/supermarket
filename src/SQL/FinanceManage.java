@@ -66,9 +66,9 @@ public class FinanceManage {
         }
     }
 
-    //销量统计排行
-    //全局
-    //降序
+        //销量统计排行
+            //全局
+                //降序
     public void selesVolumeOrderDesc() {
         try {
             stmt = connect.getConnection().createStatement();
@@ -89,7 +89,7 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
-
+                //升序
     public void selesVolumeOrderAsc() {
         try {
             stmt = connect.getConnection().createStatement();
@@ -111,7 +111,7 @@ public class FinanceManage {
         }
     }
 
-    //订单录入
+        //订单录入
     public void billInsert() {
         try {
             stmt = connect.getConnection().createStatement();
@@ -131,7 +131,7 @@ public class FinanceManage {
         }
     }
 
-    //指定日期查询----降序
+        //指定日期查询----降序
     public void apponited_date_cheack_Desc() {
         try {
             seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
@@ -148,8 +148,7 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
-
-    //指定日期查询----升序
+        //指定日期查询----升序
     public void apponited_date_check_Asc() {
         try {
             seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
@@ -167,8 +166,8 @@ public class FinanceManage {
         }
     }
 
-    //指定商品销量统计（比较）
-    //升序
+        //指定商品销量统计（比较）
+            //升序
     public void apppnited_product_compare_Asc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
@@ -186,8 +185,7 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
-
-    //降序
+            //降序
     public void apponited_product_compare_Desc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
@@ -206,7 +204,7 @@ public class FinanceManage {
         }
     }
 
-    //指定商品销量统计
+        //指定商品销量统计
     public void apponited_product_sell_Asc() {
         try {
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping "," group by proNum ", "  ");
@@ -224,8 +222,8 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
     }
-    //不同品牌的同类产品销量比较.
 
+        //不同品牌的同类产品销量比较.
     public void compare_with_same_kind(){
         try {
             seResult=sql.select(" Shopping.proNum,sum(number) counts "," Shopping "," group by proNum ","  ");
@@ -298,7 +296,7 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-    //比较商品盈利
+        //比较商品盈利
     public void compare_product_profit(){
         try {
             seResult=sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum "," Shopping,Purchase "," Shopping.proNum=Purchase.proNum "," group by proNum","  ");
@@ -316,7 +314,24 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-
+        //查询当前盈亏
+    public void select_profit_fornow (){
+            try {
+            seResult=sql.select(" Purchase.manuNum,sum(Shopping.price*Shopping.number-Purchase.Cargoprice * Purchase.number) profitSUM "," Purchase,Shopping "," Purchase.proNum=Shopping.proNum "," group by manuNum ","  ");
+            result=sql.select(" Manu.manuNum,Manu.manuName,profitSUM "," Manu, ",seResult," AS PRO "," Manu.manuNum=PRO.manuNum; ","  ","  ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Manu.manuNum"+"Manu.manuName"+"profitSUM");
+            while(rs.next()){
+                System.out.println(rs.getString("Manu.manuNum")+rs.getString("Manu.manuName")+rs.getString("profitSUM"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
 //供货商管理
     //供货商信息查询
         //仅本表内查询
@@ -357,7 +372,7 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-           //查询指定商品的供应商
+            //查询指定商品的供应商
     public void select_manu_of_apponited_product(){
         try {
             seResult=sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Manu,Product ","  Manu.manuNum=Product.manuNum and Product.proName='恰宝矿泉水'; ","  ","  ");
@@ -393,6 +408,8 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
+
+
 //select 模板
 //    public void (){
 //        try {

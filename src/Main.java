@@ -6,7 +6,7 @@ public class Main {
         g.integrate();
         FinanceManage f=new FinanceManage();
         f.selesVolumeCollect();
-        f.select_all_product_from_apponited_manu();
+        f.select_profit_fornow();
     }
 }
 
