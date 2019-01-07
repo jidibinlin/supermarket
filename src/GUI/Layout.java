@@ -40,7 +40,7 @@ class Layout {//各个窗口的布局管理
         return layout;
     }
 
-    static void funcLayout(JPanel gspve,JScrollPane[] funchild) {//功能模块布局管理
+    static JScrollPane[] funcLayout(JPanel gspve,JScrollPane[] funchild) {//功能模块布局管理
         GridBagLayout layout = new GridBagLayout();
         gspve.setLayout(layout);
         GridBagConstraints constraints = new GridBagConstraints();
@@ -50,7 +50,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=1;
         constraints.weighty=4;
         constraints.fill=GridBagConstraints.BOTH;
-        constraints.insets=new Insets(0,0,2,2);
+        constraints.insets=new Insets(0,0,10,10);
         layout.setConstraints(funchild[0],constraints);
         gspve.add(funchild[0]);
 
@@ -59,7 +59,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=4;
         constraints.weighty=4;
         constraints.fill=GridBagConstraints.BOTH;
-        constraints.insets=new Insets(0,0,2,0);
+        constraints.insets=new Insets(0,0,10,0);
         layout.setConstraints(funchild[1],constraints);
         gspve.add(funchild[1]);
 
@@ -68,7 +68,7 @@ class Layout {//各个窗口的布局管理
         constraints.weightx=1;
         constraints.weighty=1;
         constraints.fill=GridBagConstraints.BOTH;
-        constraints.insets=new Insets(0,0,0,2);
+        constraints.insets=new Insets(0,0,0,10);
         layout.setConstraints(funchild[2],constraints);
         gspve.add(funchild[2]);
 
@@ -80,5 +80,23 @@ class Layout {//各个窗口的布局管理
         constraints.insets=new Insets(0,0,0,0);
         layout.setConstraints(funchild[3],constraints);
         gspve.add(funchild[3]);
+        return funchild;
+    }
+
+    static void selectFuncLayout(){
+
+    }
+
+    static void updateFuncLayout(){
+
+    }
+
+    static void chartselectFuncLayout(){
+
+    }
+
+    static void tableFuncLayout(JScrollPane chart,JTable table){
+        chart.setViewportView(table);
+        table.setVisible(true);
     }
 }

@@ -8,7 +8,5 @@ public class Main {
         f.selesVolumeCollect();
         f.somedayCheack();
     }
-
-
 }
 

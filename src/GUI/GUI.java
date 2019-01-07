@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
 
 public class GUI {
 
@@ -22,12 +23,12 @@ public class GUI {
         mainframe.setSize(1300, 1000);//设置界面大小
         mainframe.setLocation(300, 100);
         mainframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//防止worning窗口关闭主窗口
-        FunctionModel func_card=new FunctionModel();
+        FunctionModel func_card = new FunctionModel();
         func_card.add(pan, bgColor, panName);
 
         carlayout = Layout.mainInterfaceLayout(mainframe, pan, panName);
-        for(int i=1;i<6;i++){
-            Layout.funcLayout(pan[i],FunctionModel.addfunchild());
+        for (int i = 1; i < 6; i++) {
+            Layout.funcLayout(pan[i], FunctionModel.addfunchild());
         }
         TabSwitch top = new TabSwitch();
         for (int i = 0; i < 5; i++)
@@ -36,6 +37,13 @@ public class GUI {
 
         mainframe.setVisible(true);
         control.setVisible(true);
+
+
+
+
+
+
+
 
         mainframe.add(control, BorderLayout.NORTH);
         CloseWindowSpecial ls = new CloseWindowSpecial();//主界面窗体关闭
