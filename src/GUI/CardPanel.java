@@ -5,48 +5,48 @@ import java.awt.*;
 
 public class CardPanel {
     private JPanel CardPanel = new JPanel();
-    private JPanel[] CardPanel_funcPanel={new JPanel(),new JPanel(),new JPanel(),new JPanel(),new JPanel()};
-    private CardLayout layout=null;
+    private JPanel[] CardPanel_funcPanel = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel()};
+    private CardLayout layout = null;
 
     public JPanel getCardPanel() {
         return CardPanel;
     }
 
-    public JPanel[] getCardPanel_funcPanel(){
+    public JPanel[] getCardPanel_funcPanel() {
         return CardPanel_funcPanel;
     }
 
-    public CardLayout getLayout(){
+    public CardLayout getLayout() {
         return this.layout;
     }
 
-    public void setCardPanel(){
-        ColorDefined color =new ColorDefined();
+    public void setCardPanel() {
+        ColorDefined color = new ColorDefined();
         CardPanel_funcPanel[0].setBackground(color.getColor("blue"));
         CardPanel_funcPanel[1].setBackground(color.getColor("grey"));
         CardPanel_funcPanel[2].setBackground(color.getColor("brown"));
         CardPanel_funcPanel[3].setBackground(color.getColor("green"));
         CardPanel_funcPanel[4].setBackground(color.getColor("orange"));
-        layout=Layout.mainInterfaceLayout(CardPanel,CardPanel_funcPanel);
+        layout = Layout.mainInterfaceLayout(CardPanel, CardPanel_funcPanel);
     }
 
 }
 
-class ControlPanel{
-    private JPanel controlPanel=new JPanel();
-    private JButton[] tab ={new JButton("商品管理"),new JButton("员工管理"),new JButton("库存管理"),
-                            new JButton("财务管理"),new JButton("客户信息管理")};
+class ControlPanel {
+    private JPanel controlPanel = new JPanel();
+    private JButton[] tab = {new JButton("商品管理"), new JButton("员工管理"), new JButton("库存管理"),
+            new JButton("财务管理"), new JButton("客户信息管理")};
 
-    public JPanel getControlPanel(){
+    public JPanel getControlPanel() {
         return this.controlPanel;
     }
 
-    public JButton[] getTab(){
+    public JButton[] getTab() {
         return tab;
     }
 
     public void tabAdd() {//选项卡添加
-        ColorDefined color=new ColorDefined();
+        ColorDefined color = new ColorDefined();
         GridLayout layout = new GridLayout(1, 5);
         this.controlPanel.setLayout(layout);
         Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.BOLD, 20);//选项卡自体设置
