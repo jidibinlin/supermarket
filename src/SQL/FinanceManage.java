@@ -338,24 +338,25 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-//select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
+        //链表查询
+            //查询商品的供应商
+    public void select_manu_of_product(){
+        try {
+            seResult=sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Manu,Product ","  Manu.manuNum=Product.manuNum; ","  ","  ");
+            //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+            System.out.println(seResult);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(seResult);
+            System.out.println("Product.proNum"+"Product.proName"+"Manu.manuName"+"Manu.manuLoc"+"Manu.manuTel");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proNum")+rs.getString("Product.proName")+rs.getString("Manu.manuName")+rs.getString("Manu.manuLoc")+rs.getString("Manu.manuTel"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
 //select 模板
 //    public void (){
 //        try {
