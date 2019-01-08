@@ -30,18 +30,21 @@ class MouseListen extends MouseAdapter {//鼠标事件监听总类
 }
 
 class MouseListenSqlSelect extends  MouseAdapter{
-    private Object sqlfunc=null;
+    private Vector[] sqlfunc=null;
+    private Vector[] sqlfunc2=null;
     private Table table=null;
-    MouseListenSqlSelect(Object sqlfunc,Table table){
+    MouseListenSqlSelect(Vector[] sqlfunc,Vector[] sqlfunc2,Table table){
         this.sqlfunc=sqlfunc;
+        this.sqlfunc2=sqlfunc2;
         this.table=table;
     }
      public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
-            table.tableDataShow();
+            table.tableDataShow(sqlfunc);
         }
 
-        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
+        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2 && sqlfunc2!=null) {
+            table.tableDataShow(sqlfunc2);
         }
 
         if (e.getButton() == MouseEvent.BUTTON2) {

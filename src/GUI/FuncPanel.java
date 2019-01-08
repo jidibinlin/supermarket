@@ -21,6 +21,7 @@ public class FuncPanel {
     }
 
     public void selectFuncPanel() {
+        funcScrollPanel[0].setViewportView(new FuncButton().createSelectButton("select",new FinanceManage().selesVolumeCollect(),new FinanceManage().all_manu_profit(),table));
 
     }
 

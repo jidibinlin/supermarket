@@ -17,8 +17,9 @@ public class FuncButton {
         return updataFunc;
     }
 
-    private void createSelectButton(String label, Vector[] resu,Table table){
+    public JButton createSelectButton(String label, Vector[] resu,Vector[] resu2,Table table){
         selectFunc=new JButton(label);
-        selectFunc.addMouseListener(new MouseListenSqlSelect(resu,table));
+        selectFunc.addMouseListener(new MouseListenSqlSelect(resu,resu2,table));
+        return selectFunc;
     }
 }
