@@ -61,19 +61,20 @@ class Table{
     public void dateInput(){
         String[][] Date={{"李清照","29","女"},{"李清照","29","女"},{"李清照","29","女"},{"李清照","29","女"}};
         String[] Title={"姓名","年龄","性别"};
-
         for(int i=0;i<Date.length;i++) {
+            Vector row=new Vector();
             for (int j = 0; j < Title.length; j++) {
-                vDate.add(Date[i][j]);
+                row.add(Date[i][j]);
             }
+            vDate.add(row);
         }
         for(int i=0;i<Title.length;i++){
             vTitle.add((String)Title[i]);
         }
         tableModel.setDataVector(vDate,vTitle);
         table.setModel(tableModel);
-        table.validate();
-        table.updateUI();
+//        table.validate();
+//        table.updateUI();
     }
 
     public void delete(){
