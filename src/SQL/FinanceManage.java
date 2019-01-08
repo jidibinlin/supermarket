@@ -594,9 +594,15 @@ public class FinanceManage {
             //System.out.println(result);
             stmt = connect.getConnection().createStatement();
             rs=stmt.executeQuery(result);
-            //System.out.println("Manu.manuNum"+"Manu.manuName"+"");
+            title.add("manuNum");
+            title.add("manuName");
+            title.add("purSUM");
             while(rs.next()){
-                //System.out.println(rs.getString("Manu.manuNum")+rs.getString("Manu.manuName")+rs.getString("purSUM"));
+                Vector row=new Vector();
+                row.add(rs.getString("manuNum"));
+                row.add(rs.getString("manuName"));
+                row.add(rs.getString("purSUM"));
+                data.add(row);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -615,9 +621,17 @@ public class FinanceManage {
             //System.out.println(seResult);
             stmt = connect.getConnection().createStatement();
             rs=stmt.executeQuery(seResult);
-            //System.out.println("Product.proName"+"Product.proNum"+"Manu.manuName"+"Manu.manuLoc");
+            title.add("proName");
+            title.add("proNum");
+            title.add("manuName");
+            title.add("manuLoc");
             while(rs.next()){
-                //System.out.println(rs.getString("Product.proName")+rs.getString("Product.proNum")+rs.getString("Manu.manuName")+rs.getString("Manu.manuLoc"));
+                Vector row=new Vector();
+                row.add(rs.getString("proName"));
+                row.add(rs.getString("proNum"));
+                row.add(rs.getString("manuName"));
+                row.add(rs.getString("manuLoc"));
+                data.add(row);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -626,26 +640,36 @@ public class FinanceManage {
         }
         return resu;
     }
-//select 模板
-//    public Vector[] (){
-//        try {
-//    data.removeAllElements();
-//                    title.removeAllElements();
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
+            //查询有供应同类商品的不同厂家
+    public Vector[] select_samekind_manu(){
+        try {
+            data.removeAllElements();
+            title.removeAllElements();
+            seResult=sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel "," Manu,Product "," Manu.manuNum=Product.manuNum and Product.proName like '%矿泉水'; ","  ","  ");
+            //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            title.add("proNum");
+            title.add("proName");
+            title.add("manuName");
+            title.add("manuLoc");
+            title.add("manuTel");
+            while(rs.next()){
+                Vector row=new Vector();
+                row.add(rs.getString("proNum"));
+                row.add(rs.getString("proName"));
+                row.add(rs.getString("manuName"));
+                row.add(rs.getString("manuLoc"));
+                row.add(rs.getString("manuTel"));
+                data.add(row);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+        return resu;
+    }
 //select 模板
 //    public Vector[] (){
 //        try {
