@@ -1,10 +1,11 @@
-import GUI.*;
-import SQL.*;
+import GUI.GUI;
+import SQL.FinanceManage;
+
 public class Main {
-    public static void main(String[] args){
-        GUI g= new GUI();
+    public static void main(String[] args) {
+        GUI g = new GUI();
         g.integrate();
-        FinanceManage f=new FinanceManage();
+        FinanceManage f = new FinanceManage();
         f.selesVolumeCollect();
         f.all_manu_profit();
     }

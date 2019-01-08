@@ -52,7 +52,7 @@ class ControlPanel {
         Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.BOLD, 20);//选项卡自体设置
         layout.setHgap(3);
         layout.setHgap(3);
-        String [] Scolor={"blue","grey","brown","green","orange"};
+        String[] Scolor = {"blue", "grey", "brown", "green", "orange"};
         for (int i = 0; i < 5; i++) {
             this.controlPanel.add(tab[i]);
             tab[i].setVisible(true);
