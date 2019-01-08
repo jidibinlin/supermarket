@@ -31,54 +31,37 @@ public class FinanceManage {
 //            connect.release(stmt);
 //        }
 //    }
-//    select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
 
 
     //销量管理
 
     //销量统计
     public Vector[] selesVolumeCollect() {
-        try {
-            stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery("select Product.proNum,proName,counts " +
-                    "from Product," +
-                    "(select Shopping.proNum,sum(number) counts " +
-                    "from Shopping " +
-                    "group by proNum) AS PRO " +
-                    "where PRO.proNum=Product.proNum;");
-            title.add("proNum");
-            title.add("proName");
-            title.add("counts");
-            while (rs.next()) {
-                Vector row=new Vector();
-                System.out.println("proNum " + rs.getString("proNum") + "proName " + rs.getString("proName") + "counts: " + rs.getString("counts"));
-                row.add(rs.getString("proNum"));
-                row.add(rs.getString("proName"));
-                row.add(rs.getString("counts"));
-                data.add(row);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt, rs);
-        }
+                try {
+                    data.removeAllElements();
+                    stmt = connect.getConnection().createStatement();
+                    rs = stmt.executeQuery("select Product.proNum,proName,counts " +
+                            "from Product," +
+                            "(select Shopping.proNum,sum(number) counts " +
+                            "from Shopping " +
+                            "group by proNum) AS PRO " +
+                            "where PRO.proNum=Product.proNum;");
+                    title.add("proNum");
+                    title.add("proName");
+                    title.add("counts");
+                    while (rs.next()) {
+                        Vector row=new Vector();
+                        System.out.println("proNum " + rs.getString("proNum") + "proName " + rs.getString("proName") + "counts: " + rs.getString("counts"));
+                        row.add(rs.getString("proNum"));
+                        row.add(rs.getString("proName"));
+                        row.add(rs.getString("counts"));
+                        data.add(row);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    connect.release(stmt, rs);
+                }
 
         return resu;
     }
@@ -96,14 +79,16 @@ public class FinanceManage {
                     " group by proNum) AS PRO " +
                     " where PRO.proNum=Product.proNum" +
                     " order by counts Desc;");
-            rs.last();
-            rowCount=rs.getRow()-1;
-            rs.first();
-            String[][] resultArray=new String[rowCount][3];
-            i=0;
-            System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
+            title.add("proNum");
+            title.add("proName");
+            title.add("counts");
             while (rs.next()) {
+                Vector row=new Vector();
                 System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
+                row.add(rs.getString("proNum"));
+                row.add(rs.getString("proName"));
+                row.add(rs.getString("counts"));
+                data.add(row);
             }
         } catch (Exception e) {
             e.printStackTrace();
