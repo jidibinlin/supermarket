@@ -408,26 +408,24 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-
-
-//select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
+            //查询与所有供货商的交易总额
+    public void all_manu_profit() {
+        try {
+            seResult=sql.select(" manuNum,sum(Cargoprice * number) purSUM "," Purchase "," group by manuNum ","  ");
+            result=sql.select(" Manu.manuNum,Manu.manuName,purSUM "," Manu, ",seResult," AS PRO "," Manu.manuNum=PRO.manuNum; ","  ","  ");
+            System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Manu.manuNum"+"Manu.manuName"+"");
+            while(rs.next()){
+                System.out.println(rs.getString("Manu.manuNum")+rs.getString("Manu.manuName")+rs.getString("purSUM"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
 //select 模板
 //    public void (){
 //        try {
