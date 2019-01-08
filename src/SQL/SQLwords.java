@@ -54,5 +54,4 @@ public class SQLwords {
         return result;
     }
 
-
 }

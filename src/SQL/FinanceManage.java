@@ -13,6 +13,9 @@ public class FinanceManage {
     String seResult;
     String result;
     SQLwords sql = new SQLwords();
+    int rowCount,columCount;
+    int i,j;
+    //String [][] resultArray=new String[rowCount][];
 //    //insert update delete模板
 //    public void (){
 //        try {
@@ -56,8 +59,23 @@ public class FinanceManage {
                     "from Shopping " +
                     "group by proNum) AS PRO " +
                     "where PRO.proNum=Product.proNum;");
+            rs.last();
+            rowCount=rs.getRow()-1;
+            rs.first();
+            String[][] resultArray=new String[rowCount][3];
+            i=0;
             while (rs.next()) {
                 System.out.println("proNum " + rs.getString("proNum") + "proName " + rs.getString("proName") + "counts: " + rs.getString("counts"));
+                resultArray[i][0]=rs.getString("proNum");
+                resultArray[i][1]=rs.getString("proName");
+                resultArray[i][2]=rs.getString("counts");
+                j=0;
+                while(j<3){
+                    System.out.print(resultArray[i][j]+"\t");
+                    j++;
+                }
+                System.out.print("\n");
+                i++;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -408,44 +426,42 @@ public class FinanceManage {
             connect.release(stmt,rs);
         }
     }
-
-
-//select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
-//select 模板
-//    public void (){
-//        try {
-//            seResult=sql.select("  ","  ","  ","  ","  ");
-//            result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
-//            System.out.println(result);
-//            stmt = connect.getConnection().createStatement();
-//            rs=stmt.executeQuery(result);
-//            System.out.println();
-//            while(rs.next()){
-//                System.out.println(rs.getString();
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt,rs);
-//        }
-//    }
+            //查询与所有供货商的交易总额
+    public void all_manu_profit() {
+        try {
+            seResult=sql.select(" manuNum,sum(Cargoprice * number) purSUM "," Purchase "," group by manuNum ","  ");
+            result=sql.select(" Manu.manuNum,Manu.manuName,purSUM "," Manu, ",seResult," AS PRO "," Manu.manuNum=PRO.manuNum; ","  ","  ");
+            //System.out.println(result);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(result);
+            System.out.println("Manu.manuNum"+"Manu.manuName"+"");
+            while(rs.next()){
+                System.out.println(rs.getString("Manu.manuNum")+rs.getString("Manu.manuName")+rs.getString("purSUM"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
+            //查询指定商品的产地
+    public void select_product_loc(){
+        try {
+            seResult=sql.select(" Product.proName,Product.proNum,Manu.manuName,Manu.manuLoc "," Product,Manu "," Product.manuNum=Manu.manuNum; ","  ","  ");
+            //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
+            System.out.println(seResult);
+            stmt = connect.getConnection().createStatement();
+            rs=stmt.executeQuery(seResult);
+            System.out.println("Product.proName"+"Product.proNum"+"Manu.manuName"+"Manu.manuLoc");
+            while(rs.next()){
+                System.out.println(rs.getString("Product.proName")+rs.getString("Product.proNum")+rs.getString("Manu.manuName")+rs.getString("Manu.manuLoc"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            connect.release(stmt,rs);
+        }
+    }
 //select 模板
 //    public void (){
 //        try {
