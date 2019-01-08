@@ -2,7 +2,6 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import SQL.*;
 
 public class MainFrame {
     private JFrame mainframe = new JFrame("Supmarket Manager System");
