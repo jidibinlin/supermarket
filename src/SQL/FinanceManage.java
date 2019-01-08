@@ -3,6 +3,8 @@ package SQL;
 import JDBC.connect;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import SQL.*;
 //import SQLwords.java
@@ -15,7 +17,9 @@ public class FinanceManage {
     SQLwords sql = new SQLwords();
     int rowCount,columCount;
     int i,j;
-    //String [][] resultArray=new String[rowCount][];
+    Vector data=new Vector();
+    Vector title=new Vector();
+    Vector[] resu={data,title};
 //    //insert update delete模板
 //    public void (){
 //        try {
@@ -50,7 +54,7 @@ public class FinanceManage {
     //销量管理
 
     //销量统计
-    public void selesVolumeCollect() {
+    public Vector[] selesVolumeCollect() {
         try {
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery("select Product.proNum,proName,counts " +
@@ -59,29 +63,24 @@ public class FinanceManage {
                     "from Shopping " +
                     "group by proNum) AS PRO " +
                     "where PRO.proNum=Product.proNum;");
-            rs.last();
-            rowCount=rs.getRow()-1;
-            rs.first();
-            String[][] resultArray=new String[rowCount][3];
-            i=0;
+            title.add("proNum");
+            title.add("proName");
+            title.add("counts");
             while (rs.next()) {
+                Vector row=new Vector();
                 System.out.println("proNum " + rs.getString("proNum") + "proName " + rs.getString("proName") + "counts: " + rs.getString("counts"));
-                resultArray[i][0]=rs.getString("proNum");
-                resultArray[i][1]=rs.getString("proName");
-                resultArray[i][2]=rs.getString("counts");
-                j=0;
-                while(j<3){
-                    System.out.print(resultArray[i][j]+"\t");
-                    j++;
-                }
-                System.out.print("\n");
-                i++;
+                row.add(rs.getString("proNum"));
+                row.add(rs.getString("proName"));
+                row.add(rs.getString("counts"));
+                data.add(row);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             connect.release(stmt, rs);
         }
+
+        return resu;
     }
 
         //销量统计排行
@@ -97,6 +96,11 @@ public class FinanceManage {
                     " group by proNum) AS PRO " +
                     " where PRO.proNum=Product.proNum" +
                     " order by counts Desc;");
+            rs.last();
+            rowCount=rs.getRow()-1;
+            rs.first();
+            String[][] resultArray=new String[rowCount][3];
+            i=0;
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
             while (rs.next()) {
                 System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
@@ -118,6 +122,11 @@ public class FinanceManage {
                     "group by proNum) AS PRO " +
                     "where PRO.proNum=Product.proNum" +
                     "order by counts Desc;");
+            rs.last();
+            rowCount=rs.getRow()-1;
+            rs.first();
+            String[][] resultArray=new String[rowCount][3];
+            i=0;
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
             while (rs.next()) {
                 System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
@@ -138,6 +147,11 @@ public class FinanceManage {
                     "('S02','p3','1','3','2018-12-15')," +
                     "('S03','p5','3','6','2018-12-15')," +
                     "('S04','p2','5','20','2018-12-15');");
+            rs.last();
+            rowCount=rs.getRow()-1;
+            rs.first();
+            String[][] resultArray=new String[rowCount][3];
+            i=0;
             System.out.println("Product.proNum\t" + "proName\t\t\t" + "counts\t");
             while (rs.next()) {
                 System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
