@@ -39,6 +39,7 @@ public class FinanceManage {
     public Vector[] selesVolumeCollect() {
                 try {
                     data.removeAllElements();
+                    title.removeAllElements();
                     stmt = connect.getConnection().createStatement();
                     rs = stmt.executeQuery("select Product.proNum,proName,counts " +
                             "from Product," +
@@ -69,8 +70,10 @@ public class FinanceManage {
         //销量统计排行
             //全局
                 //降序
-    public void selesVolumeOrderDesc() {
+    public Vector[] selesVolumeOrderDesc() {
         try {
+            data.removeAllElements();
+            title.removeAllElements();
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery("select Product.proNum,proName,counts " +
                     " from Product," +
@@ -95,6 +98,7 @@ public class FinanceManage {
         } finally {
             connect.release(stmt, rs);
         }
+        return resu;
     }
                 //升序
     public void selesVolumeOrderAsc() {
