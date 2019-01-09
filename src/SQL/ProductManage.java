@@ -27,23 +27,8 @@ public class ProductManage {
             case "select_apponited_price_product":
                 select_apponited_price_product();
                 break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-            case "":
-                (); break;
-
+            case "update_product_info":
+                update_product_info(); break;
         }
         return sql_result;
     }
@@ -100,7 +85,7 @@ public class ProductManage {
         }
         return resu;
 
-    }}
+    }
 
 //    private Vector[] ()
 //
@@ -245,14 +230,12 @@ public class ProductManage {
 //
 //
 //}
-//供货商信息修改
-private String update_manu_info(){
+//商品信息修改
+private String update_product_info(){
     int reInt;
     String resultString=null;
     try {
-
-
-        result=sql.update(" Manu "," ManuTel='17774809112' ","manuNum='M05'");
+        result=sql.update(" Product "," proName='心怡抽纸' ","proNum='P6'");
         stmt = connect.getConnection().createStatement();
         reInt=stmt.executeUpdate(result);
         if(reInt==0){
@@ -267,25 +250,5 @@ private String update_manu_info(){
     }
     return resultString;
 }
-    //供货商信息修改
-    private String delete_manu_info(){
-        int reInt;
-        String resultString=null;
-        try {
-            result=sql.delete(" Manu "," manuNum='Mo1' ");
-            stmt = connect.getConnection().createStatement();
-            reInt=stmt.executeUpdate(result);
-            if(reInt==0){
-                resultString="无任何元组被修改";
-            }else{
-                resultString="有"+String.valueOf(reInt)+"条元组被修改";
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            connect.release(stmt);
-        }
-        return resultString;
-    }
-
+}
 
