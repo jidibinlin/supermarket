@@ -477,7 +477,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("manuNum"));
                 row.add(rs.getString("manuName"));
-                row.add(rs.getString("counts"));
+                row.add(rs.getString("profitSUM"));
                 data.add(row);
             }
         } catch (Exception e) {
