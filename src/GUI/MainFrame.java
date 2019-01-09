@@ -22,7 +22,7 @@ public class MainFrame {
         mainframe.add(control.getControlPanel(), BorderLayout.NORTH);//将控制面板添加到主界面的最上方
         mainframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//防止worning窗口关闭主窗口
         FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(),};//5张卡片
-        funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[0].getTable()));
+        funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()));
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
         showScrollPanelFunc(funcPanel);//显示各个功能模块
