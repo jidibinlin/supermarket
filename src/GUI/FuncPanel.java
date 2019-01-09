@@ -3,6 +3,7 @@ package GUI;
 import SQL.FinanceManage;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -25,11 +26,18 @@ public class FuncPanel {
         return funcpanel;
     }
 
-    public void selectFuncPanel(JButton [] selecFunc) {
-        Layout.selectFuncLayout(funcpanel[0]);
+    public void selectFuncPanel(JButton [] selecFunc,int counts) {
+        funcScrollPanel[0].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        funcScrollPanel[0].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        funcpanel[0].setPreferredSize(new Dimension(funcScrollPanel[0].getPreferredSize()));
+        funcpanel[0].setBackground(new ColorDefined().getColor("blue"));
+
         for(int i=0;i<selecFunc.length;i++) {
            funcScrollPanel[0].setViewportView(funcpanel[0]);
-           funcpanel[0].add(selecFunc[i]);
+        }
+        Layout.selectFuncLayout(funcpanel[0],counts);
+        for(int i=0;i<counts;i++){
+            funcpanel[0].add(selecFunc[i]);
         }
     }
 

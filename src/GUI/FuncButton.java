@@ -1,7 +1,10 @@
 package GUI;
 
+import javax.jws.Oneway;
 import javax.swing.*;
 import SQL.*;
+
+import java.awt.*;
 import java.math.*;
 
 import java.util.Random;
@@ -19,12 +22,13 @@ public class FuncButton {
         return updataFunc;
     }
 
-    public JButton createSelectButton(String label, Vector[] resu,Vector[] resu2,Table table){
+    public JButton createSelectButton(String label,String funcName,Object select1,Object select2, Table table){
         ColorDefined color=new ColorDefined();
         Random r=new Random();
         selectFunc=new JButton(label);
         selectFunc.setBackground(color.getSefunCol()[r.nextInt(14)]);
-        selectFunc.addMouseListener(new MouseListenSqlSelect(resu,resu2,table));
+        selectFunc.addMouseListener(new MouseListenSqlSelect(funcName,select1,select2,table));
+        selectFunc.setPreferredSize(new Dimension(300,50));
         return selectFunc;
     }
 }
