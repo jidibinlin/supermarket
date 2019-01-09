@@ -83,7 +83,9 @@ class Layout {//各个窗口的布局管理
         return funchild;
     }
 
-    static void selectFuncLayout() {
+    static void selectFuncLayout(JPanel funcpanel) {
+        GridLayout layout = new GridLayout();
+        funcpanel.setLayout(layout);
 
     }
 

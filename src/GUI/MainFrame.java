@@ -51,7 +51,6 @@ public class MainFrame {
         String[] color = {"blue", "grey", "brown", "green", "orange"};
         for (int i = 0; i < 5; i++) {
             funcPanel[i].chartShowPanel(color[i]);
-            funcPanel[i].selectFuncPanel();
         }
     }
 }
