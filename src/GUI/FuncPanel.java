@@ -25,11 +25,11 @@ public class FuncPanel {
         return funcpanel;
     }
 
-    public void selectFuncPanel(FuncButton [] selecFunc) {
+    public void selectFuncPanel(JButton [] selecFunc) {
         Layout.selectFuncLayout(funcpanel[0]);
         for(int i=0;i<selecFunc.length;i++) {
            funcScrollPanel[0].setViewportView(funcpanel[0]);
-           funcpanel[0].add(selecFunc[i].getSelectFunc());
+           funcpanel[0].add(selecFunc[i]);
         }
     }
 

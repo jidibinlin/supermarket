@@ -6,8 +6,6 @@ public class Main {
         GUI g = new GUI();
         g.integrate();
         FinanceManage f = new FinanceManage();
-        f.selesVolumeCollect();
-        f.all_manu_profit();
     }
 }
 

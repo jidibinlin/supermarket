@@ -23,7 +23,7 @@ public class FinanceManage {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    private Vector[] select_result(String sqlName) {
+    public Vector[] select_result(String sqlName) {
 
         switch (sqlName) {
             case "selesVolumeOrderDesc":

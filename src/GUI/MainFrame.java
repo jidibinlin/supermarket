@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import SQL.*;
+import javafx.scene.control.Tab;
 
 public class MainFrame {
     private JFrame mainframe = new JFrame("Supmarket Manager System");
@@ -21,6 +22,7 @@ public class MainFrame {
         mainframe.add(control.getControlPanel(), BorderLayout.NORTH);//将控制面板添加到主界面的最上方
         mainframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//防止worning窗口关闭主窗口
         FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(),};//5张卡片
+        funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[0].getTable()));
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
         showScrollPanelFunc(funcPanel);//显示各个功能模块
@@ -45,6 +47,16 @@ public class MainFrame {
         for (int i = 0; i < 5; i++) {
             Layout.funcLayout(cardMother.getCardPanel_funcPanel()[i], funcPanel[i].getfuncPanel());
         }
+    }
+
+    private JButton[] financeFuncButtonadd(Table table){
+
+        FinanceManage finance = new FinanceManage();
+        JButton [] selecFunc={
+                new FuncButton().createSelectButton("销量统计",finance.select_result("selesVolumeOrderDesc"),finance.select_result("selesVolumeOrderAsc"),table),
+                new FuncButton().createSelectButton("当前盈亏",finance.select_result("select_profit_fornow"),null,table)
+        };
+        return selecFunc;
     }
 
     private void showScrollPanelFunc(FuncPanel[] funcPanel) {
