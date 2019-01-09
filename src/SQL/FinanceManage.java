@@ -117,7 +117,7 @@ public class FinanceManage {
             rs = stmt.executeQuery("select Product.proNum,proName,counts " +
                     " from Product," +
                     " (select Shopping.proNum,sum(number) counts" +
-                    " from Shopping" +
+                    " from Shopping " +
                     " group by proNum) AS PRO " +
                     " where PRO.proNum=Product.proNum" +
                     " order by counts Desc;");
@@ -147,12 +147,12 @@ public class FinanceManage {
             title.removeAllElements();
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery("select Product.proNum,proName,counts " +
-                    "from Product," +
-                    "(select Shopping.proNum,sum(number) counts" +
-                    "from Shopping" +
-                    "group by proNum) AS PRO " +
-                    "where PRO.proNum=Product.proNum" +
-                    "order by counts Desc;");
+                    " from Product," +
+                    "  (select Shopping.proNum,sum(number) counts " +
+                    " from Shopping " +
+                    " group by proNum) AS PRO " +
+                    " where PRO.proNum=Product.proNum" +
+                    " order by counts Desc;");
             title.add("proNum");
             title.add("proName");
             title.add("counts");
@@ -211,8 +211,8 @@ public class FinanceManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
-            result = sql.select("Product.proNum,proName,counts", "Product,", seResult, "AS PRO", "PRO.proNum=Product.proNum", "", " order by counts Desc");
+            seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " shopDate='2018-12-15' ", " group by proNum", "");
+            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, "AS PRO", " PRO.proNum=Product.proNum ", "", " order by counts Desc ;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
