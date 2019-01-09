@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
@@ -43,11 +44,12 @@ class MouseListenSqlSelect extends  MouseAdapter{
             table.tableDataShow(sqlfunc);
         }
 
-        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2 && sqlfunc2!=null) {
-            table.tableDataShow(sqlfunc2);
+        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
         }
 
-        if (e.getButton() == MouseEvent.BUTTON2) {
+        if (e.getButton() == MouseEvent.BUTTON3 && sqlfunc2 !=null) {
+            System.out.println("right");
+            table.tableDataShow(sqlfunc2);
         }
     }
 }

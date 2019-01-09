@@ -11,6 +11,7 @@ import java.util.Vector;
 public class FuncPanel {
     private JScrollPane[] funcScrollPanel = {new JScrollPane(), new JScrollPane(), new JScrollPane(), new JScrollPane()};
     private Table table = new Table();
+    private JPanel[] funcpanel={new JPanel(),new JPanel()};
 
     public JScrollPane[] getfuncPanel() {
         return funcScrollPanel;
@@ -20,9 +21,16 @@ public class FuncPanel {
         return table;
     }
 
-    public void selectFuncPanel() {
-        funcScrollPanel[0].setViewportView(new FuncButton().createSelectButton("select",new FinanceManage().selesVolumeCollect(),new FinanceManage().all_manu_profit(),table));
+    public JPanel[] getFuncpanel() {
+        return funcpanel;
+    }
 
+    public void selectFuncPanel(FuncButton [] selecFunc) {
+        Layout.selectFuncLayout(funcpanel[0]);
+        for(int i=0;i<selecFunc.length;i++) {
+           funcScrollPanel[0].setViewportView(funcpanel[0]);
+           funcpanel[0].add(selecFunc[i].getSelectFunc());
+        }
     }
 
     public void chartShowPanel(String tableColor) {
