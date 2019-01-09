@@ -38,19 +38,19 @@ public class SQLwords {
 
     //update方法
     public String update(String tables, String targets, String conditions) {
-        result = " update " + tables + " set " + targets + " where " + conditions ;
+        result = " update " + tables + " set " + targets + " where " + conditions+";" ;
         return result;
     }
 
     //delete方法
-    public String delete(String targets, String tables, String conditions) {
-        result = " delete " + targets + " from " + tables + " where " + conditions ;
+    public String delete(String tables, String conditions) {
+        result = " delete " + " from " + tables + " where " + conditions+";" ;
         return result;
     }
 
     //insert方法
     public String insert(String tables, String attributies, String data) {
-        result = " insert into " + tables + "(" + attributies + ") values " + data ;
+        result = " insert into " + tables + "(" + attributies + ") values " + data+";" ;
         return result;
     }
 
