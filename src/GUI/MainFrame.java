@@ -59,24 +59,14 @@ public class MainFrame {
 
         JButton [] selecFunc={
                 new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
+                new FuncButton().createSelectButton("某日销量","apponited_date_check",new FinanceManage(),new FinanceManage(),table),
+                new FuncButton().createSelectButton("销量比较","apppnited_product_compare",new FinanceManage(),new FinanceManage(),table),
+                new FuncButton().createSelectButton("同类产品销量","compare_with_same_kind",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("整体盈利","whole_profit_manage",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("当日盈利","apponited_profit_manage",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("商品盈利","apponited_product_profit",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("商品盈利比较","compare_product_profit",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
         };
         return selecFunc;
     }

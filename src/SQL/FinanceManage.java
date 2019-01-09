@@ -26,16 +26,16 @@ public class FinanceManage {
     public Vector[] select_result(String sqlName) {
 
         switch (sqlName) {
-            case "selesVolumeOrderDesc":
+            case "selesVolumeOrder_Desc":
                 sql_result=selesVolumeOrderDesc();
                 break;
-            case "selesVolumeOrderAsc":
+            case "selesVolumeOrder_Asc":
                 sql_result=selesVolumeOrderAsc();
                 break;
             case "billInsert":
                 sql_result=billInsert();
                 break;
-            case "apponited_date_cheack_Desc":
+            case "apponited_date_check_Desc":
                 sql_result=apponited_date_cheack_Desc();
                 break;
             case "apponited_date_check_Asc":

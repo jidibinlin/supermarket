@@ -67,8 +67,8 @@ class MouseListenSqlSelect extends MouseAdapter {
         if (select1 instanceof FinanceManage && select2 == null) {
             this.sqlfunc =((FinanceManage) select1).select_result(funcName);
         } else if (select1 instanceof FinanceManage && select2 != null) {
-            this.sqlfunc =((FinanceManage) select1).select_result(funcName+"Asc");
-            this.sqlfunc2 = ((FinanceManage)select2).select_result(funcName+"Desc");
+            this.sqlfunc =((FinanceManage) select1).select_result(funcName+"_Asc");
+            this.sqlfunc2 = ((FinanceManage)select2).select_result(funcName+"_Desc");
         }
 
 
@@ -76,8 +76,8 @@ class MouseListenSqlSelect extends MouseAdapter {
 //            sqlfunc =((EmployeeManage) select1).select_result(funcName);
 //        }
 //        else if(select1 instanceof EmployeeManage && select2!=null){
-//            sqlfunc =((EmployeeManage) select1).select_result(funcName+"Asc");
-//            sqlfunc2 = ((EmployeeManage)select2).select_result(funcName+"Desc");
+//            sqlfunc =((EmployeeManage) select1).select_result(funcName+"_Asc");
+//            sqlfunc2 = ((EmployeeManage)select2).select_result(funcName+"_Desc");
 //        }
 //
 //
@@ -87,8 +87,8 @@ class MouseListenSqlSelect extends MouseAdapter {
 //        }
 //
 //        else if(select1 instanceof GuestInfoManage && select2!=null){
-//            sqlfunc =((GuestInfoManage) select1).select_result(funcName+"Asc");
-//            sqlfunc2 = ((GuestInfoManage)select2).select_result(funcName+"Desc");
+//            sqlfunc =((GuestInfoManage) select1).select_result(funcName+"_Asc");
+//            sqlfunc2 = ((GuestInfoManage)select2).select_result(funcName+"_Desc");
 //        }
 //
 //
@@ -97,8 +97,8 @@ class MouseListenSqlSelect extends MouseAdapter {
 //        }
 //
 //        else if(select1 instanceof ProductManage && select2!=null){
-//            sqlfunc =((ProductManage) select1).select_result(funcName+"Asc");
-//            sqlfunc2 = ((ProductManage)select2).select_result(funcName+"Desc");
+//            sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc");
+//            sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc");
 //        }
 //
 //
@@ -107,8 +107,8 @@ class MouseListenSqlSelect extends MouseAdapter {
 //        }
 //
 //        else if(select1 instanceof StoreManage && select2!=null){
-//            sqlfunc =((StoreManage) select1).select_result(funcName+"Asc");
-//            sqlfunc2 = ((StoreManage)select2).select_result(funcName+"Desc");
+//            sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc");
+//            sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc");
 //        }
     }
 }

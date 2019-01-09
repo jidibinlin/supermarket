@@ -28,6 +28,7 @@ public class FuncButton {
         selectFunc=new JButton(label);
         selectFunc.setBackground(color.getSefunCol()[r.nextInt(14)]);
         selectFunc.addMouseListener(new MouseListenSqlSelect(funcName,select1,select2,table));
+        Font f=new Font("Go Mono for Powerline.ttf",Font.PLAIN,20);
         selectFunc.setPreferredSize(new Dimension(300,50));
         return selectFunc;
     }
