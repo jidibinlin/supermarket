@@ -20,18 +20,37 @@ public class FinanceManage {
     Vector data=new Vector();
     Vector title=new Vector();
     Vector[] resu={data,title};
-//    //insert update delete模板
-//    public Vector[] (){
-//        try {
-//            stmt = connect.getConnection().createStatement();
-//            stmt.executeUpdate(  );
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }finally{
-//            connect.release(stmt);
-//        }
-//    }
+    Vector[] sql_result;
 
+    public Vector[] sql_result(String sqlName) {
+
+        switch (sqlName){
+            case "selesVolumeCollect":selesVolumeCollect();break;
+            case "selesVolumeOrderDesc":selesVolumeOrderDesc();break;
+            case "selesVolumeOrderAsc":selesVolumeOrderAsc();break;
+            case "billInsert":billInsert();break;
+            case "apponited_date_cheack_Desc":apponited_date_cheack_Desc();break;
+            case "apponited_date_check_Asc":apponited_date_check_Asc();break;
+            case "apppnited_product_compare_Asc":apppnited_product_compare_Asc();break;
+            case "apponited_product_compare_Desc":apponited_product_compare_Desc();break;
+            case "apponited_product_sell_Asc":apponited_product_sell_Asc();break;
+            case "compare_with_same_kind":compare_with_same_kind();break;
+            case "whole_profit_manage":whole_profit_manage();break;
+            case "apponited_profit_manage":apponited_profit_manage();break;
+            case "apponited_product_profit":apponited_product_profit();break;
+            case "compare_product_profit":compare_product_profit();break;
+            case "select_profit_fornow":select_profit_fornow();break;
+            case "manu_info_select":manu_info_select();break;
+            case "select_manu_of_product":select_manu_of_product();break;
+            case "select_manu_of_apponited_product":select_manu_of_apponited_product();break;
+            case "select_all_product_from_apponited_manu":select_all_product_from_apponited_manu();break;
+            case "all_manu_profit":all_manu_profit();break;
+            case "select_product_loc":select_product_loc();break;
+            case "select_samekind_manu":select_samekind_manu();break;
+        }
+
+        return sql_result;
+    }
 
     //销量管理
 
