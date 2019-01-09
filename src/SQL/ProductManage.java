@@ -10,6 +10,7 @@ public class ProductManage {
     ResultSet rs = null;
     String seResult;
     String result;
+    String update_result;
     SQLwords sql = new SQLwords();
     int rowCount, columCount;
     int i, j;
@@ -27,11 +28,17 @@ public class ProductManage {
             case "select_apponited_price_product":
                 select_apponited_price_product();
                 break;
-            case "update_product_info":
-                update_product_info(); break;
         }
         return sql_result;
     }
+    private String update_result(String sqlName){
+        switch(sqlName) {
+            case "update_product_info":
+                update_result=update_product_info(); break;
+        }
+        return update_result;
+    }
+
 
     //查询指定类商品的商品名和商品号
     private Vector[] select_apponited_product_info() {

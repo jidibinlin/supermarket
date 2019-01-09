@@ -14,6 +14,7 @@ public class FinanceManage {
     ResultSet rs = null;
     String seResult;
     String result;
+    String update_result;
     SQLwords sql = new SQLwords();
     int rowCount, columCount;
     int i, j;
@@ -22,74 +23,83 @@ public class FinanceManage {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] sql_result(String sqlName) {
+    private Vector[] select_result(String sqlName) {
 
         switch (sqlName) {
             case "selesVolumeOrderDesc":
-                selesVolumeOrderDesc();
+                sql_result=selesVolumeOrderDesc();
                 break;
             case "selesVolumeOrderAsc":
-                selesVolumeOrderAsc();
+                sql_result=selesVolumeOrderAsc();
                 break;
             case "billInsert":
-                billInsert();
+                sql_result=billInsert();
                 break;
             case "apponited_date_cheack_Desc":
-                apponited_date_cheack_Desc();
+                sql_result=apponited_date_cheack_Desc();
                 break;
             case "apponited_date_check_Asc":
-                apponited_date_check_Asc();
+                sql_result=apponited_date_check_Asc();
                 break;
             case "apppnited_product_compare_Asc":
-                apppnited_product_compare_Asc();
+                sql_result=apppnited_product_compare_Asc();
                 break;
             case "apponited_product_compare_Desc":
-                apponited_product_compare_Desc();
+                sql_result=apponited_product_compare_Desc();
                 break;
             case "compare_with_same_kind":
-                compare_with_same_kind();
+                sql_result=compare_with_same_kind();
                 break;
             case "whole_profit_manage":
-                whole_profit_manage();
+                sql_result=whole_profit_manage();
                 break;
             case "apponited_profit_manage":
-                apponited_profit_manage();
+                sql_result=apponited_profit_manage();
                 break;
             case "apponited_product_profit":
-                apponited_product_profit();
+                sql_result=apponited_product_profit();
                 break;
             case "compare_product_profit":
-                compare_product_profit();
+                sql_result=compare_product_profit();
                 break;
             case "select_profit_fornow":
-                select_profit_fornow();
+                sql_result=select_profit_fornow();
                 break;
             case "manu_info_select":
-                manu_info_select();
+                sql_result=manu_info_select();
                 break;
             case "select_manu_of_product":
-                select_manu_of_product();
+                sql_result=select_manu_of_product();
                 break;
             case "select_manu_of_apponited_product":
-                select_manu_of_apponited_product();
+                sql_result=select_manu_of_apponited_product();
                 break;
             case "select_all_product_from_apponited_manu":
-                select_all_product_from_apponited_manu();
+                sql_result=select_all_product_from_apponited_manu();
                 break;
             case "all_manu_profit":
-                all_manu_profit();
+                sql_result=all_manu_profit();
                 break;
             case "select_product_loc":
-                select_product_loc();
+                sql_result=select_product_loc();
                 break;
             case "select_samekind_manu":
-                select_samekind_manu();
+                sql_result=select_samekind_manu();
                 break;
-            case "update_manu_info":update_manu_info();break;
-            case "delete_manu_info":delete_manu_info();break;
         }
-
         return sql_result;
+    }
+
+    private String update_result(String sqlName){
+        switch(sqlName) {
+            case "update_manu_info":
+                update_result=update_manu_info();
+                break;
+            case "delete_manu_info":
+                update_result=delete_manu_info();
+                break;
+        }
+        return update_result;
     }
 
     //销量管理
