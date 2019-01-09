@@ -111,7 +111,7 @@ public class FinanceManage {
     public Vector[] selesVolumeOrderDesc() {
 
         try {
-            data.removeAllElements();
+           data.removeAllElements();
             title.removeAllElements();
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery("select Product.proNum,proName,counts " +
@@ -152,7 +152,7 @@ public class FinanceManage {
                     " from Shopping " +
                     " group by proNum) AS PRO " +
                     " where PRO.proNum=Product.proNum" +
-                    " order by counts Desc;");
+                    " order by counts Asc;");
             title.add("proNum");
             title.add("proName");
             title.add("counts");
