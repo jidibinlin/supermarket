@@ -56,7 +56,7 @@ class Layout {//各个窗口的布局管理
 
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.gridheight = 1;
-        constraints.weightx = 4;
+        constraints.weightx = 8;
         constraints.weighty = 4;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 10, 0);
@@ -74,7 +74,7 @@ class Layout {//各个窗口的布局管理
 
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.gridheight = 1;
-        constraints.weightx = 4;
+        constraints.weightx = 8;
         constraints.weighty = 1;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 0, 0);
@@ -85,6 +85,8 @@ class Layout {//各个窗口的布局管理
 
     static void selectFuncLayout(JPanel funcpanel,int counts) {
         GridLayout layout=new GridLayout(counts,1);
+        funcpanel.setLayout(layout);
+        layout.setVgap(5);
     }
 
     static void updateFuncLayout() {
