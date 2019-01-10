@@ -15,8 +15,6 @@ public class TabSwitch extends MouseAdapter {//选项卡切换
     TabSwitch() {
     }
 
-    ;
-
     TabSwitch(CardLayout carlayout, JButton tab, JPanel CardPanel, JPanel CardPanel_funcPanel) {
         this.carLayout = carlayout;
         this.tab = tab;

@@ -58,15 +58,15 @@ public class MainFrame {
     private JButton[] financeFuncButtonadd(Table table){
 
         JButton [] selecFunc={
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("某日销量","apponited_date_check",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("销量比较","apppnited_product_compare",new FinanceManage(),new FinanceManage(),table),
-                new FuncButton().createSelectButton("同类产品销量","compare_with_same_kind",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("整体盈利","whole_profit_manage",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当日盈利","apponited_profit_manage",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("商品盈利","apponited_product_profit",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("商品盈利比较","compare_product_profit",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
+                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table,new String(),new String()),
+                new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"2018-12-13",new String()),
+                new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"name",new String()),
+                new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"饮料",new String()),
+                new FuncButton().createSelectButton("整体盈利","wholeProfitManage",new FinanceManage(),null,table,new String(),new String()),
+                new FuncButton().createSelectButton("当日盈利","apponitedProfitManage",new FinanceManage(),null,table,"2018-12-13",new String()),
+//                new FuncButton().createSelectButton("商品盈利","apponitedProductProfit",new FinanceManage(),null,table),
+//                new FuncButton().createSelectButton("商品盈利比较","compareProductProfit",new FinanceManage(),null,table),
+//                new FuncButton().createSelectButton("当前盈亏","selectProfitFornow",new FinanceManage(),null,table),
         };
         return selecFunc;
     }

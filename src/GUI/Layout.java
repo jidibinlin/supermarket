@@ -91,12 +91,12 @@ class Layout {//各个窗口的布局管理
         layout.setVgap(5);
     }
 
-    static void getDateUIlayout(JButton sure, JButton back,String [] attribute, JLabel[] tips,JTextField[] inputField, JDialog input){
+    static void getDateUIlayout(JButton sure, JButton back,String [] attribute, ArrayList tips,ArrayList inputField, JDialog input){
         input.setSize(200,125);
         input.setLayout(new FlowLayout());
         for(int i=0;i<attribute.length;i++){
-            input.add(tips[i]);
-            input.add(inputField[i]);
+            input.add((JLabel)tips.get(i));
+            input.add((JTextField)inputField.get(i));
         }
         input.add(sure);
         input.add(back);

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class DateInput{
     private String[] attribete=null;
-    private JLabel[] tips={new JLabel(),new JLabel(),new JLabel()};
+    private ArrayList tips=new ArrayList();
     private JDialog input=new JDialog(GUI.mainframe.getMainframe(),true);
-    private JTextField[] inputField={new JTextField(10),new JTextField(10),new JTextField(10)};
+    private ArrayList inputField=new ArrayList();
 
     public String[] getAttribete() {
         return attribete;
@@ -17,7 +17,7 @@ public class DateInput{
         this.attribete=attribete;
     }
 
-    public JTextField[] getInputField(){
+    public ArrayList getInputField(){
         return inputField;
     }
 
@@ -28,7 +28,8 @@ public class DateInput{
         input.setLocation(300,400);
         input.setLocationRelativeTo(GUI.mainframe.getMainframe());
         for(int i=0;i<attribete.length;i++){
-            tips[i].setText(attribete[i]);
+            tips.add(new JLabel(attribete[i]));
+            inputField.add(new JTextField(13));
         }
         Layout.getDateUIlayout(sure,back,attribete,tips,inputField,input);
         //sure.addMouseListener();

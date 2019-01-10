@@ -22,12 +22,12 @@ public class FuncButton {
         return updataFunc;
     }
 
-    public JButton createSelectButton(String label,String funcName,Object select1,Object select2, Table table){
+    public JButton createSelectButton(String label,String funcName,Object select1,Object select2, Table table,String attr1,String attr2){
         ColorDefined color=new ColorDefined();
         Random r=new Random();
         selectFunc=new JButton(label);
         selectFunc.setBackground(color.getSefunCol()[r.nextInt(14)]);
-        selectFunc.addMouseListener(new MouseListenSqlSelect(funcName,select1,select2,table));
+        selectFunc.addMouseListener(new MouseListenSqlSelect(funcName,select1,select2,table,attr1,attr2));
         Font f=new Font("Go Mono for Powerline.ttf",Font.PLAIN,30);
         selectFunc.setPreferredSize(new Dimension(70,50));
         return selectFunc;

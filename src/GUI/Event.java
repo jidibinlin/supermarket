@@ -42,35 +42,62 @@ class MouseListenSqlSelect extends MouseAdapter {
     private Object select2=null;
     private String funcName=null;
     private Table table = null;
+    private String attr1=new String();
+    private String attr2=new String();
 
-    MouseListenSqlSelect(String funcName, Object select1, Object select2, Table table) {
+    MouseListenSqlSelect(String funcName, Object select1, Object select2, Table table,String attr1,String attr2) {
         this.select1=select1;
         this.select2=select2;
-
+        this.attr1=attr1;
+        this.attr2=attr2;
         this.funcName=funcName;
         this.table = table;
     }
 
     public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
-            whichtype();
+        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1 && attr1.isEmpty()) {
+            whichtype(null,null);
+            table.tableDataShow(sqlfunc);
+        }else if(e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1 && !(attr1.isEmpty()) && attr2.isEmpty()){
+            DateInput input=new DateInput(new String []{attr1,null});
+            input.getDateUI();
+            JTextField par1=(JTextField) input.getInputField().get(0);
+            whichtype(par1.getText(),null);
+            table.tableDataShow(sqlfunc);
+
+        }else if(e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1 && !(attr1.isEmpty()) && !(attr2.isEmpty())){
+            DateInput input=new DateInput(new String []{attr1,attr2});
+            input.getDateUI();
+            JTextField par1=(JTextField) input.getInputField().get(0);
+            JTextField par2=(JTextField) input.getInputField().get(1);
+            whichtype(par1.getText(),par2.getText());
             table.tableDataShow(sqlfunc);
         }
 
-        if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
-        }
-
-        if (e.getButton() == MouseEvent.BUTTON3 && sqlfunc2 != null) {
-            whichtype();
+        if (e.getButton() == MouseEvent.BUTTON3 && sqlfunc2 != null && attr1.isEmpty()) {
+            whichtype(null,null);
+            table.tableDataShow(sqlfunc2);
+        }else if(e.getButton() == MouseEvent.BUTTON3 && sqlfunc2 != null && !(attr1.isEmpty()) && attr2.isEmpty()){
+            DateInput input=new DateInput(new String[]{attr1,null});
+            input.getDateUI();
+            input.getInputField();
+            JTextField par1=(JTextField) input.getInputField().get(0);
+            whichtype(par1.getText(),null);
+            table.tableDataShow(sqlfunc2);
+        }else if(e.getButton() == MouseEvent.BUTTON3 && sqlfunc2 != null && !(attr1.isEmpty()) && !(attr2.isEmpty())){
+             DateInput input=new DateInput(new String[]{attr1,attr2});
+            input.getDateUI();
+            input.getInputField();
+            JTextField par1=(JTextField) input.getInputField().get(0);
+            JTextField par2=(JTextField) input.getInputField().get(1);
+            whichtype(par1.getText(),par2.getText());
             table.tableDataShow(sqlfunc2);
         }
     }
 
 
-    private void whichtype(){
+    private void whichtype(String par1,String par2){
         if (select1 instanceof FinanceManage && select2 == null) {
-            DateInput input=new DateInput();
-            input.getInputField();
             this.sqlfunc =((FinanceManage) select1).select_result(funcName);
         } else if (select1 instanceof FinanceManage && select2 != null) {
             this.sqlfunc =((FinanceManage) select1).select_result(funcName+"_Asc");
