@@ -69,6 +69,8 @@ class MouseListenSqlSelect extends MouseAdapter {
 
     private void whichtype(){
         if (select1 instanceof FinanceManage && select2 == null) {
+            DateInput input=new DateInput();
+            input.getInputField();
             this.sqlfunc =((FinanceManage) select1).select_result(funcName);
         } else if (select1 instanceof FinanceManage && select2 != null) {
             this.sqlfunc =((FinanceManage) select1).select_result(funcName+"_Asc");

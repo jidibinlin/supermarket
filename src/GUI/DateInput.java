@@ -17,6 +17,10 @@ public class DateInput{
         this.attribete=attribete;
     }
 
+    public JTextField[] getInputField(){
+        return inputField;
+    }
+
 
     public void getDateUI(){
         JButton sure=new JButton("确定");
@@ -27,5 +31,7 @@ public class DateInput{
             tips[i].setText(attribete[i]);
         }
         Layout.getDateUIlayout(sure,back,attribete,tips,inputField,input);
+        //sure.addMouseListener();
+        //sure.addMouseListener();
     }
 }

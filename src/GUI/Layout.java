@@ -92,13 +92,12 @@ class Layout {//各个窗口的布局管理
     }
 
     static void getDateUIlayout(JButton sure, JButton back,String [] attribute, JLabel[] tips,JTextField[] inputField, JDialog input){
-        input.setSize(200,300);
+        input.setSize(200,125);
         input.setLayout(new FlowLayout());
         for(int i=0;i<attribute.length;i++){
             input.add(tips[i]);
             input.add(inputField[i]);
         }
-
         input.add(sure);
         input.add(back);
         input.setVisible(true);

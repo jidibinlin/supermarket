@@ -89,9 +89,6 @@ public class FinanceManage {
     //全局
     //降序
     public Vector[] selesVolumeOrderDesc() {
-        String [] attribute={"proNum","proName"};
-        DateInput input=new DateInput(attribute);
-        input.getDateUI();
         try {
            data.removeAllElements();
             title.removeAllElements();
