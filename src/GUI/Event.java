@@ -4,8 +4,12 @@ import SQL.FinanceManage;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
 import SQL.*;
+
+import javax.swing.*;
 
 public class Event {
 
@@ -110,5 +114,12 @@ class MouseListenSqlSelect extends MouseAdapter {
 //            sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc");
 //            sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc");
 //        }
+    }
+}
+class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
+
+    public void windowClosing(WindowEvent e) {
+        JFrame fratran = (JFrame) e.getComponent();
+        NoticeCloseSureDialog.CloseSure(fratran);
     }
 }

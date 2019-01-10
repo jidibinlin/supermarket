@@ -67,11 +67,6 @@ public class MainFrame {
                 new FuncButton().createSelectButton("商品盈利","apponited_product_profit",new FinanceManage(),null,table),
                 new FuncButton().createSelectButton("商品盈利比较","compare_product_profit",new FinanceManage(),null,table),
                 new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
-                new FuncButton().createSelectButton("当前盈亏","select_profit_fornow",new FinanceManage(),null,table),
         };
         return selecFunc;
     }

@@ -38,10 +38,7 @@ public class NoticeCloseSureDialog {//worning 对话框
         closeSureDia.setVisible(true);
     }
 }
-class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
 
-    public void windowClosing(WindowEvent e) {
-        JFrame fratran = (JFrame) e.getComponent();
-        NoticeCloseSureDialog.CloseSure(fratran);
-    }
-}
+
+
+
