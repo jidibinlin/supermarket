@@ -358,7 +358,7 @@ public class FinanceManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum ", " group by proNum; ", "  ");
+            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum ", " group by proNum ", "  ");
             result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -369,7 +369,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
-                row.add(rs.getString("counts"));
+                row.add(rs.getString("profitSum"));
                 data.add(row);
             }
         } catch (Exception e) {
@@ -396,7 +396,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
-                row.add(rs.getString("counts"));
+                row.add(rs.getString("profitSum"));
                 data.add(row);
             }
         } catch (Exception e) {
@@ -423,7 +423,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
-                row.add(rs.getString("counts"));
+                row.add(rs.getString("profitSum"));
                 data.add(row);
             }
         } catch (Exception e) {
@@ -450,7 +450,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
-                row.add(rs.getString("counts"));
+                row.add(rs.getString("profitSum"));
                 data.add(row);
             }
         } catch (Exception e) {
