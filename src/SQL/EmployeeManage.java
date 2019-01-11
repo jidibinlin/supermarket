@@ -23,7 +23,7 @@ public class EmployeeManage {
         switch (sqlName) {
             case "jobKindQuery":sql_result=job_kind_query(par1);break;
             case "salaryCheck":sql_result=salaryCheck(par1);break;
-
+            case "selectJobkindSalary":sql_result=select_jobkind_salary(par1);break;
         }
         return sql_result;
     }
@@ -124,24 +124,28 @@ public class EmployeeManage {
 
     //查询指定员工的工种及薪水
 
-    private Vector[] ()
+    private Vector[] select_jobkind_salary(String emName)
 
     {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select("  ", "  ", "  ", "  ", "  ");
-            result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
+            seResult = sql.select(" Employee.emNum,name,Employee.jobNum,jobName,salary ", " Employee,JobKind ", " Employee.jobNum=JobKind.jobNum and name='"+emName+"' ", "  ", "  ");
+           // result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
-            title.add("");
-            title.add("");
-            title.add("");
+            title.add("Employee.emNum");
+            title.add("name");
+            title.add("Employee.jobNum");
+            title.add("jobName");
+            title.add("salary");
             while (rs.next()) {
                 Vector row = new Vector();
-                row.add(rs.getString(""));
-                row.add(rs.getString(""));
-                row.add(rs.getString(""));
+                row.add(rs.getString("Employee.emNum"));
+                row.add(rs.getString("name"));
+                row.add(rs.getString("Employee.jobNum"));
+                row.add(rs.getString("jobName"));
+                row.add(rs.getString("salary"));
                 data.add(row);
             }
         } catch (Exception e) {
