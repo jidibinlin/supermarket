@@ -32,7 +32,7 @@ public class DateInput{
         input.setLocationRelativeTo(GUI.mainframe.getMainframe());
         for(int i=0;i<attribete.length;i++){
             tips.add(new JLabel(attribete[i]));
-            inputField.add(new JTextField(13));
+            inputField.add(new JTextField(30));
         }
         Layout.getDateUIlayout(sure,back,attribete,tips,inputField,input);
     }

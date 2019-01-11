@@ -88,12 +88,12 @@ class Layout {//各个窗口的布局管理
     static void selectFuncLayout(JPanel funcpanel,int counts) {
         GridLayout layout=new GridLayout(counts,1);
         funcpanel.setLayout(layout);
-        layout.setVgap(5);
+        layout.setVgap(10);
     }
 
     static void getDateUIlayout(JButton sure, JButton back,String [] attribute, ArrayList tips,ArrayList inputField, JDialog input){
-        input.setSize(200,125);
-        input.setLayout(new FlowLayout());
+        input.setSize(250,100);
+        input.setLayout(new GridLayout(3,2));
         for(int i=0;i<attribute.length;i++){
             if(attribute[i]==null)
                 break;
