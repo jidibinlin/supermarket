@@ -19,44 +19,44 @@ public class ProductManage {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] sql_result(String sqlName) {
+    public Vector[] sql_result(String sqlName,String par1,String par2) {
 
         switch (sqlName) {
             case "selectApponitedProductInfo":
-                sql_result = select_apponited_product_info();
+                sql_result = select_apponited_product_info(par1);
                 break;
             case "manuInfoSelect":
-                sql_result = manu_info_select();
+                sql_result = manu_info_select(par1);
                 break;
             case "selectApponitedPriceProduct":
-                select_apponited_price_product();
+                select_apponited_price_product(par1);
                 break;
             case "selectManuOfProduct":
                 sql_result = select_manu_of_product();
                 break;
             case "selectManuOfApponitedProduct":
-                sql_result = select_manu_of_apponited_product();
+                sql_result = select_manu_of_apponited_product(par1);
                 break;
             case "selectAllProductFromApponitedManu":
-                sql_result = select_all_product_from_apponited_manu();
+                sql_result = select_all_product_from_apponited_manu(par1);
                 break;
             case "selectProductLoc":
                 sql_result = select_product_loc();
                 break;
             case "selectSameKindManu":
-                sql_result = select_samekind_manu();
+                sql_result = select_samekind_manu(par1);
                 break;
         }
         return sql_result;
     }
 
-    public String update_result(String sqlName) {
+    public String update_result(String sqlName,String par1,String par2) {
         switch (sqlName) {
             case "updateProductInfo":
-                update_result = update_product_info();
+                update_result = update_product_info(par1,par2);
                 break;
             case "updateManuInfo":
-                update_result = update_manu_info();
+                update_result = update_manu_info(par1,par2);
                 break;
 
         }
@@ -65,11 +65,11 @@ public class ProductManage {
 
 
     //查询指定类商品的商品名和商品号
-    private Vector[] select_apponited_product_info() {
+    private Vector[] select_apponited_product_info(String proType) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" proName,proNum  ", " Product ", " type='饮品'; ", "  ", "  ");
+            seResult = sql.select(" proName,proNum  ", " Product ", " type='"+proType+"'; ", "  ", "  ");
             //result=sql.select("  "," , ",seResult,"  "," ; ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -91,11 +91,11 @@ public class ProductManage {
     }
 
     //查询特定价格以上的商品信息
-    private Vector[] select_apponited_price_product() {
+    private Vector[] select_apponited_price_product(String price) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>=4; ", "  ", "  ");
+            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>="+price+"; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -117,12 +117,12 @@ public class ProductManage {
         return resu;
 
     }
-
-    public Vector[] manu_info_select() {
+    //供货商信息查询
+    public Vector[] manu_info_select(String manuName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Manu ", " manuName='康帅傅';", "  ", "  ");
+            seResult = sql.select(" * ", " Manu ", " manuName='"+manuName+"';", "  ", "  ");
             //result=sql.select(" * "," Manu ","","  "," manuName='康帅傅'; ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
@@ -179,11 +179,11 @@ public class ProductManage {
     }
 
     //查询指定商品的供应商
-    public Vector[] select_manu_of_apponited_product() {
+    public Vector[] select_manu_of_apponited_product(String proName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", "  Manu.manuNum=Product.manuNum and Product.proName='恰宝矿泉水'; ", "  ", "  ");
+            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", "  Manu.manuNum=Product.manuNum and Product.proName='"+proName+"'; ", "  ", "  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
@@ -210,11 +210,11 @@ public class ProductManage {
     }
 
     //查询指定供货商的所有商品
-    public Vector[] select_all_product_from_apponited_manu() {
+    public Vector[] select_all_product_from_apponited_manu(String manuName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Product.proNum,Product.proName,manuName ", " Product,Manu ", " Product.manuNum=Manu.manuNum and Product.manuNum='M03'; ", "  ", "  ");
+            seResult = sql.select(" Product.proNum,Product.proName,manuName ", " Product,Manu ", " Product.manuNum=Manu.manuNum and Product.manuName='"+manuName+"'; ", "  ", "  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
@@ -236,7 +236,7 @@ public class ProductManage {
         return resu;
     }
 
-    //查询指定商品的产地
+    //查询商品的产地
     public Vector[] select_product_loc() {
         try {
             data.removeAllElements();
@@ -267,11 +267,11 @@ public class ProductManage {
     }
 
     //查询有供应同类商品的不同厂家
-    public Vector[] select_samekind_manu() {
+    public Vector[] select_samekind_manu(String proName_Like) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", " Manu.manuNum=Product.manuNum and Product.proName like '%矿泉水'; ", "  ", "  ");
+            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", " Manu.manuNum=Product.manuNum and Product.proName like '"+proName_Like+"'; ", "  ", "  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -298,11 +298,11 @@ public class ProductManage {
     }
 
     //供货商信息修改
-    private String update_manu_info() {
+    private String update_manu_info(String updateTarget,String updateConditions) {
         int reInt;
         String resultString = null;
         try {
-            result = sql.update(" Manu ", " ManuTel='17774809112' ", "manuNum='M05'");
+            result = sql.update(" Manu ", " "+updateTarget+" ", " "+updateConditions+" ");
             stmt = connect.getConnection().createStatement();
             reInt = stmt.executeUpdate(result);
             if (reInt == 0) {
@@ -319,11 +319,11 @@ public class ProductManage {
     }
 
     //商品信息修改
-    private String update_product_info() {
+    private String update_product_info(String updateTarget,String updateConditions) {
         int reInt;
         String resultString = null;
         try {
-            result = sql.update(" Product ", " proName='心怡抽纸' ", "proNum='P6'");
+            result = sql.update(" Product ", " "+updateTarget+" ", " "+updateConditions+" ");
             stmt = connect.getConnection().createStatement();
             reInt = stmt.executeUpdate(result);
             if (reInt == 0) {

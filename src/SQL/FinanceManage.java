@@ -26,7 +26,7 @@ public class FinanceManage {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] select_result(String sqlName) {
+    public Vector[] select_result(String sqlName,String par1,String par2) {
 
         switch (sqlName) {
             case "selesVolumeOrder_Desc":
@@ -36,10 +36,10 @@ public class FinanceManage {
                 sql_result=selesVolumeOrderAsc();
                 break;
             case "apponitedDateCheck_Desc":
-                sql_result=apponited_date_cheack_Desc();
+                sql_result=apponited_date_cheack_Desc(par1);
                 break;
             case "apponitedDateCheck_Asc":
-                sql_result=apponited_date_check_Asc();
+                sql_result=apponited_date_check_Asc(par1);
                 break;
             case "apppnitedProductCompare_Asc":
                 sql_result=apppnited_product_compare_Asc();
@@ -54,13 +54,13 @@ public class FinanceManage {
                 sql_result=whole_profit_manage();
                 break;
             case "apponitedProfitManage":
-                sql_result=apponited_profit_manage();
+                sql_result=apponited_profit_manage(par1,par2);
                 break;
             case "allManuProfit":
                 sql_result=all_manu_profit();
                 break;
             case "apponitedProductProfit":
-                sql_result=apponited_product_profit();
+                sql_result=apponited_product_profit(par1);
                 break;
             case "compareProductProfit":
                 sql_result=compare_product_profit();
@@ -152,11 +152,11 @@ public class FinanceManage {
     }
 
     //指定日期查询----降序
-    public Vector[] apponited_date_cheack_Desc() {
+    public Vector[] apponited_date_cheack_Desc(String apponitedDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " shopDate='2018-12-15' ", " group by proNum", "");
+            seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " shopDate='"+apponitedDate+"' ", " group by proNum", "");
             result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, "AS PRO", " PRO.proNum=Product.proNum ", "", " order by counts Desc ;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -180,11 +180,11 @@ public class FinanceManage {
     }
 
     //指定日期查询----升序
-    public Vector[] apponited_date_check_Asc() {
+    public Vector[] apponited_date_check_Asc(String apponitedDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", "shopDate='2018-12-15'", " group by proNum", "");
+            seResult = sql.select("Shopping.proNum,sum(number) counts", "Shopping", " shopDate='"+apponitedDate+"' ", " group by proNum", "");
             result = sql.select("Product.proNum,proName,counts", "Product,", seResult, "AS PRO", "PRO.proNum=Product.proNum", "", " order by counts Asc;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -326,11 +326,11 @@ public class FinanceManage {
     }
 
     //指定日期段或当日
-    public Vector[] apponited_profit_manage() {
+    public Vector[] apponited_profit_manage(String startDate,String endDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum and shopDate<='2018-12-15' and shopDate>'2018-12-13' ", " group by proNum", "  ");
+            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum and shopDate<='"+endDate+"' and shopDate>'"+startDate+"' ", " group by proNum", "  ");
             result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
@@ -352,13 +352,13 @@ public class FinanceManage {
         return resu;
     }
 
-    //指定商品盈利
-    public Vector[] apponited_product_profit() {
+    //查询指定商品盈利
+    public Vector[] apponited_product_profit(String proName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum ", " group by proNum", "  ");
-            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum='P6' ", "  ", " order by profitSum; ");
+            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName='"+proName+"' ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
