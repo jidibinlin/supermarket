@@ -95,6 +95,8 @@ class Layout {//各个窗口的布局管理
         input.setSize(200,125);
         input.setLayout(new FlowLayout());
         for(int i=0;i<attribute.length;i++){
+            if(attribute[i]==null)
+                break;
             input.add((JLabel)tips.get(i));
             input.add((JTextField)inputField.get(i));
         }

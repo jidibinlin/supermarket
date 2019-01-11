@@ -59,7 +59,7 @@ public class MainFrame {
 
         JButton [] selecFunc={
                 new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table,new String(),new String()),
-                new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"2018-12-13",new String()),
+                new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"2018-12-13",">???"),
                 new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"name",new String()),
                 new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"饮料",new String()),
                 new FuncButton().createSelectButton("整体盈利","wholeProfitManage",new FinanceManage(),null,table,new String(),new String()),
