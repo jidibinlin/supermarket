@@ -76,6 +76,9 @@ class Table {
 
     public void tableDataShow(Vector[] Data) {
         tableModel.setDataVector(Data[0], Data[1]);
+        for(int i=0;i<30;i++) {
+            tableModel.insertRow(Data[0].size(), new Vector());
+        }
         table.setModel(tableModel);
         table.validate();
         table.updateUI();

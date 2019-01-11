@@ -93,7 +93,7 @@ class MouseListenSqlSelect extends MouseAdapter {
             input.sure.addMouseListener(mous);
             input.back.addMouseListener(mous2);
             input.getDateUI();
-            if(mous.judge==true){
+            if(mous.judge){
                 JTextField par1=(JTextField) input.getInputField().get(0);
                 whichtype(par1.getText(),null);
                 table.tableDataShow(sqlfunc);
@@ -106,7 +106,7 @@ class MouseListenSqlSelect extends MouseAdapter {
             input.sure.addMouseListener(mous);
             input.back.addMouseListener(mous2);
             input.getDateUI();
-            if(mous.judge==true) {
+            if(mous.judge) {
                 JTextField par1 = (JTextField) input.getInputField().get(0);
                 JTextField par2 = (JTextField) input.getInputField().get(1);
                 whichtype(par1.getText(), par2.getText());
@@ -124,7 +124,7 @@ class MouseListenSqlSelect extends MouseAdapter {
             input.sure.addMouseListener(mous);
             input.back.addMouseListener(mous2);
             input.getDateUI();
-            if(mous.judge==true) {
+            if(mous.judge) {
                 JTextField par1 = (JTextField) input.getInputField().get(0);
                 whichtype(par1.getText(), null);
                 table.tableDataShow(sqlfunc2);
@@ -136,7 +136,7 @@ class MouseListenSqlSelect extends MouseAdapter {
             input.sure.addMouseListener(mous);
             input.back.addMouseListener(mous2);
             input.getDateUI();
-            if (mous.judge==true) {
+            if (mous.judge) {
                 JTextField par1 = (JTextField) input.getInputField().get(0);
                 JTextField par2 = (JTextField) input.getInputField().get(1);
                 whichtype(par1.getText(), par2.getText());
