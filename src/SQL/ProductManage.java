@@ -65,7 +65,7 @@ public class ProductManage {
 
 
     //查询指定类商品的商品名和商品号
-    private Vector[] select_apponited_product_info(String proType) {
+    private Vector[] select_apponited_product_info(String proType){
         try {
             data.removeAllElements();
             title.removeAllElements();
