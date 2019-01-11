@@ -64,10 +64,11 @@ public class MainFrame {
         JButton [] selecFunc={
                 new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table,new String(),new String()),
                 new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"日期",new String()),
-                new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"name",new String()),
-                new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"饮料",new String()),
+                new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"产品名1","产品名2"),
+                new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"类型",new String()),
                 new FuncButton().createSelectButton("整体盈利","wholeProfitManage",new FinanceManage(),null,table,new String(),new String()),
                 new FuncButton().createSelectButton("日期段盈利","apponitedProfitManage",new FinanceManage(),null,table,"起始日期","截止日期"),
+                new FuncButton().createSelectButton("指定商品盈利","apponitedProductProfit",new FinanceManage(),null,table,"商品名",new String()),
 //                new FuncButton().createSelectButton("商品盈利","apponitedProductProfit",new FinanceManage(),null,table),
 //                new FuncButton().createSelectButton("商品盈利比较","compareProductProfit",new FinanceManage(),null,table),
 //                new FuncButton().createSelectButton("当前盈亏","selectProfitFornow",new FinanceManage(),null,table),

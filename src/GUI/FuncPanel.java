@@ -12,7 +12,7 @@ import java.util.Vector;
 public class FuncPanel {
     private JScrollPane[] funcScrollPanel = {new JScrollPane(), new JScrollPane(), new JScrollPane(), new JScrollPane()};
     private Table table = new Table();
-    private JPanel[] funcpanel={new JPanel(),new JPanel()};
+    private JPanel[] funcpanel={new JPanel(),new JPanel(),new JPanel()};
 
     public JScrollPane[] getfuncPanel() {
         return funcScrollPanel;
@@ -46,6 +46,10 @@ public class FuncPanel {
     }
 
     public void chartChosePanel() {
+        funcScrollPanel[3].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        funcScrollPanel[3].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        funcpanel[3].setBackground((new ColorDefined().getColor("green")));
+        funcScrollPanel[3].setViewportView(funcpanel[3]);
 
     }
 
@@ -53,6 +57,8 @@ public class FuncPanel {
 
     }
 }
+
+
 
 
 class Table {
