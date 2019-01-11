@@ -40,7 +40,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Department ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("depNum");
             title.add("depName");
             title.add("depLeader");
@@ -66,7 +66,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Director");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("proNum");
             title.add("emNum");
             while (rs.next()) {
@@ -90,7 +90,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Employee");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("emNum");
             title.add("name");
             title.add("sex");
@@ -124,7 +124,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Guest ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("guestNum");
             title.add("guestName");
             title.add("guestTel");
@@ -156,7 +156,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " JobKind");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("jobNum");
             title.add("jobName");
             title.add("salary");
@@ -182,7 +182,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Manu ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("manuNum");
             title.add("manuName");
             title.add("manuLoc");
@@ -210,7 +210,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Product ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("proNum");
             title.add("proName");
             title.add("value");
@@ -248,7 +248,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Puchase");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("cbillNum");
             title.add("proNum");
             title.add("emNum");
@@ -282,7 +282,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " Shopping");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("billNum");
             title.add("proNum");
             title.add("number");
@@ -312,7 +312,7 @@ public class BasicTableSelect {
             title.removeAllElements();
             seResult = sql.select(" * ", " VIP ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("Viplevel");
             title.add("transRate");
             title.add("moneyRate");
