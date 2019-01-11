@@ -42,13 +42,13 @@ public class FinanceManage {
                 sql_result=apponited_date_check_Asc(par1);
                 break;
             case "apppnitedProductCompare_Asc":
-                sql_result=apppnited_product_compare_Asc();
+                sql_result=apppnited_product_compare_Asc(par1,par2);
                 break;
             case "apponitedProductCompare_Desc":
-                sql_result=apponited_product_compare_Desc();
+                sql_result=apponited_product_compare_Desc(par1,par2);
                 break;
             case "compareWithSameKind":
-                sql_result=compare_with_same_kind();
+                sql_result=compare_with_same_kind(par1);
                 break;
             case "wholeProfitManage":
                 sql_result=whole_profit_manage();
@@ -63,7 +63,7 @@ public class FinanceManage {
                 sql_result=apponited_product_profit(par1);
                 break;
             case "compareProductProfit":
-                sql_result=compare_product_profit();
+                sql_result=compare_product_profit(par1);
                 break;
             case "selectProfitFornow":
                 sql_result=select_profit_fornow();
@@ -72,7 +72,7 @@ public class FinanceManage {
         return sql_result;
     }
 
-    public String update_result(String sqlName){
+    public String update_result(String sqlName,String par1,String par2){
         switch(sqlName) {
 
             case "billInsert":
@@ -209,12 +209,12 @@ public class FinanceManage {
 
     //指定商品销量统计（比较）
     //升序
-    public Vector[] apppnited_product_compare_Asc() {
+    public Vector[] apppnited_product_compare_Asc(String proName1,String proName2) {
         try {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('P1','P2') ", "  ", " order by counts ASC;");
+            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts ASC;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -237,12 +237,12 @@ public class FinanceManage {
     }
 
     //降序
-    public Vector[] apponited_product_compare_Desc() {
+    public Vector[] apponited_product_compare_Desc(String proName1,String proName2) {
         try {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('P1','P2') ", "  ", " order by counts DESC;");
+            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts DESC;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -265,12 +265,12 @@ public class FinanceManage {
     }
 
     //不同品牌的同类产品销量比较.
-    public Vector[] compare_with_same_kind() {
+    public Vector[] compare_with_same_kind(String proName_LIKE) {
         try {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and Product.proName like '%矿泉水'  ", "  ", "  ");
+            result = sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and Product.proName like '"+proName_LIKE+"'  ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -380,12 +380,12 @@ public class FinanceManage {
     }
 
     //比较商品盈利
-    public Vector[] compare_product_profit() {
+    public Vector[] compare_product_profit(String proName_Like) {
         try {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum ", " group by proNum", "  ");
-            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName like '%矿泉水' ", "  ", " order by profitSum; ");
+            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName like '"+proName_Like+"' ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
