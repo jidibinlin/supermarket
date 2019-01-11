@@ -26,7 +26,7 @@ public class EmployeeManage {
         }
         return sql_result;
     }
-    public String update_result(String sqlName) {
+    public String update_result(String sqlName,String par1,String par2) {
         switch (sqlName) {
 
         }

@@ -147,7 +147,7 @@ public class ProductManage {
     }
 
     //链表查询
-    //查询商品的供应商
+    //查询全部商品的供应商
     public Vector[] select_manu_of_product() {
         try {
             data.removeAllElements();
@@ -236,7 +236,7 @@ public class ProductManage {
         return resu;
     }
 
-    //查询商品的产地
+    //查询全部商品的产地
     public Vector[] select_product_loc() {
         try {
             data.removeAllElements();
