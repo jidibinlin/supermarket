@@ -83,6 +83,7 @@ class MouseListenSqlSelect extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
+        table.getTable().setEnabled(false);
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1 && attr1.isEmpty()) {
             whichtype(null,null);
             table.tableDataShow(sqlfunc);
@@ -148,10 +149,10 @@ class MouseListenSqlSelect extends MouseAdapter {
 
     private void whichtype(String par1,String par2){
         if (select1 instanceof FinanceManage && select2 == null) {
-            this.sqlfunc =((FinanceManage) select1).select_result(funcName);
+            this.sqlfunc =((FinanceManage) select1).select_result(funcName,par1,par2);
         } else if (select1 instanceof FinanceManage && select2 != null) {
-            this.sqlfunc =((FinanceManage) select1).select_result(funcName+"_Asc");
-            this.sqlfunc2 = ((FinanceManage)select2).select_result(funcName+"_Desc");
+            this.sqlfunc =((FinanceManage) select1).select_result(funcName+"_Asc",par1,par2);
+            this.sqlfunc2 = ((FinanceManage)select2).select_result(funcName+"_Desc",par1,par2);
         }
 
 

@@ -330,7 +330,7 @@ public class FinanceManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum and shopDate<='"+endDate+"' and shopDate>'"+startDate+"' ", " group by proNum", "  ");
+            seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum and shopDate<='"+endDate+"' and shopDate>='"+startDate+"' ", " group by proNum", "  ");
             result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
