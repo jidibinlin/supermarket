@@ -38,7 +38,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Department; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Department ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("depNum");
@@ -64,7 +64,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Director; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Director");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -88,7 +88,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Employee; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Employee");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("emNum");
@@ -122,7 +122,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Guest; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Guest ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("guestNum");
@@ -154,7 +154,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " JobKind; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " JobKind");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("jobNum");
@@ -180,7 +180,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Manu; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Manu ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("manuNum");
@@ -208,7 +208,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Product; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Product ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -246,7 +246,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Puchase; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Puchase");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("cbillNum");
@@ -280,7 +280,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Shopping; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " Shopping");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("billNum");
@@ -310,7 +310,7 @@ public class BasicTableSelect {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " VIP; ", "  ", "  ", "  ");
+            seResult = sql.select(" * ", " VIP ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("Viplevel");

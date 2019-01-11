@@ -9,6 +9,10 @@ public class SQLwords {
 
 
     //select 方法
+    public String select(String targets, String tables) {
+        result = " select " + targets + " from "+tables+";" ;
+        return result;
+    }
     public String select(String targets, String tables, String grReult, String orResult) {
         result = " select " + targets + " from " + tables  + grReult + orResult ;
         return result;
