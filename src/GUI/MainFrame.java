@@ -26,7 +26,11 @@ public class MainFrame {
 
         FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(),};//5张卡片
 
+        //funcPanel[0].selectFuncPanel(productFuncButtonadd(funcPanel[0].getTable()),productFuncButtonadd(funcPanel[0].getTable()).length);
+        //funcPanel[1].selectFuncPanel(employeeFuncButtonadd(funcPanel[1].getTable()),employeeFuncButtonadd(funcPanel[1].getTable()).length);
+        //funcPanel[2].selectFuncPanel(storeManaeFuncButtonadd(funcPanel[2].getTable()),storeManaeFuncButtonadd(funcPanel[2].getTable()).length);
         funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()),financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
+        //funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()),productFuncButtonadd(funcPanel[4].getTable()).length);
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
         showScrollPanelFunc(funcPanel);//显示各个功能模块
@@ -69,6 +73,34 @@ public class MainFrame {
 //                new FuncButton().createSelectButton("当前盈亏","selectProfitFornow",new FinanceManage(),null,table),
         };
         return selecFunc;
+    }
+
+    private JButton[] employeeFuncButtonadd(Table table){
+        JButton [] selectFunc={
+
+        };
+        return selectFunc;
+    }
+
+    private JButton[] guestInfoFuncButtonadd(Table table){
+        JButton [] selectFunc={
+
+        };
+        return selectFunc;
+    }
+
+    private JButton[] productFuncButtonadd(Table table){
+        JButton [] selectFunc={
+
+        };
+        return selectFunc;
+    }
+
+    private JButton[] storeManaeFuncButtonadd(Table table){
+        JButton[] selectFunc={
+
+        };
+        return selectFunc;
     }
 
     private void showScrollPanelFunc(FuncPanel[] funcPanel) {
