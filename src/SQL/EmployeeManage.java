@@ -22,8 +22,9 @@ public class EmployeeManage {
 
         switch (sqlName) {
             case "jobKindQuery":sql_result=job_kind_query(par1);break;
-            case "salaryCheck":sql_result=salaryCheck(par1);break;
-            case "selectJobkindSalary":sql_result=select_jobkind_salary(par1);break;
+            case "appointedSalaryCheck":sql_result=appointed_salary_Check(par1);break;
+            case "appointedEmNameCheck":sql_result=appointed_emName_check(par1);break;
+            case "appointedSexCheckDpartment":sql_result=appointed_sex_check_department(par1);break;
         }
         return sql_result;
     }
@@ -94,8 +95,8 @@ public class EmployeeManage {
         }
         return resultString;
     }
-    //薪水查询（查询指定薪水的职位）
-    private Vector[] salaryCheck(String salary) {
+    //查询指定薪水的职位
+    private Vector[] appointed_salary_Check(String salary) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -121,12 +122,8 @@ public class EmployeeManage {
         return resu;
 
     }
-
     //查询指定员工的工种及薪水
-
-    private Vector[] select_jobkind_salary(String emName)
-
-    {
+    private Vector[] appointed_emName_check(String emName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -157,7 +154,38 @@ public class EmployeeManage {
 
     }
 
-//    private Vector[] ()
+    //部门信息查询
+    //按性别查询部门信息
+    private Vector[] appointed_sex_check_department(String sex) {
+        try {
+            data.removeAllElements();
+            title.removeAllElements();
+            seResult = sql.select(" emNum,name,sex,Employee.depNum ", " Employee ", " sex='"+sex+"' ", "  ", "  ");
+            //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
+            stmt = connect.getConnection().createStatement();
+            rs = stmt.executeQuery(result);
+            title.add("emNum");
+            title.add("name");
+            title.add("sex");
+            title.add("Employee.depNum");
+            while (rs.next()) {
+                Vector row = new Vector();
+                row.add(rs.getString("emNum"));
+                row.add(rs.getString("name"));
+                row.add(rs.getString("sex"));
+                row.add(rs.getString("Employee.depNum"));
+                data.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt, rs);
+        }
+        return resu;
+
+    }
+
+    //    private Vector[] ()
 //
 //    {
 //        try {
