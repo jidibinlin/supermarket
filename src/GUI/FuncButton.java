@@ -28,8 +28,22 @@ public class FuncButton {
         selectFunc=new JButton(label);
         selectFunc.setBackground(color.getSefunCol()[r.nextInt(14)]);
         selectFunc.addMouseListener(new MouseListenSqlSelect(funcName,select1,select2,table,attr1,attr2));
-        Font f=new Font("Go Mono for Powerline.ttf",Font.PLAIN,30);
-        selectFunc.setPreferredSize(new Dimension(70,50));
+        Font f=new Font("Go Mono for Powerline.ttf",Font.PLAIN,23);
+        selectFunc.setFont(f);
+        selectFunc.setSize(50,25);
+        return selectFunc;
+    }
+
+
+    public JButton createSelectButtonBasicChart(String label,String funcName,BasicTableSelect select,Table table){
+         ColorDefined color=new ColorDefined();
+        Random r=new Random();
+        selectFunc=new JButton(label);
+        selectFunc.setBackground(color.getSefunCol()[r.nextInt(14)]);
+        selectFunc.addMouseListener(new MouseListenSqlSelectBaseChart(funcName,select,table));
+        Font f=new Font("Go Mono for Powerline.ttf",Font.PLAIN,23);
+        selectFunc.setFont(f);
+        selectFunc.setSize(50,25);
         return selectFunc;
     }
 }

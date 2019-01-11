@@ -30,6 +30,7 @@ public class MainFrame {
         //funcPanel[1].selectFuncPanel(employeeFuncButtonadd(funcPanel[1].getTable()),employeeFuncButtonadd(funcPanel[1].getTable()).length);
         //funcPanel[2].selectFuncPanel(storeManaeFuncButtonadd(funcPanel[2].getTable()),storeManaeFuncButtonadd(funcPanel[2].getTable()).length);
         funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()),financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
+        funcPanel[3].chartChosePanel(basicChartButtonadd(funcPanel[3].getTable()),basicChartButtonadd(funcPanel[3].getTable()).length);
         //funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()),productFuncButtonadd(funcPanel[4].getTable()).length);
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
@@ -57,6 +58,22 @@ public class MainFrame {
         for (int i = 0; i < 5; i++) {
             Layout.funcLayout(cardMother.getCardPanel_funcPanel()[i], funcPanel[i].getfuncPanel());
         }
+    }
+
+    private JButton[] basicChartButtonadd(Table table){
+        JButton[] basicChartFunc={
+                new FuncButton().createSelectButtonBasicChart("部门表","Department",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("部门领导表","Director",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("职工表","Employee",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("客户表","Guest",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("工种表","JobKind",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("厂家表","Manu",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("商品表","Product",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("进货表","Purchase",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("购物表","Shopping",new BasicTableSelect(),table),
+                new FuncButton().createSelectButtonBasicChart("VIP","VIP",new BasicTableSelect(),table),
+        };
+        return basicChartFunc;
     }
 
     private JButton[] financeFuncButtonadd(Table table){

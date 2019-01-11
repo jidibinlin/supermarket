@@ -50,7 +50,7 @@ class Layout {//各个窗口的布局管理
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 1;
-        constraints.weighty = 5;
+        constraints.weighty = 10;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 10, 10);
         layout.setConstraints(funchild[0], constraints);
@@ -59,7 +59,7 @@ class Layout {//各个窗口的布局管理
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.gridheight = 1;
         constraints.weightx = 8;
-        constraints.weighty = 5;
+        constraints.weighty = 10;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 10, 0);
         layout.setConstraints(funchild[1], constraints);
@@ -68,7 +68,7 @@ class Layout {//各个窗口的布局管理
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.weightx = 1;
-        constraints.weighty = 2;
+        constraints.weighty = 1;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 0, 10);
         layout.setConstraints(funchild[2], constraints);
@@ -77,7 +77,7 @@ class Layout {//各个窗口的布局管理
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.gridheight = 1;
         constraints.weightx = 8;
-        constraints.weighty = 2;
+        constraints.weighty = 1;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 0, 0);
         layout.setConstraints(funchild[3], constraints);
@@ -88,7 +88,7 @@ class Layout {//各个窗口的布局管理
     static void selectFuncLayout(JPanel funcpanel,int counts) {
         GridLayout layout=new GridLayout(counts,1);
         funcpanel.setLayout(layout);
-        layout.setVgap(10);
+        layout.setVgap(20);
     }
 
     static void getDateUIlayout(JButton sure, JButton back,String [] attribute, ArrayList tips,ArrayList inputField, JDialog input){

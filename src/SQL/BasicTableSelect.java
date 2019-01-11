@@ -26,7 +26,7 @@ public class BasicTableSelect {
             case "JobKind":sql_result=JobKind();break;
             case "Manu":sql_result=Manu();break;
             case "Product":sql_result=Product();break;
-            case "Puchase":sql_result=Puchase();break;
+            case "Purchase":sql_result=Purchase();break;
             case "Shopping":sql_result=Shopping();break;
             case "VIP":sql_result=VIP();break;
         }
@@ -242,11 +242,11 @@ public class BasicTableSelect {
 
     }
     //采购表
-    private Vector[] Puchase() {
+    private Vector[] Purchase() {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" * ", " Puchase");
+            seResult = sql.select(" * ", " Purchase");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
             title.add("cbillNum");
