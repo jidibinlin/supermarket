@@ -270,7 +270,7 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and Product.proName like '"+proName_LIKE+"'  ", "  ", "  ");
+            result = sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and Product.proName like '%"+proName_LIKE+"%'  ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
@@ -385,7 +385,7 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(Shopping.number*price-Purchase.Cargoprice*Shopping.number) profitSum ", " Shopping,Purchase ", " Shopping.proNum=Purchase.proNum ", " group by proNum", "  ");
-            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName like '"+proName_Like+"' ", "  ", " order by profitSum; ");
+            result = sql.select(" Product.proNum,proName,profitSum ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName like '%"+proName_Like+"%' ", "  ", " order by profitSum; ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
