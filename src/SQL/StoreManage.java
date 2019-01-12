@@ -35,15 +35,6 @@ public class StoreManage {
         return sql_result;
     }
 
-    public String update_result(String sqlName,String par1,String par2) {
-        switch (sqlName) {
-            case "updateManuInfo":
-                update_result = update_manu_info(par1,par2);
-                break;
-
-        }
-        return update_result;
-    }
     //供货商信息查询
     private Vector[] manu_info_select(String manuName) {
         try {
@@ -72,7 +63,6 @@ public class StoreManage {
         }
         return resu;
     }
-
     //查询指定供货商的所有商品
     private Vector[] select_all_product_from_apponited_manu(String manuName) {
         try {
@@ -99,28 +89,6 @@ public class StoreManage {
         }
         return resu;
     }
-
-    //供货商信息修改
-    private String update_manu_info(String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" Manu ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
-
     //查询有供应同类商品的不同厂家
     private Vector[] select_samekind_manu(String proName_Like) {
         try {

@@ -31,64 +31,8 @@ public class GuestInfoManage {
         }
         return sql_result;
     }
-    public String update_result(String sqlName,String par1,String par2) {
-        switch (sqlName) {
-            case "changeVip":update_result=change_vip(par1,par2);break;
-            case "changeGuest":update_result=change_guest(par1,par2);break;
-        }
-        return update_result;
-    }
-
-
-//客户信息修改
-    //VIP表修改
-
-    private String change_vip(String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" VIP ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
-
-    //客户表修改
-    private String change_guest(String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" Guest ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
-
-
     //按VIP等级查询客户
-        private Vector[] select_guest_by_viplevel(String viplevel)
-
-    {
+        private Vector[] select_guest_by_viplevel(String viplevel) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -120,13 +64,10 @@ public class GuestInfoManage {
         return resu;
 
     }
-
     //积分查询
     //全局查询
     //查询积分大于某一分数的客户
-        private Vector[] select_guest_by_appointed_score(String score)
-
-    {
+        private Vector[] select_guest_by_appointed_score(String score) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -152,15 +93,9 @@ public class GuestInfoManage {
         return resu;
 
     }
-
-
-
-
     //指定查询
     //通过客户码查询积分
-        private Vector[] check_score_by_guestnum(String guestNum)
-
-    {
+        private Vector[] check_score_by_guestnum(String guestNum) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -211,13 +146,9 @@ public class GuestInfoManage {
         }
         return resu;
     }
-
-
     //VIP查询
     //链表客户表于vip表
-        private Vector[] connect_Guest_with_VIP()
-
-    {
+        private Vector[] connect_Guest_with_VIP() {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -249,9 +180,7 @@ public class GuestInfoManage {
     }
 //vip指定查询
     //按客户名查询积分金钱比例
-        private Vector[] check_moneyRate_BY_name(String guestname)
-
-    {
+        private Vector[] check_moneyRate_BY_name(String guestname) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -276,9 +205,7 @@ public class GuestInfoManage {
 
     }
         //查询指定等级的vip积分兑换比例
-        private Vector[] check_moneyRate_appointed_level(String viplevel)
-
-    {
+        private Vector[] check_moneyRate_appointed_level(String viplevel) {
         try {
             data.removeAllElements();
             title.removeAllElements();

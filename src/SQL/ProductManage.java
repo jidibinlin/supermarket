@@ -40,17 +40,6 @@ public class ProductManage {
         }
         return sql_result;
     }
-
-    public String update_result(String sqlName,String par1,String par2) {
-        switch (sqlName) {
-            case "updateProductInfo":
-                update_result = update_product_info(par1,par2);
-                break;
-        }
-        return update_result;
-    }
-
-
     //查询指定类商品的商品名和商品号
     private Vector[] select_apponited_product_info(String proType){
         try {
@@ -76,7 +65,6 @@ public class ProductManage {
         return resu;
 
     }
-
     //查询特定价格以上的商品信息
     private Vector[] select_apponited_price_product(String price) {
         try {
@@ -104,7 +92,6 @@ public class ProductManage {
         return resu;
 
     }
-
     //链表查询
     //查询全部商品的供应商
     private Vector[] select_manu_of_product() {
@@ -136,7 +123,6 @@ public class ProductManage {
         }
         return resu;
     }
-
     //查询指定商品的供应商
     private Vector[] select_manu_of_apponited_product(String proName) {
         try {
@@ -167,7 +153,6 @@ public class ProductManage {
         }
         return resu;
     }
-
     //查询全部商品的产地
     private Vector[] select_product_loc() {
         try {
@@ -198,25 +183,5 @@ public class ProductManage {
         return resu;
     }
 
-    //商品信息修改
-    private String update_product_info(String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" Product ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
 }
 

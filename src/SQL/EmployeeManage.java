@@ -9,7 +9,6 @@ public class EmployeeManage {
     ResultSet rs = null;
     String seResult;
     String result;
-    String update_result;
     SQLwords sql = new SQLwords();
     int rowCount, columCount;
     int i, j;
@@ -28,14 +27,6 @@ public class EmployeeManage {
             case "selectEmployeeInfoByName":sql_result=select_employee_info_by_name(par1);break;
         }
         return sql_result;
-    }
-    public String update_result(String sqlName,String par1,String par2) {
-        switch (sqlName) {
-            case "jobKindChange":update_result=jobKindChange(par1,par2);break;
-            case "employeeInfoChange":update_result=employee_info_change(par1,par2);break;
-
-        }
-        return update_result;
     }
 
     //工种查询（通过工种号查询该工种下员工所属部门）
@@ -77,26 +68,6 @@ public class EmployeeManage {
     }
 
     //薪水管理
-    //jobKind表修改
-    private String jobKindChange (String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" JobKind ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
     //查询指定薪水的职位
     private Vector[] appointed_salary_Check(String salary) {
         try {
@@ -186,10 +157,8 @@ public class EmployeeManage {
         return resu;
 
     }
-
         //通过员工姓名查询员工相关信息
-        private Vector[] select_employee_info_by_name(String name)
-    {
+        private Vector[] select_employee_info_by_name(String name) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -223,31 +192,6 @@ public class EmployeeManage {
         return resu;
 
     }
-
-
-
-    //员工信息修改
-    private String employee_info_change(String updateTarget,String updateConditions) {
-        int reInt;
-        String resultString = null;
-        try {
-            result = sql.update(" Employee ", " "+updateTarget+" ", " "+updateConditions+" ");
-            stmt = connect.getConnection().createStatement();
-            reInt = stmt.executeUpdate(result);
-            if (reInt == 0) {
-                resultString = "无任何元组被修改";
-            } else {
-                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            connect.release(stmt);
-        }
-        return resultString;
-    }
-
-
     //    private Vector[] ()
 //
 //    {

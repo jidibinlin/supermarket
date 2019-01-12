@@ -17,7 +17,6 @@ public class FinanceManage {
     ResultSet rs = null;
     String seResult;
     String result;
-    String update_result;
     SQLwords sql = new SQLwords();
     int rowCount, columCount;
     int i, j;
@@ -72,18 +71,7 @@ public class FinanceManage {
         return sql_result;
     }
 
-    public String update_result(String sqlName,String par1,String par2){
-        switch(sqlName) {
-
-            case "billInsert":
-                update_result=billInsert();
-                break;
-        }
-        return update_result;
-    }
-
     //销量管理
-
     //销量统计
     //销量统计排行
     //全局
@@ -118,7 +106,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //升序
     private Vector[] selesVolumeOrderAsc() {
         try {
@@ -150,7 +137,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //指定日期查询----降序
     private Vector[] apponited_date_cheack_Desc(String apponitedDate) {
         try {
@@ -178,7 +164,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //指定日期查询----升序
     private Vector[] apponited_date_check_Asc(String apponitedDate) {
         try {
@@ -206,7 +191,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //指定商品销量统计（比较）
     //升序
     private Vector[] apppnited_product_compare_Asc(String proName1,String proName2) {
@@ -235,7 +219,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //降序
     private Vector[] apponited_product_compare_Desc(String proName1,String proName2) {
         try {
@@ -263,7 +246,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //不同品牌的同类产品销量比较.
     private Vector[] compare_with_same_kind(String proName_LIKE) {
         try {
@@ -324,7 +306,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //指定日期段或当日
     private Vector[] apponited_profit_manage(String startDate,String endDate) {
         try {
@@ -351,7 +332,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //查询指定商品盈利
     private Vector[] apponited_product_profit(String proName) {
         try {
@@ -378,7 +358,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //比较商品盈利
     private Vector[] compare_product_profit(String proName_Like) {
         try {
@@ -405,7 +384,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
     //查询当前盈亏
     private Vector[] select_profit_fornow() {
         try {
@@ -432,8 +410,6 @@ public class FinanceManage {
         }
         return resu;
     }
-
-
     //查询与所有供货商的交易总额
     private Vector[] all_manu_profit() {
         try {
@@ -460,33 +436,6 @@ public class FinanceManage {
             connect.release(stmt, rs);
         }
         return resu;
-    }
-
-
-
-    //订单录入
-    private String billInsert() {
-        int reInt;
-        String resultString=null;
-        try {
-            result=sql.delete(" Manu "," manuNum='Mo1' ");
-            stmt = connect.getConnection().createStatement();
-            reInt=stmt.executeUpdate("insert Shopping(billNum,proNum,number,price,shopDate) " +
-                    "values('S01','p1','2','10','2018-12-15')," +
-                    "('S02','p3','1','3','2018-12-15')," +
-                    "('S03','p5','3','6','2018-12-15')," +
-                    "('S04','p2','5','20','2018-12-15');");
-            if(reInt==0){
-                resultString="无任何元组被修改";
-            }else{
-                resultString="有"+String.valueOf(reInt)+"条元组被修改";
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            connect.release(stmt);
-        }
-        return resultString;
     }
 
 
