@@ -18,7 +18,7 @@ public class EmployeeManage {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] sql_result(String sqlName,String par1,String par2) {
+    public Vector[] select_result(String sqlName,String par1,String par2) {
 
         switch (sqlName) {
             case "jobKindQuery":sql_result=job_kind_query(par1);break;

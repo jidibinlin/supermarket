@@ -16,7 +16,7 @@ public class BasicTableSelect {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] sql_result(String sqlName) {
+    public Vector[] select_result(String sqlName) {
 
         switch (sqlName) {
             case "Department":sql_result=Department();break;
