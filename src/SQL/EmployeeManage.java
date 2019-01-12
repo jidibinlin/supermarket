@@ -25,12 +25,14 @@ public class EmployeeManage {
             case "appointedSalaryCheck":sql_result=appointed_salary_Check(par1);break;
             case "appointedEmNameCheck":sql_result=appointed_emName_check(par1);break;
             case "appointedSexCheckDpartment":sql_result=appointed_sex_check_department(par1);break;
+            case "selectEmployeeInfoByName":sql_result=select_employee_info_by_name(par1);break;
         }
         return sql_result;
     }
     public String update_result(String sqlName,String par1,String par2) {
         switch (sqlName) {
-            case "jobKindChange":jobKindChange(par1,par2);break;
+            case "jobKindChange":update_result=jobKindChange(par1,par2);break;
+            case "employeeInfoChange":update_result=employee_info_change(par1,par2);break;
 
         }
         return update_result;
@@ -48,7 +50,7 @@ public class EmployeeManage {
                     "and JobKind.jobNum='"+jobNum+"'; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("JobKind.jobNum");
             title.add("JobName");
             title.add("emNum");
@@ -103,7 +105,7 @@ public class EmployeeManage {
             seResult = sql.select(" JobKind.JobNum,JobName,salary ", " JobKind ", " salary='"+salary+"'; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("JobKind.JobNum");
             title.add("JobName");
             title.add("salary");
@@ -130,7 +132,7 @@ public class EmployeeManage {
             seResult = sql.select(" Employee.emNum,name,Employee.jobNum,jobName,salary ", " Employee,JobKind ", " Employee.jobNum=JobKind.jobNum and name='"+emName+"' ", "  ", "  ");
            // result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("Employee.emNum");
             title.add("name");
             title.add("Employee.jobNum");
@@ -163,7 +165,7 @@ public class EmployeeManage {
             seResult = sql.select(" emNum,name,sex,Employee.depNum ", " Employee ", " sex='"+sex+"' ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("emNum");
             title.add("name");
             title.add("sex");
@@ -184,6 +186,67 @@ public class EmployeeManage {
         return resu;
 
     }
+
+        //通过员工姓名查询员工相关信息
+        private Vector[] select_employee_info_by_name(String name)
+    {
+        try {
+            data.removeAllElements();
+            title.removeAllElements();
+            seResult = sql.select(" emNum,name,sex,location,age,Depnum,jobnum ", " Employee ", " name='"+name+"'; ", "  ", "  ");
+            //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
+            stmt = connect.getConnection().createStatement();
+            rs = stmt.executeQuery(seResult);
+            title.add("emNum");
+            title.add("name");
+            title.add("sex");
+            title.add("location");
+            title.add("age");
+            title.add("Depnum");
+            title.add("jobnum");
+            while (rs.next()) {
+                Vector row = new Vector();
+                row.add(rs.getString("emNum"));
+                row.add(rs.getString("name"));
+                row.add(rs.getString("sex"));
+                row.add(rs.getString("location"));
+                row.add(rs.getString("age"));
+                row.add(rs.getString("Depnum"));
+                row.add(rs.getString("jobnum"));
+                data.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt, rs);
+        }
+        return resu;
+
+    }
+
+
+
+    //员工信息修改
+    private String employee_info_change(String updateTarget,String updateConditions) {
+        int reInt;
+        String resultString = null;
+        try {
+            result = sql.update(" Employee ", " "+updateTarget+" ", " "+updateConditions+" ");
+            stmt = connect.getConnection().createStatement();
+            reInt = stmt.executeUpdate(result);
+            if (reInt == 0) {
+                resultString = "无任何元组被修改";
+            } else {
+                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt);
+        }
+        return resultString;
+    }
+
 
     //    private Vector[] ()
 //
