@@ -129,10 +129,6 @@ public class MainFrame {
     private JButton[] productFuncButtonadd(Table table){
         JButton [] selectFunc={
 
-
-
-
-
         };
         return selectFunc;
     }
