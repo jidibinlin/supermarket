@@ -45,7 +45,7 @@ public class EmployeeManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" JobKind.jobNum,JobName,emNum,name,Department.depNum,depName ", " Employee,Department,JobKind ", " JobKind.jobNum=Employee.jobNum" +
+            seResult = sql.select(" JobKind.jobNum,JobName,emNum,name,Department.depNum,depName ", " Employee,Department,JobKind ", " JobKind.jobNum=Employee.jobNum " +
                     "and Department.depNum=Employee.depNum " +
                     "and JobKind.jobNum='"+jobNum+"'; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");

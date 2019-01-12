@@ -332,4 +332,67 @@ public class BasicTableSelect {
 
     }
 
+    //UPDATE
+    private String Update(String updateTable,String updateTarget,String updateConditions) {
+        int reInt;
+        String resultString = null;
+        try {
+            result = sql.update(" "+updateTable+" ", " "+updateTarget+" ", " "+updateConditions+" ");
+            stmt = connect.getConnection().createStatement();
+            reInt = stmt.executeUpdate(result);
+            if (reInt == 0) {
+                resultString = "无任何元组被修改";
+            } else {
+                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt);
+        }
+        return resultString;
+    }
+    //DELETE
+    private String Delete(String deleteTable,String deleteConditions) {
+        int reInt;
+        String resultString = null;
+        try {
+            result = sql.delete(" "+deleteTable+" ",  " "+ deleteConditions+" ");
+            stmt = connect.getConnection().createStatement();
+            reInt = stmt.executeUpdate(result);
+            if (reInt == 0) {
+                resultString = "无任何元组被修改";
+            } else {
+                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt);
+        }
+        return resultString;
+    }
+
+    //INSERT
+    private String Insert(String insertTarget,String data) {
+        int reInt;
+        String resultString = null;
+        try {
+            result = sql.insert( " "+insertTarget+" ", " "+data+" ");
+            stmt = connect.getConnection().createStatement();
+            reInt = stmt.executeUpdate(result);
+            if (reInt == 0) {
+                resultString = "无任何元组被修改";
+            } else {
+                resultString = "有" + String.valueOf(reInt) + "条元组被修改";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt);
+        }
+        return resultString;
+    }
+
+
 }

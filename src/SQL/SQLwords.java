@@ -53,8 +53,8 @@ public class SQLwords {
     }
 
     //insert方法
-    public String insert(String tables, String attributies, String data) {
-        result = " insert into " + tables + "(" + attributies + ") values " + data+";" ;
+    public String insert(String targets, String data) {
+        result = " insert into "+targets+" values " + data+";" ;
         return result;
     }
 
