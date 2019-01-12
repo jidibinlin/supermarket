@@ -1,9 +1,10 @@
 package GUI;
 
+import SQL.BasicTableSelect;
+import SQL.FinanceManage;
+
 import javax.swing.*;
 import java.awt.*;
-import SQL.*;
-import javafx.scene.control.Tab;
 
 public class MainFrame {
     private JFrame mainframe = new JFrame("Supmarket Manager System");
@@ -26,20 +27,20 @@ public class MainFrame {
 
         FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(),};//5张卡片
 
-        funcPanel[0].selectFuncPanel(productFuncButtonadd(funcPanel[0].getTable()),productFuncButtonadd(funcPanel[0].getTable()).length);
-        funcPanel[0].chartChosePanel(basicChartButtonadd(funcPanel[0].getTable()),basicChartButtonadd(funcPanel[0].getTable()).length);
+        funcPanel[0].selectFuncPanel(productFuncButtonadd(funcPanel[0].getTable()), productFuncButtonadd(funcPanel[0].getTable()).length);
+        funcPanel[0].chartChosePanel(basicChartButtonadd(funcPanel[0].getTable()), basicChartButtonadd(funcPanel[0].getTable()).length);
         funcPanel[0].updateFuncPanel(updateFuncButtonadd(funcPanel[0].getTable()));
-        funcPanel[1].selectFuncPanel(employeeFuncButtonadd(funcPanel[1].getTable()),employeeFuncButtonadd(funcPanel[1].getTable()).length);
-        funcPanel[1].chartChosePanel(basicChartButtonadd(funcPanel[1].getTable()),basicChartButtonadd(funcPanel[1].getTable()).length);
+        funcPanel[1].selectFuncPanel(employeeFuncButtonadd(funcPanel[1].getTable()), employeeFuncButtonadd(funcPanel[1].getTable()).length);
+        funcPanel[1].chartChosePanel(basicChartButtonadd(funcPanel[1].getTable()), basicChartButtonadd(funcPanel[1].getTable()).length);
         funcPanel[1].updateFuncPanel(updateFuncButtonadd(funcPanel[1].getTable()));
-        funcPanel[2].selectFuncPanel(storeManaeFuncButtonadd(funcPanel[2].getTable()),storeManaeFuncButtonadd(funcPanel[2].getTable()).length);
-        funcPanel[2].chartChosePanel(basicChartButtonadd(funcPanel[2].getTable()),basicChartButtonadd(funcPanel[2].getTable()).length);
+        funcPanel[2].selectFuncPanel(storeManaeFuncButtonadd(funcPanel[2].getTable()), storeManaeFuncButtonadd(funcPanel[2].getTable()).length);
+        funcPanel[2].chartChosePanel(basicChartButtonadd(funcPanel[2].getTable()), basicChartButtonadd(funcPanel[2].getTable()).length);
         funcPanel[2].updateFuncPanel(updateFuncButtonadd(funcPanel[2].getTable()));
-        funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()),financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
-        funcPanel[3].chartChosePanel(basicChartButtonadd(funcPanel[3].getTable()),basicChartButtonadd(funcPanel[3].getTable()).length);
+        funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()), financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
+        funcPanel[3].chartChosePanel(basicChartButtonadd(funcPanel[3].getTable()), basicChartButtonadd(funcPanel[3].getTable()).length);
         funcPanel[3].updateFuncPanel(updateFuncButtonadd(funcPanel[3].getTable()));
-        funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()),productFuncButtonadd(funcPanel[4].getTable()).length);
-        funcPanel[4].chartChosePanel(basicChartButtonadd(funcPanel[4].getTable()),basicChartButtonadd(funcPanel[4].getTable()).length);
+        funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()), productFuncButtonadd(funcPanel[4].getTable()).length);
+        funcPanel[4].chartChosePanel(basicChartButtonadd(funcPanel[4].getTable()), basicChartButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].updateFuncPanel(updateFuncButtonadd(funcPanel[4].getTable()));
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
@@ -69,32 +70,32 @@ public class MainFrame {
         }
     }
 
-    private JButton[] basicChartButtonadd(Table table){
-        JButton[] basicChartFunc={
-                new FuncButton().createSelectButtonBasicChart("部门表","Department",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("部门领导表","Director",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("职工表","Employee",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("客户表","Guest",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("工种表","JobKind",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("厂家表","Manu",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("商品表","Product",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("进货表","Purchase",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("购物表","Shopping",new BasicTableSelect(),table),
-                new FuncButton().createSelectButtonBasicChart("VIP","VIP",new BasicTableSelect(),table),
+    private JButton[] basicChartButtonadd(Table table) {
+        JButton[] basicChartFunc = {
+                new FuncButton().createSelectButtonBasicChart("部门表", "Department", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("部门领导表", "Director", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("职工表", "Employee", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("客户表", "Guest", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("工种表", "JobKind", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("厂家表", "Manu", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("商品表", "Product", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("进货表", "Purchase", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("购物表", "Shopping", new BasicTableSelect(), table),
+                new FuncButton().createSelectButtonBasicChart("VIP", "VIP", new BasicTableSelect(), table),
         };
         return basicChartFunc;
     }
 
-    private JButton[] financeFuncButtonadd(Table table){
+    private JButton[] financeFuncButtonadd(Table table) {
 
-        JButton [] selecFunc={
-                new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table,new String(),new String()),
-                new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"日期",new String()),
-                new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"产品名1","产品名2"),
-                new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"类型",new String()),
-                new FuncButton().createSelectButton("整体盈利","wholeProfitManage",new FinanceManage(),null,table,new String(),new String()),
-                new FuncButton().createSelectButton("日期段盈利","apponitedProfitManage",new FinanceManage(),null,table,"起始日期","截止日期"),
-                new FuncButton().createSelectButton("指定商品盈利","apponitedProductProfit",new FinanceManage(),null,table,"商品名",new String()),
+        JButton[] selecFunc = {
+                new FuncButton().createSelectButton("销量统计", "selesVolumeOrder", new FinanceManage(), new FinanceManage(), table, new String(), new String()),
+                new FuncButton().createSelectButton("某日销量", "apponitedDateCheck", new FinanceManage(), new FinanceManage(), table, "日期", new String()),
+                new FuncButton().createSelectButton("销量比较", "apponitedProductCompare", new FinanceManage(), new FinanceManage(), table, "产品名1", "产品名2"),
+                new FuncButton().createSelectButton("同类产品销量", "compareWithSameKind", new FinanceManage(), null, table, "类型", new String()),
+                new FuncButton().createSelectButton("整体盈利", "wholeProfitManage", new FinanceManage(), null, table, new String(), new String()),
+                new FuncButton().createSelectButton("日期段盈利", "apponitedProfitManage", new FinanceManage(), null, table, "起始日期", "截止日期"),
+                new FuncButton().createSelectButton("指定商品盈利", "apponitedProductProfit", new FinanceManage(), null, table, "商品名", new String()),
 //                new FuncButton().createSelectButton("商品盈利","apponitedProductProfit",new FinanceManage(),null,table),
 //                new FuncButton().createSelectButton("商品盈利比较","compareProductProfit",new FinanceManage(),null,table),
 //                new FuncButton().createSelectButton("当前盈亏","selectProfitFornow",new FinanceManage(),null,table),
@@ -102,39 +103,39 @@ public class MainFrame {
         return selecFunc;
     }
 
-    private JButton[] updateFuncButtonadd(Table table){
-        JButton [] updateUpdate={
-                new FuncButton().createUpdateButton("插入",table),
-                new FuncButton().createUpdateButton("更新",table),
-                new FuncButton().createUpdateButton("删除",table),
-                new FuncButton().createUpdateButton("提交",table)
+    private JButton[] updateFuncButtonadd(Table table) {
+        JButton[] updateUpdate = {
+                new FuncButton().createUpdateButton("插入", table),
+                new FuncButton().createUpdateButton("更新", table),
+                new FuncButton().createUpdateButton("删除", table),
+                new FuncButton().createUpdateButton("提交", table)
         };
         return updateUpdate;
     }
 
-    private JButton[] employeeFuncButtonadd(Table table){
-        JButton [] selectFunc={
+    private JButton[] employeeFuncButtonadd(Table table) {
+        JButton[] selectFunc = {
 
         };
         return selectFunc;
     }
 
-    private JButton[] guestInfoFuncButtonadd(Table table){
-        JButton [] selectFunc={
+    private JButton[] guestInfoFuncButtonadd(Table table) {
+        JButton[] selectFunc = {
 
         };
         return selectFunc;
     }
 
-    private JButton[] productFuncButtonadd(Table table){
-        JButton [] selectFunc={
+    private JButton[] productFuncButtonadd(Table table) {
+        JButton[] selectFunc = {
 
         };
         return selectFunc;
     }
 
-    private JButton[] storeManaeFuncButtonadd(Table table){
-        JButton[] selectFunc={
+    private JButton[] storeManaeFuncButtonadd(Table table) {
+        JButton[] selectFunc = {
 
         };
         return selectFunc;

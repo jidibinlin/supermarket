@@ -43,9 +43,9 @@ public class FuncPanel {
     public void updateFuncPanel(JButton[] updateFunc) {
         funcScrollPanel[2].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         funcScrollPanel[2].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        funcpanel[1].setLayout(new GridLayout(2,2));
+        funcpanel[1].setLayout(new GridLayout(2, 2));
         funcScrollPanel[2].setViewportView(funcpanel[1]);
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             funcpanel[1].add(updateFunc[i]);
         }
     }

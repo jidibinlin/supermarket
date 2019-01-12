@@ -41,7 +41,7 @@ public class FinanceManage {
             case "apponitedDateCheck_Asc":
                 sql_result=apponited_date_check_Asc(par1);
                 break;
-            case "apppnitedProductCompare_Asc":
+            case "apponitedProductCompare_Asc":
                 sql_result=apppnited_product_compare_Asc(par1,par2);
                 break;
             case "apponitedProductCompare_Desc":
@@ -242,7 +242,7 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proNum in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts DESC;");
+            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.ProName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts Desc;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");

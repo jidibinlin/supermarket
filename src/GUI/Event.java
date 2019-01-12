@@ -1,7 +1,9 @@
 package GUI;
 
+import SQL.BasicTableSelect;
+import SQL.EmployeeManage;
 import SQL.FinanceManage;
-import SQL.*;
+import SQL.GuestInfoManage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -117,10 +119,10 @@ class MouseListenSqlSelect extends MouseAdapter {
             }
         }
 
-        if (e.getButton() == MouseEvent.BUTTON3 && attr1.isEmpty()) {
+        if (e.getButton() == MouseEvent.BUTTON3 && attr1.isEmpty() && select2!=null) {
             whichtype(null, null);
-            table.tableDataShow(sqlfunc);
-        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && attr2.isEmpty()) {
+            table.tableDataShow(sqlfunc2);
+        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && attr2.isEmpty() && select2!=null) {
             DateInput input = new DateInput(new String[]{attr1, null});
             MouseListeninput mous = new MouseListeninput(input.getInput());
             MouseListeninput2 mous2 = new MouseListeninput2(input.getInput());
@@ -132,7 +134,7 @@ class MouseListenSqlSelect extends MouseAdapter {
                 whichtype(par1.getText(), null);
                 table.tableDataShow(sqlfunc2);
             }
-        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && !(attr2.isEmpty())) {
+        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && !(attr2.isEmpty()) && select2!=null) {
             DateInput input = new DateInput(new String[]{attr1, attr2});
             MouseListeninput mous = new MouseListeninput(input.getInput());
             MouseListeninput2 mous2 = new MouseListeninput2(input.getInput());
@@ -158,23 +160,19 @@ class MouseListenSqlSelect extends MouseAdapter {
         }
 
 
-        if(select1 instanceof EmployeeManage && select2==null){
-            this.sqlfunc =((EmployeeManage) select1).select_result(funcName,par1,par2);
-        }
-        else if(select1 instanceof EmployeeManage && select2!=null){
-            this.sqlfunc =((EmployeeManage) select1).select_result(funcName+"_Asc",par1,par2);
-            this.sqlfunc2 = ((EmployeeManage)select2).select_result(funcName+"_Desc",par1,par2);
-        }
-
-
-
-        if(select1 instanceof GuestInfoManage && select2==null){
-            this.sqlfunc =((GuestInfoManage) select1).select_result(funcName,par1,par2);
+        if (select1 instanceof EmployeeManage && select2 == null) {
+            this.sqlfunc = ((EmployeeManage) select1).select_result(funcName, par1, par2);
+        } else if (select1 instanceof EmployeeManage && select2 != null) {
+            this.sqlfunc = ((EmployeeManage) select1).select_result(funcName + "_Asc", par1, par2);
+            this.sqlfunc2 = ((EmployeeManage) select2).select_result(funcName + "_Desc", par1, par2);
         }
 
-        else if(select1 instanceof GuestInfoManage && select2!=null){
-            this.sqlfunc =((GuestInfoManage) select1).select_result(funcName+"_Asc",par1,par2);
-            sqlfunc2 = ((GuestInfoManage)select2).select_result(funcName+"_Desc",par1,par2);
+
+        if (select1 instanceof GuestInfoManage && select2 == null) {
+            this.sqlfunc = ((GuestInfoManage) select1).select_result(funcName, par1, par2);
+        } else if (select1 instanceof GuestInfoManage && select2 != null) {
+            this.sqlfunc = ((GuestInfoManage) select1).select_result(funcName + "_Asc", par1, par2);
+            sqlfunc2 = ((GuestInfoManage) select2).select_result(funcName + "_Desc", par1, par2);
         }
 
 
@@ -205,7 +203,7 @@ class MouseListenSqlSelectBaseChart extends MouseAdapter {
     private String funcName = null;
     private Table table = null;
 
-    MouseListenSqlSelectBaseChart(String funcName,BasicTableSelect select, Table table) {
+    MouseListenSqlSelectBaseChart(String funcName, BasicTableSelect select, Table table) {
         this.select = select;
         this.funcName = funcName;
         this.table = table;
@@ -214,16 +212,17 @@ class MouseListenSqlSelectBaseChart extends MouseAdapter {
     public void mousePressed(MouseEvent e) {
         table.getTable().setEnabled(true);
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
-            sqlfunc=select.select_result(funcName);
+            sqlfunc = select.select_result(funcName);
             table.tableDataShow(sqlfunc);
         }
 
         if (e.getButton() == MouseEvent.BUTTON3) {
-            sqlfunc=select.select_result(funcName);
+            sqlfunc = select.select_result(funcName);
             table.tableDataShow(sqlfunc);
         }
     }
 }
+
 class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
 
     public void windowClosing(WindowEvent e) {

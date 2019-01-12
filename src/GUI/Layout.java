@@ -3,7 +3,6 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 class Layout {//各个窗口的布局管理
 
@@ -85,20 +84,20 @@ class Layout {//各个窗口的布局管理
         return funchild;
     }
 
-    static void selectFuncLayout(JPanel funcpanel,int counts) {
-        GridLayout layout=new GridLayout(counts,1);
+    static void selectFuncLayout(JPanel funcpanel, int counts) {
+        GridLayout layout = new GridLayout(counts, 1);
         funcpanel.setLayout(layout);
         layout.setVgap(20);
     }
 
-    static void getDateUIlayout(JButton sure, JButton back,String [] attribute, ArrayList tips,ArrayList inputField, JDialog input){
-        input.setSize(250,100);
-        input.setLayout(new GridLayout(3,2));
-        for(int i=0;i<attribute.length;i++){
-            if(attribute[i]==null)
+    static void getDateUIlayout(JButton sure, JButton back, String[] attribute, ArrayList tips, ArrayList inputField, JDialog input) {
+        input.setSize(250, 100);
+        input.setLayout(new GridLayout(3, 2));
+        for (int i = 0; i < attribute.length; i++) {
+            if (attribute[i] == null)
                 break;
-            input.add((JLabel)tips.get(i));
-            input.add((JTextField)inputField.get(i));
+            input.add((JLabel) tips.get(i));
+            input.add((JTextField) inputField.get(i));
         }
         input.add(sure);
         input.add(back);

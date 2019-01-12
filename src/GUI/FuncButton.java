@@ -44,14 +44,14 @@ public class FuncButton {
     }
 
 
-    public JButton createUpdateButton(String label,Table table){
+    public JButton createUpdateButton(String label, Table table) {
         ColorDefined color = new ColorDefined();
         Random r = new Random();
-        updataFunc=new JButton(label);
+        updataFunc = new JButton(label);
         updataFunc.setBackground(color.getSefunCol()[r.nextInt(11)]);
-        Font f = new Font("Go Mono for Powerline.ttf",Font.PLAIN,20);
+        Font f = new Font("Go Mono for Powerline.ttf", Font.PLAIN, 20);
         updataFunc.setFont(f);
-        updataFunc.setSize(25,25);
+        updataFunc.setSize(25, 25);
         return updataFunc;
     }
 }
