@@ -12,13 +12,10 @@ public class ColorDefined {
 
     private Color[] sefunCol={
             new Color(255,150,128),
-            new Color(119,52,96),
             new Color(225,238,210),
-            new Color(153,77,82),
             new Color(229,187,129),
             new Color(85,170,173),
             new Color(230,179,61),
-            new Color(153,80,84),
             new Color(107,194,53),
             new Color(174,221,129),
             new Color(247,68,97),

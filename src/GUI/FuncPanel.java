@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Vector;
@@ -38,28 +40,36 @@ public class FuncPanel {
         funcScrollPanel[1].setViewportView(table.getTable());
     }
 
-    public void chartChosePanel(JButton[] basicChart, int counts) {
-        funcScrollPanel[2].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    public void updateFuncPanel(JButton[] updateFunc) {
+        funcScrollPanel[2].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         funcScrollPanel[2].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        funcpanel[1].setLayout(new GridLayout(2,2));
+        funcScrollPanel[2].setViewportView(funcpanel[1]);
+        for(int i=0;i<4;i++){
+            funcpanel[1].add(updateFunc[i]);
+        }
+    }
+
+    public void chartChosePanel(JButton[] basicChart, int counts) {
+        funcScrollPanel[3].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        funcScrollPanel[3].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         funcpanel[2].setBackground((new ColorDefined().getColor("green")));
         funcScrollPanel[3].setViewportView(funcpanel[2]);
-        funcpanel[2].setLayout(new GridLayout(1,10));
-        for(int i=0;i<10;i++){
+        funcpanel[2].setLayout(new GridLayout(2, 5));
+        for (int i = 0; i < 10; i++) {
             funcpanel[2].add(basicChart[i]);
         }
 
     }
 
-    public void updateFuncPanel() {
 
-    }
 }
 
 
 class Table {
 
     private JTable table = new JTable();
-    private DefaultTableModel tableModel = new DefaultTableModel();
+    private DefaultTableModel tableModel = null;
     public Vector[] Data = {new Vector(), new Vector()};
 
     public JTable getTable() {
@@ -72,14 +82,19 @@ class Table {
         table.getTableHeader().setPreferredSize(new Dimension(0, 25));
         Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.PLAIN, 15);
         table.setBackground(color.getColor(tableColor));
+
         table.setFont(f);
     }
 
     public void tableDataShow(Vector[] Data) {
+        tableModel = new DefaultTableModel();
         tableModel.setDataVector(Data[0], Data[1]);
-        for (int i = 0; i < 30; i++) {
-            tableModel.insertRow(Data[0].size(), new Vector());
-        }
+        tableModel.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                System.out.println("??????????????");
+            }
+        });
         table.setModel(tableModel);
         table.validate();
         table.updateUI();

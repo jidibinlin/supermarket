@@ -54,6 +54,7 @@ class ControlPanel {
         layout.setHgap(3);
         String[] Scolor = {"blue", "grey", "brown", "green", "orange"};
         for (int i = 0; i < 5; i++) {
+            tab[i].setPreferredSize(new Dimension(100,60));
             this.controlPanel.add(tab[i]);
             tab[i].setVisible(true);
             tab[i].setFont(f);

@@ -119,7 +119,7 @@ class MouseListenSqlSelect extends MouseAdapter {
 
         if (e.getButton() == MouseEvent.BUTTON3 && attr1.isEmpty()) {
             whichtype(null, null);
-            table.tableDataShow(sqlfunc2);
+            table.tableDataShow(sqlfunc);
         } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && attr2.isEmpty()) {
             DateInput input = new DateInput(new String[]{attr1, null});
             MouseListeninput mous = new MouseListeninput(input.getInput());
@@ -158,43 +158,43 @@ class MouseListenSqlSelect extends MouseAdapter {
         }
 
 
-//        if(select1 instanceof EmployeeManage && select2==null){
-//            sqlfunc =((EmployeeManage) select1).select_result(funcName);
-//        }
-//        else if(select1 instanceof EmployeeManage && select2!=null){
-//            sqlfunc =((EmployeeManage) select1).select_result(funcName+"_Asc");
-//            sqlfunc2 = ((EmployeeManage)select2).select_result(funcName+"_Desc");
-//        }
-//
-//
-//
-//        if(select1 instanceof GuestInfoManage && select2==null){
-//            sqlfunc =((GuestInfoManage) select1).select_result(funcName);
-//        }
-//
-//        else if(select1 instanceof GuestInfoManage && select2!=null){
-//            sqlfunc =((GuestInfoManage) select1).select_result(funcName+"_Asc");
-//            sqlfunc2 = ((GuestInfoManage)select2).select_result(funcName+"_Desc");
-//        }
-//
-//
+        if(select1 instanceof EmployeeManage && select2==null){
+            this.sqlfunc =((EmployeeManage) select1).select_result(funcName,par1,par2);
+        }
+        else if(select1 instanceof EmployeeManage && select2!=null){
+            this.sqlfunc =((EmployeeManage) select1).select_result(funcName+"_Asc",par1,par2);
+            this.sqlfunc2 = ((EmployeeManage)select2).select_result(funcName+"_Desc",par1,par2);
+        }
+
+
+
+        if(select1 instanceof GuestInfoManage && select2==null){
+            this.sqlfunc =((GuestInfoManage) select1).select_result(funcName,par1,par2);
+        }
+
+        else if(select1 instanceof GuestInfoManage && select2!=null){
+            this.sqlfunc =((GuestInfoManage) select1).select_result(funcName+"_Asc",par1,par2);
+            sqlfunc2 = ((GuestInfoManage)select2).select_result(funcName+"_Desc",par1,par2);
+        }
+
+
 //        if(select1 instanceof ProductManage && select2==null){
-//            sqlfunc =((ProductManage) select1).select_result(funcName);
+//            this.sqlfunc =((ProductManage) select1).select_result(funcName,par1,par2);
 //        }
 //
 //        else if(select1 instanceof ProductManage && select2!=null){
-//            sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc");
-//            sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc");
+//            this.sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc",par1,par2);
+//            this.sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc",par1,par2);
 //        }
 //
 //
 //        if(select1 instanceof StoreManage && select2==null){
-//            sqlfunc =((StoreManage) select1).select_result(funcName);
+//            this.sqlfunc =((StoreManage) select1).select_result(funcName,par1,par2);
 //        }
 //
 //        else if(select1 instanceof StoreManage && select2!=null){
-//            sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc");
-//            sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc");
+//            this.sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc",par1,par2);
+//            this.sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc",par1,par2);
 //        }
     }
 }
@@ -212,14 +212,14 @@ class MouseListenSqlSelectBaseChart extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
-        table.getTable().setEnabled(false);
+        table.getTable().setEnabled(true);
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
-            sqlfunc=select.sql_result(funcName);
+            sqlfunc=select.select_result(funcName);
             table.tableDataShow(sqlfunc);
         }
 
         if (e.getButton() == MouseEvent.BUTTON3) {
-            sqlfunc=select.sql_result(funcName);
+            sqlfunc=select.select_result(funcName);
             table.tableDataShow(sqlfunc);
         }
     }

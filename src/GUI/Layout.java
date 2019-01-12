@@ -109,10 +109,6 @@ class Layout {//各个窗口的布局管理
 
     }
 
-    static void chartselectFuncLayout() {
-
-    }
-
     static void tableFuncLayout(JScrollPane chart, JTable table) {
         chart.setViewportView(table);
         table.setVisible(true);
