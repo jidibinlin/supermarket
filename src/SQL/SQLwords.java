@@ -6,7 +6,7 @@ public class SQLwords {
     String conditions;//查询或修改的条件
     String attributies;//元组属性
     String result;
-//hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhjhhhhhhhjhjhjhjhjhjhjhjhjhjhjhjhjhj
+
 
     //select 方法
     public String select(String targets, String tables) {
