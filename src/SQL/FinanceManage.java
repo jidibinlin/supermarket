@@ -88,7 +88,7 @@ public class FinanceManage {
     //销量统计排行
     //全局
     //降序
-    public Vector[] selesVolumeOrderDesc() {
+    private Vector[] selesVolumeOrderDesc() {
         try {
            data.removeAllElements();
             title.removeAllElements();
@@ -120,7 +120,7 @@ public class FinanceManage {
     }
 
     //升序
-    public Vector[] selesVolumeOrderAsc() {
+    private Vector[] selesVolumeOrderAsc() {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -152,7 +152,7 @@ public class FinanceManage {
     }
 
     //指定日期查询----降序
-    public Vector[] apponited_date_cheack_Desc(String apponitedDate) {
+    private Vector[] apponited_date_cheack_Desc(String apponitedDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -180,7 +180,7 @@ public class FinanceManage {
     }
 
     //指定日期查询----升序
-    public Vector[] apponited_date_check_Asc(String apponitedDate) {
+    private Vector[] apponited_date_check_Asc(String apponitedDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -209,7 +209,7 @@ public class FinanceManage {
 
     //指定商品销量统计（比较）
     //升序
-    public Vector[] apppnited_product_compare_Asc(String proName1,String proName2) {
+    private Vector[] apppnited_product_compare_Asc(String proName1,String proName2) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -237,7 +237,7 @@ public class FinanceManage {
     }
 
     //降序
-    public Vector[] apponited_product_compare_Desc(String proName1,String proName2) {
+    private Vector[] apponited_product_compare_Desc(String proName1,String proName2) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -265,7 +265,7 @@ public class FinanceManage {
     }
 
     //不同品牌的同类产品销量比较.
-    public Vector[] compare_with_same_kind(String proName_LIKE) {
+    private Vector[] compare_with_same_kind(String proName_LIKE) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -299,7 +299,7 @@ public class FinanceManage {
 
     //盈利管理
     //全局
-    public Vector[] whole_profit_manage() {
+    private Vector[] whole_profit_manage() {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -326,7 +326,7 @@ public class FinanceManage {
     }
 
     //指定日期段或当日
-    public Vector[] apponited_profit_manage(String startDate,String endDate) {
+    private Vector[] apponited_profit_manage(String startDate,String endDate) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -353,7 +353,7 @@ public class FinanceManage {
     }
 
     //查询指定商品盈利
-    public Vector[] apponited_product_profit(String proName) {
+    private Vector[] apponited_product_profit(String proName) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -380,7 +380,7 @@ public class FinanceManage {
     }
 
     //比较商品盈利
-    public Vector[] compare_product_profit(String proName_Like) {
+    private Vector[] compare_product_profit(String proName_Like) {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -407,7 +407,7 @@ public class FinanceManage {
     }
 
     //查询当前盈亏
-    public Vector[] select_profit_fornow() {
+    private Vector[] select_profit_fornow() {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -435,7 +435,7 @@ public class FinanceManage {
 
 
     //查询与所有供货商的交易总额
-    public Vector[] all_manu_profit() {
+    private Vector[] all_manu_profit() {
         try {
             data.removeAllElements();
             title.removeAllElements();
@@ -465,7 +465,7 @@ public class FinanceManage {
 
 
     //订单录入
-    public String billInsert() {
+    private String billInsert() {
         int reInt;
         String resultString=null;
         try {
