@@ -366,7 +366,7 @@ class TableEvent extends MouseAdapter {
                         }
 
                         String data="(";
-                        for(;addstart<=addend;addstart++){
+                        for(addstart=addstart+1;addstart<=addend;addstart++){
                            for(int i=0;i<column;i++){
                                if(i==column-1) {
                                    data=data+table.getTableModel().getValueAt(addstart,i)+")";
