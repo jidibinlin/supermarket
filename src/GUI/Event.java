@@ -4,14 +4,11 @@ import SQL.BasicTableSelect;
 import SQL.EmployeeManage;
 import SQL.FinanceManage;
 import SQL.GuestInfoManage;
-import com.mysql.cj.jdbc.result.UpdatableResultSet;
-import com.sun.javafx.geom.Vec3d;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -125,10 +122,10 @@ class MouseListenSqlSelect extends MouseAdapter {
             }
         }
 
-        if (e.getButton() == MouseEvent.BUTTON3 && attr1.isEmpty() && select2!=null) {
+        if (e.getButton() == MouseEvent.BUTTON3 && attr1.isEmpty() && select2 != null) {
             whichtype(null, null);
             table.tableDataShow(sqlfunc2);
-        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && attr2.isEmpty() && select2!=null) {
+        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && attr2.isEmpty() && select2 != null) {
             DateInput input = new DateInput(new String[]{attr1, null});
             MouseListeninput mous = new MouseListeninput(input.getInput());
             MouseListeninput2 mous2 = new MouseListeninput2(input.getInput());
@@ -140,7 +137,7 @@ class MouseListenSqlSelect extends MouseAdapter {
                 whichtype(par1.getText(), null);
                 table.tableDataShow(sqlfunc2);
             }
-        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && !(attr2.isEmpty()) && select2!=null) {
+        } else if (e.getButton() == MouseEvent.BUTTON3 && !(attr1.isEmpty()) && !(attr2.isEmpty()) && select2 != null) {
             DateInput input = new DateInput(new String[]{attr1, attr2});
             MouseListeninput mous = new MouseListeninput(input.getInput());
             MouseListeninput2 mous2 = new MouseListeninput2(input.getInput());
@@ -238,74 +235,74 @@ class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
     }
 }
 
-class TableEvent extends MouseAdapter{
-    private JButton update=null;
-    private JButton delete=null;
-    private JButton add=null;
-    private JButton save=null;
-    private Vector <Vector> UpPosi=new Vector<Vector>();
-    Table table=null;
-    TableEvent(Table table,JButton add,JButton update,JButton delete,JButton save){
-        this.table=table;
-        this.update=update;
-        this.delete=delete;
-        this.add=add;
-        this.save=save;
+class TableEvent extends MouseAdapter {
+    private JButton update = null;
+    private JButton delete = null;
+    private JButton add = null;
+    private JButton save = null;
+    private Vector<Vector> UpPosi = new Vector<Vector>();
+    Table table = null;
+
+    TableEvent(Table table, JButton add, JButton update, JButton delete, JButton save) {
+        this.table = table;
+        this.update = update;
+        this.delete = delete;
+        this.add = add;
+        this.save = save;
     }
 
-    public void execute(){
+    public void execute() {
         updateListen();
         deleteListen();
         addListen();
         saveListen();
     }
 
-    public JButton getUpdate(){
+    public JButton getUpdate() {
         return update;
     }
 
-    public JButton getDelete(){
+    public JButton getDelete() {
         return delete;
     }
 
-    public JButton getAdd(){
+    public JButton getAdd() {
         return add;
     }
-    public JButton getSave(){
+
+    public JButton getSave() {
         return save;
     }
 
 
-    private void updateListen(){
+    private void updateListen() {
         update.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton()==MouseEvent.BUTTON1){
-
-                }
-            }
-        });
-
-    }
-
-
-
-    private void deleteListen(){
-        delete.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if(e.getButton()==MouseEvent.BUTTON1){
-                    DefaultTableModel tableModel=table.getTableModel();
+                if (e.getButton() == MouseEvent.BUTTON1) {
+                    DefaultTableModel tableModel = table.getTableModel();
                     tableModel.addTableModelListener(new TableModelListener() {
                         @Override
                         public void tableChanged(TableModelEvent e) {
+                            System.out.println("ccccc");
                             Vector Coordinate = new Vector();
                             Coordinate.addElement(e.getColumn());
                             Coordinate.addElement(table.getTable().getSelectedRow());
                             UpPosi.addElement(Coordinate);
                         }
                     });
+                }
+            }
+        });
 
+    }
+
+
+    private void deleteListen() {
+        delete.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON1) {
 
                 }
             }
@@ -316,11 +313,11 @@ class TableEvent extends MouseAdapter{
     }
 
 
-    private void addListen(){
+    private void addListen() {
         add.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton()==MouseEvent.BUTTON1){
+                if (e.getButton() == MouseEvent.BUTTON1) {
 
                 }
             }
@@ -328,21 +325,19 @@ class TableEvent extends MouseAdapter{
     }
 
 
-    private void saveListen(){
+    private void saveListen() {
         save.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton()==MouseEvent.BUTTON1){
-                    for(Vector tmp : UpPosi){
-                        for(Object tmp2:tmp){
-                            Vector row=(Vector) tmp2;
-                            String updateTable=table.getTable().getName();
-                            String target=(String)table.getTableModel().getValueAt((int)row.get(0),(int)row.get(1));
-                            String updateConditions=table.getTable().getColumnName(0);
-                           //new BasicTableSelect().Update();
-                        }
+                if (e.getButton() == MouseEvent.BUTTON1) {
+                    for (Vector tmp : UpPosi) {
+                        String updateTable = table.getTable().getName();
+                        String target = table.getTableModel().getColumnName((int) tmp.get(0)) + "=" + " ' " + (String) table.getTableModel().getValueAt((int) tmp.get(1), (int) tmp.get(0)) + " ' ";
+                        String updateConditions = table.getTable().getColumnName(0) + "=" + " ' " + (String) table.getTableModel().getValueAt((int) tmp.get(1), 0) + " ' ";
+                        String result = new BasicTableSelect().Update(updateTable, target, updateConditions);
                     }
-
+                    table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
+                    UpPosi.clear();
                 }
             }
         });
