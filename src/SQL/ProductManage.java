@@ -26,7 +26,7 @@ public class ProductManage {
                 sql_result = select_apponited_product_info(par1);
                 break;
             case "selectApponitedPriceProduct":
-                select_apponited_price_product(par1);
+                sql_result= select_apponited_price_product(par1);
                 break;
             case "selectManuOfProduct":
                 sql_result = select_manu_of_product();
@@ -70,7 +70,7 @@ public class ProductManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>="+price+"; ", "  ", "  ");
+            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>='"+price+"' ; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);

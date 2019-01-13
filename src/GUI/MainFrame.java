@@ -116,8 +116,8 @@ public class MainFrame {
     private JButton[] employeeFuncButtonadd(Table table) {
         JButton[] selectFunc = {
                 new FuncButton().createSelectButton("工种查询", "jobKindQuery", new EmployeeManage(), null, table, "工种", new String()),
-                new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "职位", new String()),
-                new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工编号", new String()),
+                new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "薪水", new String()),
+                new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工姓名", new String()),
                 new FuncButton().createSelectButton("性别-部门匹配", "appointedSexCheckDpartment", new EmployeeManage(), null, table, "员工性别", new String()),
                 new FuncButton().createSelectButton("员工信息查询", "selectEmployeeInfoByName", new EmployeeManage(), null, table, "员工姓名", new String()),
         };
@@ -150,9 +150,9 @@ public class MainFrame {
 
     private JButton[] storeManaeFuncButtonadd(Table table){
         JButton[] selectFunc={
-                new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,new String(),new String()),
-                new FuncButton().createSelectButton("供货商查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商编号",new String()),
-                new FuncButton().createSelectButton("商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品编号",new String()),
+                new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("供货商产品查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("某类商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品类名",new String()),
         };
         return selectFunc;
     }

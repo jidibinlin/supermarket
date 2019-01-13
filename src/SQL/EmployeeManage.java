@@ -38,7 +38,7 @@ public class EmployeeManage {
             title.removeAllElements();
             seResult = sql.select(" JobKind.jobNum,JobName,emNum,name,Department.depNum,depName ", " Employee,Department,JobKind ", " JobKind.jobNum=Employee.jobNum " +
                     "and Department.depNum=Employee.depNum " +
-                    "and JobKind.jobNum='"+jobNum+"'; ", "  ", "  ");
+                    "and JobKind.jobName='"+jobNum+"'; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
