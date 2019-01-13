@@ -176,23 +176,19 @@ class MouseListenSqlSelect extends MouseAdapter {
         }
 
 
-        if(select1 instanceof ProductManage && select2==null){
-            this.sqlfunc =((ProductManage) select1).select_result(funcName,par1,par2);
+        if (select1 instanceof ProductManage && select2 == null) {
+            this.sqlfunc = ((ProductManage) select1).select_result(funcName, par1, par2);
+        } else if (select1 instanceof ProductManage && select2 != null) {
+            this.sqlfunc = ((ProductManage) select1).select_result(funcName + "_Asc", par1, par2);
+            this.sqlfunc2 = ((ProductManage) select2).select_result(funcName + "_Desc", par1, par2);
         }
 
-        else if(select1 instanceof ProductManage && select2!=null){
-            this.sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc",par1,par2);
-            this.sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc",par1,par2);
-        }
 
-
-        if(select1 instanceof StoreManage && select2==null){
-            this.sqlfunc =((StoreManage) select1).select_result(funcName,par1,par2);
-        }
-
-        else if(select1 instanceof StoreManage && select2!=null){
-            this.sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc",par1,par2);
-            this.sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc",par1,par2);
+        if (select1 instanceof StoreManage && select2 == null) {
+            this.sqlfunc = ((StoreManage) select1).select_result(funcName, par1, par2);
+        } else if (select1 instanceof StoreManage && select2 != null) {
+            this.sqlfunc = ((StoreManage) select1).select_result(funcName + "_Asc", par1, par2);
+            this.sqlfunc2 = ((StoreManage) select2).select_result(funcName + "_Desc", par1, par2);
         }
     }
 }
@@ -239,8 +235,8 @@ class TableEvent extends MouseAdapter {
     private JButton save = null;
     private Vector<Vector> UpPosi = new Vector<Vector>();
     private int[] delRows = null;
-    private int addstart=0;
-    private int addend=0;
+    private int addstart = 0;
+    private int addend = 0;
     Table table = null;
 
     TableEvent(Table table, JButton add, JButton update, JButton delete, JButton save) {
@@ -315,10 +311,11 @@ class TableEvent extends MouseAdapter {
         add.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                addstart=table.getTable().getRowCount();
+                if (addstart == 0)
+                    addstart = table.getTable().getRowCount();
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     table.getTableModel().addRow(new Vector());
-                    addend=addstart+1;
+                    addend = addstart + 1;
                 }
             }
         });
@@ -341,42 +338,43 @@ class TableEvent extends MouseAdapter {
                         UpPosi.clear();
                     }
 
-                    if(delRows!=null){
-                        for(int i=0;i<delRows.length;i++){
-                            String delTable=table.getTable().getName();
-                            String delConditions=table.getTableModel().getColumnName(0)+"="+"'"+table.getTableModel().getValueAt(delRows[i],0)+"'";
-                            String result = new BasicTableSelect().Delete(delTable,delConditions);
+                    if (delRows != null) {
+                        for (int i = 0; i < delRows.length; i++) {
+                            String delTable = table.getTable().getName();
+                            String delConditions = table.getTableModel().getColumnName(0) + "=" + "'" + table.getTableModel().getValueAt(delRows[i], 0) + "'";
+                            String result = new BasicTableSelect().Delete(delTable, delConditions);
                             table.getTableModel().removeRow(delRows[i]);
                             table.getTable().invalidate();
                             table.getTable().updateUI();
                         }
                         table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
-                        delRows=null;
+                        delRows = null;
                     }
 
-                    if(addstart<addend){
-                        int column=table.getTable().getColumnCount();
-                        String targets=table.getTable().getName()+"(";
-                        for(int i=0;i<column;i++){
-                            if(i==column-1){
-                                targets=targets+table.getTable().getColumnName(i)+")";
-                            }else {
+                    if (addstart < addend) {
+                        int column = table.getTable().getColumnCount();
+                        String targets = table.getTable().getName() + "(";
+                        for (int i = 0; i < column; i++) {
+                            if (i == column - 1) {
+                                targets = targets + table.getTable().getColumnName(i) + ")";
+                            } else {
                                 targets = targets + table.getTable().getColumnName(i) + ",";
                             }
                         }
 
-                        String data="(";
-                        for(addstart=addstart+1;addstart<=addend;addstart++){
-                           for(int i=0;i<column;i++){
-                               if(i==column-1) {
-                                   data=data+table.getTableModel().getValueAt(addstart,i)+")";
-                               }else {
-                                   data = data + table.getTableModel().getValueAt(addstart, i) + ",";
-                               }
-                           }
-
-                           new BasicTableSelect().Insert(targets,data);
+                        for (; addstart <= addend; addstart++) {
+                            String data = "(";
+                            for (int i = 0; i < column; i++) {
+                                if (i == column - 1) {
+                                    data = data + "'" + table.getTableModel().getValueAt(addstart, i) + "'" + ")";
+                                } else {
+                                    data = data + "'" + table.getTableModel().getValueAt(addstart, i) + "'" + ",";
+                                }
+                            }
+                            new BasicTableSelect().Insert(targets, data);
                         }
+
+                        addstart = addend;
                     }
                 }
             }
