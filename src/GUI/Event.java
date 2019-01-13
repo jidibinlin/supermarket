@@ -332,8 +332,8 @@ class TableEvent extends MouseAdapter {
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     for (Vector tmp : UpPosi) {
                         String updateTable = table.getTable().getName();
-                        String target = table.getTableModel().getColumnName((int) tmp.get(0)) + "=" + " ' " + (String) table.getTableModel().getValueAt((int) tmp.get(1), (int) tmp.get(0)) + " ' ";
-                        String updateConditions = table.getTable().getColumnName(0) + "=" + " ' " + (String) table.getTableModel().getValueAt((int) tmp.get(1), 0) + " ' ";
+                        String target = table.getTableModel().getColumnName((int) tmp.get(0)) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), (int) tmp.get(0)) + "'";
+                        String updateConditions = table.getTable().getColumnName(0) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), 0) + "'";
                         String result = new BasicTableSelect().Update(updateTable, target, updateConditions);
                     }
                     table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
