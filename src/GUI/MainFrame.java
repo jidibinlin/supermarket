@@ -39,7 +39,7 @@ public class MainFrame {
         funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()),financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
         funcPanel[3].chartChosePanel(basicChartButtonadd(funcPanel[3].getTable()),basicChartButtonadd(funcPanel[3].getTable()).length);
         funcPanel[3].updateFuncPanel(updateFuncButtonadd(funcPanel[3].getTable()));
-        funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()),productFuncButtonadd(funcPanel[4].getTable()).length);
+        funcPanel[4].selectFuncPanel(guestInfoButtonadd(funcPanel[4].getTable()),guestInfoButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].chartChosePanel(basicChartButtonadd(funcPanel[4].getTable()),basicChartButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].updateFuncPanel(updateFuncButtonadd(funcPanel[4].getTable()));
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
@@ -124,7 +124,7 @@ public class MainFrame {
         return selectFunc;
     }
 
-    private JButton[] guestInfoManage(Table table){
+    private JButton[] guestInfoButtonadd(Table table){
         JButton [] selectFunc={
                 new FuncButton().createSelectButton("按vip等级查询客户","selectGuestByViplevel",new GuestInfoManage(),null,table,"vip等级",new String()),
                 new FuncButton().createSelectButton("查询积分大于某一分段的客户","checkScoreByGuestNum",new GuestInfoManage(),null,table,"积分分数",new String()),

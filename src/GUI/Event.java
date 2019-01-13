@@ -1,9 +1,6 @@
 package GUI;
 
-import SQL.BasicTableSelect;
-import SQL.EmployeeManage;
-import SQL.FinanceManage;
-import SQL.GuestInfoManage;
+import SQL.*;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -179,24 +176,24 @@ class MouseListenSqlSelect extends MouseAdapter {
         }
 
 
-//        if(select1 instanceof ProductManage && select2==null){
-//            this.sqlfunc =((ProductManage) select1).select_result(funcName,par1,par2);
-//        }
-//
-//        else if(select1 instanceof ProductManage && select2!=null){
-//            this.sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc",par1,par2);
-//            this.sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc",par1,par2);
-//        }
-//
-//
-//        if(select1 instanceof StoreManage && select2==null){
-//            this.sqlfunc =((StoreManage) select1).select_result(funcName,par1,par2);
-//        }
-//
-//        else if(select1 instanceof StoreManage && select2!=null){
-//            this.sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc",par1,par2);
-//            this.sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc",par1,par2);
-//        }
+        if(select1 instanceof ProductManage && select2==null){
+            this.sqlfunc =((ProductManage) select1).select_result(funcName,par1,par2);
+        }
+
+        else if(select1 instanceof ProductManage && select2!=null){
+            this.sqlfunc =((ProductManage) select1).select_result(funcName+"_Asc",par1,par2);
+            this.sqlfunc2 = ((ProductManage)select2).select_result(funcName+"_Desc",par1,par2);
+        }
+
+
+        if(select1 instanceof StoreManage && select2==null){
+            this.sqlfunc =((StoreManage) select1).select_result(funcName,par1,par2);
+        }
+
+        else if(select1 instanceof StoreManage && select2!=null){
+            this.sqlfunc =((StoreManage) select1).select_result(funcName+"_Asc",par1,par2);
+            this.sqlfunc2 = ((StoreManage)select2).select_result(funcName+"_Desc",par1,par2);
+        }
     }
 }
 
