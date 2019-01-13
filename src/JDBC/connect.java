@@ -5,6 +5,7 @@ public class connect {
         Connection conect=null;
         Class.forName("com.mysql.cj.jdbc.Driver");
         conect=DriverManager.getConnection("jdbc:mysql://47.106.241.153:3306/supmarket","root","QiBin`smysqlcount..66");
+        conect.setAutoCommit(true);
         return conect;
     }
     public static void release(Statement stmt,ResultSet rs){
