@@ -4,8 +4,14 @@ import SQL.BasicTableSelect;
 import SQL.EmployeeManage;
 import SQL.FinanceManage;
 import SQL.GuestInfoManage;
+import com.mysql.cj.jdbc.result.UpdatableResultSet;
+import com.sun.javafx.geom.Vec3d;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -210,6 +216,7 @@ class MouseListenSqlSelectBaseChart extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
+        table.getTable().setName(funcName);
         table.getTable().setEnabled(true);
         if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
             sqlfunc = select.select_result(funcName);
@@ -230,3 +237,115 @@ class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
         NoticeCloseSureDialog.CloseSure(fratran);
     }
 }
+
+class TableEvent extends MouseAdapter{
+    private JButton update=null;
+    private JButton delete=null;
+    private JButton add=null;
+    private JButton save=null;
+    private Vector <Vector> UpPosi=new Vector<Vector>();
+    Table table=null;
+    TableEvent(Table table,JButton add,JButton update,JButton delete,JButton save){
+        this.table=table;
+        this.update=update;
+        this.delete=delete;
+        this.add=add;
+        this.save=save;
+    }
+
+    public void execute(){
+        updateListen();
+        deleteListen();
+        addListen();
+        saveListen();
+    }
+
+    public JButton getUpdate(){
+        return update;
+    }
+
+    public JButton getDelete(){
+        return delete;
+    }
+
+    public JButton getAdd(){
+        return add;
+    }
+    public JButton getSave(){
+        return save;
+    }
+
+
+    private void updateListen(){
+        update.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(e.getButton()==MouseEvent.BUTTON1){
+
+                }
+            }
+        });
+
+    }
+
+
+
+    private void deleteListen(){
+        delete.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(e.getButton()==MouseEvent.BUTTON1){
+                    DefaultTableModel tableModel=table.getTableModel();
+                    tableModel.addTableModelListener(new TableModelListener() {
+                        @Override
+                        public void tableChanged(TableModelEvent e) {
+                            Vector Coordinate = new Vector();
+                            Coordinate.addElement(e.getColumn());
+                            Coordinate.addElement(table.getTable().getSelectedRow());
+                            UpPosi.addElement(Coordinate);
+                        }
+                    });
+
+
+                }
+            }
+
+
+        });
+
+    }
+
+
+    private void addListen(){
+        add.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(e.getButton()==MouseEvent.BUTTON1){
+
+                }
+            }
+        });
+    }
+
+
+    private void saveListen(){
+        save.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(e.getButton()==MouseEvent.BUTTON1){
+                    for(Vector tmp : UpPosi){
+                        for(Object tmp2:tmp){
+                            Vector row=(Vector) tmp2;
+                            String updateTable=table.getTable().getName();
+                            String target=(String)table.getTableModel().getValueAt((int)row.get(0),(int)row.get(1));
+                            String updateConditions=table.getTable().getColumnName(0);
+                           //new BasicTableSelect().Update();
+                        }
+                    }
+
+                }
+            }
+        });
+    }
+}
+

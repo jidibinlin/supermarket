@@ -333,7 +333,7 @@ public class BasicTableSelect {
     }
 
     //UPDATE
-    private String Update(String updateTable,String updateTarget,String updateConditions) {
+    public String Update(String updateTable,String updateTarget,String updateConditions) {
         int reInt;
         String resultString = null;
         try {
@@ -353,7 +353,7 @@ public class BasicTableSelect {
         return resultString;
     }
     //DELETE
-    private String Delete(String deleteTable,String deleteConditions) {
+    public String Delete(String deleteTable,String deleteConditions) {
         int reInt;
         String resultString = null;
         try {
@@ -374,7 +374,7 @@ public class BasicTableSelect {
     }
 
     //INSERT
-    private String Insert(String insertTarget,String data) {
+    public String Insert(String insertTarget,String data) {
         int reInt;
         String resultString = null;
         try {

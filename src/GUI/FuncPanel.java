@@ -76,6 +76,10 @@ class Table {
         return table;
     }
 
+    public DefaultTableModel getTableModel() {
+        return tableModel;
+    }
+
     public void setTable(String tableColor) {
         ColorDefined color = new ColorDefined();
         table.setRowHeight(25);
@@ -89,12 +93,6 @@ class Table {
     public void tableDataShow(Vector[] Data) {
         tableModel = new DefaultTableModel();
         tableModel.setDataVector(Data[0], Data[1]);
-        tableModel.addTableModelListener(new TableModelListener() {
-            @Override
-            public void tableChanged(TableModelEvent e) {
-                System.out.println("??????????????");
-            }
-        });
         table.setModel(tableModel);
         table.validate();
         table.updateUI();
