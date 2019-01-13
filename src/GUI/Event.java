@@ -339,7 +339,7 @@ class TableEvent extends MouseAdapter {
                     }
 
                     if (delRows != null) {
-                        for (int i = 0; i < delRows.length; i++) {
+                        for (int i = delRows.length-1; i>=0; i--) {
                             String delTable = table.getTable().getName();
                             String delConditions = table.getTableModel().getColumnName(0) + "=" + "'" + table.getTableModel().getValueAt(delRows[i], 0) + "'";
                             String result = new BasicTableSelect().Delete(delTable, delConditions);
