@@ -239,6 +239,8 @@ class TableEvent extends MouseAdapter {
     private JButton save = null;
     private Vector<Vector> UpPosi = new Vector<Vector>();
     private int[] delRows = null;
+    private int addstart=0;
+    private int addend=0;
     Table table = null;
 
     TableEvent(Table table, JButton add, JButton update, JButton delete, JButton save) {
@@ -247,6 +249,7 @@ class TableEvent extends MouseAdapter {
         this.delete = delete;
         this.add = add;
         this.save = save;
+        this.table.getTable().getRowCount();
     }
 
     public void execute() {
@@ -315,6 +318,8 @@ class TableEvent extends MouseAdapter {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     table.getTableModel().addRow(new Vector());
+                    addend=addstart+1;
+
                 }
             }
         });
@@ -348,6 +353,10 @@ class TableEvent extends MouseAdapter {
                         }
                         table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
                         delRows=null;
+                    }
+
+                    if(addstart>addend){
+                        
                     }
                 }
             }

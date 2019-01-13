@@ -70,7 +70,7 @@ public class ProductManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>="+price+"; ", "  ", "  ");
+            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value >="+price+"; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
