@@ -241,6 +241,7 @@ class TableEvent extends MouseAdapter {
     private JButton add = null;
     private JButton save = null;
     private Vector<Vector> UpPosi = new Vector<Vector>();
+    private int[] delRows = null;
     Table table = null;
 
     TableEvent(Table table, JButton add, JButton update, JButton delete, JButton save) {
@@ -303,11 +304,9 @@ class TableEvent extends MouseAdapter {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-
+                    delRows = table.getTable().getSelectedRows();
                 }
             }
-
-
         });
 
     }
@@ -318,7 +317,7 @@ class TableEvent extends MouseAdapter {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-
+                    table.getTableModel().addRow(new Vector());
                 }
             }
         });
@@ -330,14 +329,29 @@ class TableEvent extends MouseAdapter {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-                    for (Vector tmp : UpPosi) {
-                        String updateTable = table.getTable().getName();
-                        String target = table.getTableModel().getColumnName((int) tmp.get(0)) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), (int) tmp.get(0)) + "'";
-                        String updateConditions = table.getTable().getColumnName(0) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), 0) + "'";
-                        String result = new BasicTableSelect().Update(updateTable, target, updateConditions);
+                    if (!UpPosi.isEmpty()) {
+                        for (Vector tmp : UpPosi) {
+                            String updateTable = table.getTable().getName();
+                            String target = table.getTableModel().getColumnName((int) tmp.get(0)) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), (int) tmp.get(0)) + "'";
+                            String updateConditions = table.getTable().getColumnName(0) + "=" + "'" + (String) table.getTableModel().getValueAt((int) tmp.get(1), 0) + "'";
+                            String result = new BasicTableSelect().Update(updateTable, target, updateConditions);
+                        }
+                        table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
+                        UpPosi.clear();
                     }
-                    table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
-                    UpPosi.clear();
+
+                    if(delRows.length!=0){
+                        for(int i=0;i<delRows.length;i++){
+                            String delTable=table.getTable().getName();
+                            String delConditions=table.getTableModel().getColumnName(0)+"="+"'"+table.getTableModel().getValueAt(delRows[i],0)+"'";
+                            String result = new BasicTableSelect().Delete(delTable,delConditions);
+                            table.getTableModel().removeRow(delRows[i]);
+                            table.getTable().invalidate();
+                            table.getTable().updateUI();
+                        }
+                        table.getTableModel().removeTableModelListener(table.getTableModel().getTableModelListeners()[0]);
+                        delRows=null;
+                    }
                 }
             }
         });
