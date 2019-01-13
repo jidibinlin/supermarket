@@ -48,7 +48,7 @@ public class ProductManage {
             seResult = sql.select(" proName,proNum  ", " Product ", " type='"+proType+"'; ", "  ", "  ");
             //result=sql.select("  "," , ",seResult,"  "," ; ","  ","  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("proName");
             title.add("proNum");
             while (rs.next()) {
@@ -73,7 +73,7 @@ public class ProductManage {
             seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value>="+price+"; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("proNum");
             title.add("proName");
             title.add("proRemain");
