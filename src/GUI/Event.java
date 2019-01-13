@@ -249,7 +249,6 @@ class TableEvent extends MouseAdapter {
         this.delete = delete;
         this.add = add;
         this.save = save;
-        this.table.getTable().getRowCount();
     }
 
     public void execute() {
@@ -316,10 +315,10 @@ class TableEvent extends MouseAdapter {
         add.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                addstart=table.getTable().getRowCount();
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     table.getTableModel().addRow(new Vector());
                     addend=addstart+1;
-
                 }
             }
         });
@@ -342,7 +341,7 @@ class TableEvent extends MouseAdapter {
                         UpPosi.clear();
                     }
 
-                    if(delRows.length!=0){
+                    if(delRows!=null){
                         for(int i=0;i<delRows.length;i++){
                             String delTable=table.getTable().getName();
                             String delConditions=table.getTableModel().getColumnName(0)+"="+"'"+table.getTableModel().getValueAt(delRows[i],0)+"'";
@@ -355,8 +354,29 @@ class TableEvent extends MouseAdapter {
                         delRows=null;
                     }
 
-                    if(addstart>addend){
-                        
+                    if(addstart<addend){
+                        int column=table.getTable().getColumnCount();
+                        String targets=table.getTable().getName()+"(";
+                        for(int i=0;i<column;i++){
+                            if(i==column-1){
+                                targets=targets+table.getTable().getColumnName(i)+")";
+                            }else {
+                                targets = targets + table.getTable().getColumnName(i) + ",";
+                            }
+                        }
+
+                        String data="(";
+                        for(;addstart<=addend;addstart++){
+                           for(int i=0;i<column;i++){
+                               if(i==column-1) {
+                                   data=data+table.getTableModel().getValueAt(addstart,i)+")";
+                               }else {
+                                   data = data + table.getTableModel().getValueAt(addstart, i) + ",";
+                               }
+                           }
+
+                           new BasicTableSelect().Insert(targets,data);
+                        }
                     }
                 }
             }
