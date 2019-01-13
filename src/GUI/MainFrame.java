@@ -39,7 +39,11 @@ public class MainFrame {
         funcPanel[3].selectFuncPanel(financeFuncButtonadd(funcPanel[3].getTable()),financeFuncButtonadd(funcPanel[3].getTable()).length);//财务管理功能按钮
         funcPanel[3].chartChosePanel(basicChartButtonadd(funcPanel[3].getTable()),basicChartButtonadd(funcPanel[3].getTable()).length);
         funcPanel[3].updateFuncPanel(updateFuncButtonadd(funcPanel[3].getTable()));
+<<<<<<< HEAD
         funcPanel[4].selectFuncPanel(guestInfoButtonadd(funcPanel[4].getTable()),guestInfoButtonadd(funcPanel[4].getTable()).length);
+=======
+        funcPanel[4].selectFuncPanel(productFuncButtonadd(funcPanel[4].getTable()),productFuncButtonadd(funcPanel[4].getTable()).length);
+>>>>>>> 498371c8de9ef4b5d884faf1b6547334a4ffc909
         funcPanel[4].chartChosePanel(basicChartButtonadd(funcPanel[4].getTable()),basicChartButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].updateFuncPanel(updateFuncButtonadd(funcPanel[4].getTable()));
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
@@ -110,23 +114,35 @@ public class MainFrame {
                 new FuncButton().createUpdateButton("删除",table),
                 new FuncButton().createUpdateButton("提交",table)
         };
+<<<<<<< HEAD
         TableEvent tableEvent=new TableEvent(table,updateUpdate[0],updateUpdate[1],updateUpdate[2],updateUpdate[3]);
         tableEvent.execute();
+=======
+>>>>>>> 498371c8de9ef4b5d884faf1b6547334a4ffc909
         return updateUpdate;
     }
 
     private JButton[] employeeFuncButtonadd(Table table) {
         JButton[] selectFunc = {
                 new FuncButton().createSelectButton("工种查询", "jobKindQuery", new EmployeeManage(), null, table, "工种", new String()),
+<<<<<<< HEAD
                 new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "职位", new String()),
                 new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工编号", new String()),
+=======
+                new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "薪水", new String()),
+                new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工姓名", new String()),
+>>>>>>> 498371c8de9ef4b5d884faf1b6547334a4ffc909
                 new FuncButton().createSelectButton("性别-部门匹配", "appointedSexCheckDpartment", new EmployeeManage(), null, table, "员工性别", new String()),
                 new FuncButton().createSelectButton("员工信息查询", "selectEmployeeInfoByName", new EmployeeManage(), null, table, "员工姓名", new String()),
         };
         return selectFunc;
     }
 
+<<<<<<< HEAD
     private JButton[] guestInfoButtonadd(Table table){
+=======
+    private JButton[] guestInfoManage(Table table){
+>>>>>>> 498371c8de9ef4b5d884faf1b6547334a4ffc909
         JButton [] selectFunc={
                 new FuncButton().createSelectButton("等级—客户匹配","selectGuestByViplevel",new GuestInfoManage(),null,table,"vip等级",new String()),
                 new FuncButton().createSelectButton("积分-客户匹配","checkScoreByGuestNum",new GuestInfoManage(),null,table,"积分分数",new String()),
@@ -152,9 +168,15 @@ public class MainFrame {
 
     private JButton[] storeManaeFuncButtonadd(Table table){
         JButton[] selectFunc={
+<<<<<<< HEAD
                 new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,new String(),new String()),
                 new FuncButton().createSelectButton("供货商查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商编号",new String()),
                 new FuncButton().createSelectButton("商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品编号",new String()),
+=======
+                new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("供货商产品查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("某类商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品类名",new String()),
+>>>>>>> 498371c8de9ef4b5d884faf1b6547334a4ffc909
         };
         return selectFunc;
     }

@@ -68,7 +68,7 @@ public class StoreManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Product.proNum,Product.proName,manuName ", " Product,Manu ", " Product.manuNum=Manu.manuNum and Product.manuName='"+manuName+"'; ", "  ", "  ");
+            seResult = sql.select(" Product.proNum,Product.proName,manuName ", " Product,Manu ", " Product.manuNum=Manu.manuNum and manuName='"+manuName+"'; ", "  ", "  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
@@ -94,10 +94,10 @@ public class StoreManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", " Manu.manuNum=Product.manuNum and Product.proName like '"+proName_Like+"'; ", "  ", "  ");
+            seResult = sql.select(" Product.proNum,Product.proName,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Manu,Product ", " Manu.manuNum=Product.manuNum and Product.proName like '%"+proName_Like+"%'; ", "  ", "  ");
             //result=sql.select("  ","  ",seResult,"  ","  ","  ","  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("proNum");
             title.add("proName");
             title.add("manuName");
