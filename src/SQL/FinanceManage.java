@@ -198,18 +198,20 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts ASC;");
+            result = sql.select(" Product.proNum,proName,value,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.proName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts ASC;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
             title.add("proName");
             title.add("counts");
+            title.add("value");
             while (rs.next()) {
                 Vector row = new Vector();
                 //System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
                 row.add(rs.getString("counts"));
+                row.add(rs.getString("value"));
                 data.add(row);
             }
         } catch (Exception e) {
@@ -225,17 +227,19 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.ProName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts Desc;");
+            result = sql.select(" Product.proNum,proName,value,counts ", " Product, ", seResult, " AS PRO ", " PRO.proNum=Product.proNum and Product.ProName in ('"+proName1+"','"+proName2+"') ", "  ", " order by counts Desc;");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
             title.add("proName");
+            title.add("value");
             title.add("counts");
             while (rs.next()) {
                 Vector row = new Vector();
                 //System.out.println(rs.getString("Product.proNum") + "\t\t\t\t" + rs.getString("proName") + "\t" + rs.getString("counts") + "\t");
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
+                row.add(rs.getString("value"));
                 row.add(rs.getString("counts"));
                 data.add(row);
             }
@@ -252,11 +256,12 @@ public class FinanceManage {
             data.removeAllElements();
             title.removeAllElements();
             seResult = sql.select(" Shopping.proNum,sum(number) counts ", " Shopping ", " group by proNum ", "  ");
-            result = sql.select(" Product.proNum,proName,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and proName like '%"+proName_LIKE+"%'  ", "  ", "  ");
+            result = sql.select(" Product.proNum,proName,value,counts,Manu.manuName,Manu.manuLoc,Manu.manuTel ", " Product,Manu, ", seResult, "  AS PRO ", " PRO.proNum=Product.proNum and Product.manuNum=Manu.manuNum and proName like '%"+proName_LIKE+"%'  ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
             title.add("proNum");
             title.add("proName");
+            title.add("value");
             title.add("counts");
             title.add("manuName");
             title.add("manuLoc");
@@ -265,6 +270,7 @@ public class FinanceManage {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
+                row.add(rs.getString("value"));
                 row.add(rs.getString("counts"));
                 row.add(rs.getString("manuName"));
                 row.add(rs.getString("manuLoc"));

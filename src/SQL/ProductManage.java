@@ -70,17 +70,19 @@ public class ProductManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" proNum,proName,proRemain ", " Product ", " value >="+price+"; ", "  ", "  ");
+            seResult = sql.select(" proNum,proName,value,proRemain ", " Product ", " value >="+price+"; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
             title.add("proNum");
             title.add("proName");
+            title.add("value");
             title.add("proRemain");
             while (rs.next()) {
                 Vector row = new Vector();
                 row.add(rs.getString("proNum"));
                 row.add(rs.getString("proName"));
+                row.add(rs.getString("value"));
                 row.add(rs.getString("proRemain"));
                 data.add(row);
             }

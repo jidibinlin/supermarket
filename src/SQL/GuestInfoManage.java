@@ -184,14 +184,18 @@ public class GuestInfoManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" VIP.Viplevel,VIP.moneyRate ", " Guest,VIP ", " guestName='"+guestname+"' and Guest.VipLevel=VIP.Viplevel; ", "  ", "  ");
+            seResult = sql.select(" VIP.Viplevel,guestNum,guestName,VIP.moneyRate ", " Guest,VIP ", " guestName='"+guestname+"' and Guest.VipLevel=VIP.Viplevel; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
+            title.add("guestNum");
+            title.add("guestName");
             title.add("VIP.Viplevel");
             title.add("VIP.moneyRate");
             while (rs.next()) {
                 Vector row = new Vector();
+                row.add(rs.getString("guestNum"));
+                row.add(rs.getString("guestName"));
                 row.add(rs.getString("VIP.Viplevel"));
                 row.add(rs.getString("VIP.moneyRate"));
                 data.add(row);
