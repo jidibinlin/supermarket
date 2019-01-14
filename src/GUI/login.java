@@ -43,7 +43,7 @@ public class login {
                         fail.setLocationRelativeTo(loginUI);
                         fail.setLayout(new FlowLayout());
                         fail.add(notice);
-                        fail.setSize(150,60);
+                        fail.setSize(150,100);
                         fail.setVisible(true);
                     }
                 }
