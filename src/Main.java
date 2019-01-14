@@ -7,7 +7,6 @@ public class Main {
         String Passwd = "123456";
         login log = new login(Username, Passwd);
         log.logInUi();
-
     }
 }
 

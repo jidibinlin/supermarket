@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class login {
-    JTextField userNameInput = new JTextField();
+    JTextField userNameInput = new JTextField();//用户名输入框
     JTextField passwordInput = new JTextField();
     JFrame loginUI = new JFrame();
     JButton sure = new JButton("登陆");
@@ -21,12 +21,12 @@ public class login {
 
     public void logInUi() {
         loginUI.setSize(250, 200);
-        loginUI.setLocation(260, 100);
-        JLabel userNameLabbel = new JLabel("username");
+        loginUI.setLocation(500, 300);
+        JLabel userNameLabel = new JLabel("username");
         JLabel passwdLabel = new JLabel("passwd");
         userNameInput.setColumns(13);
         passwordInput.setColumns(13);
-        Layout.loginLayout(loginUI, userNameLabbel, userNameInput, passwdLabel, passwordInput, sure, exit);
+        Layout.loginLayout(loginUI, userNameLabel, userNameInput, passwdLabel, passwordInput, sure, exit);
         loginUI.setVisible(true);
         sure.addMouseListener(new MouseAdapter() {
             @Override

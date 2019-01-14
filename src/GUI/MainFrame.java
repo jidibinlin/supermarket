@@ -25,7 +25,7 @@ public class MainFrame {
         mainframe.add(control.getControlPanel(), BorderLayout.NORTH);//将控制面板添加到主界面的最上方
         mainframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);//防止worning窗口关闭主窗口
 
-        FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(),};//5张卡片
+        FuncPanel[] funcPanel = {new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel(), new FuncPanel()};//5张卡片
 
         funcPanel[0].selectFuncPanel(productFuncButtonadd(funcPanel[0].getTable()),productFuncButtonadd(funcPanel[0].getTable()).length);
         funcPanel[0].chartChosePanel(basicChartButtonadd(funcPanel[0].getTable()),basicChartButtonadd(funcPanel[0].getTable()).length);
@@ -42,10 +42,14 @@ public class MainFrame {
         funcPanel[4].selectFuncPanel(guestInfoButtonadd(funcPanel[4].getTable()),guestInfoButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].chartChosePanel(basicChartButtonadd(funcPanel[4].getTable()),basicChartButtonadd(funcPanel[4].getTable()).length);
         funcPanel[4].updateFuncPanel(updateFuncButtonadd(funcPanel[4].getTable()));
+
+
+
+
+
         CardPanel cardMother = new CardPanel();//添加承载卡片的Panel
         cardMother.setCardPanel();//设置卡片颜色和布局
         showScrollPanelFunc(funcPanel);//显示各个功能模块
-
         this.switchadd(cardMother.getLayout(), control.getTab(), cardMother.getCardPanel(), cardMother.getCardPanel_funcPanel());//选项卡切换功能
         funcchildadd(cardMother, funcPanel);
 

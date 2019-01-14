@@ -36,6 +36,4 @@ public class TabSwitch extends MouseAdapter {//选项卡切换
             System.out.printf("right button pressed");
         }
     }
-
-
 }

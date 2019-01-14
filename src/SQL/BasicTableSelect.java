@@ -288,6 +288,7 @@ public class BasicTableSelect {
             title.add("number");
             title.add("price");
             title.add("shopDate");
+            title.add("guestNum");
             while (rs.next()) {
                 Vector row = new Vector();
                 row.add(rs.getString("billNum"));
@@ -295,6 +296,7 @@ public class BasicTableSelect {
                 row.add(rs.getString("number"));
                 row.add(rs.getString("price"));
                 row.add(rs.getString("shopDate"));
+                row.add(rs.getString("guestNum"));
                 data.add(row);
             }
         } catch (Exception e) {

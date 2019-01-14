@@ -222,9 +222,9 @@ class MouseListenSqlSelectBaseChart extends MouseAdapter {
 
 class CloseWindowSpecial extends WindowAdapter {//主窗口时间监听
 
-    public void windowClosing(WindowEvent e) {
-        JFrame fratran = (JFrame) e.getComponent();
-        NoticeCloseSureDialog.CloseSure(fratran);
+    public void windowClosing(WindowEvent e) {//关闭窗口事件 父类自带
+        JFrame fratran = (JFrame) e.getComponent();//强制转换 从事件中获取组件
+        NoticeCloseSureDialog.CloseSure(fratran);//提醒是否关闭程序 调用
     }
 }
 
