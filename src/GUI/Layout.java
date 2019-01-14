@@ -112,4 +112,53 @@ class Layout {//各个窗口的布局管理
         chart.setViewportView(table);
         table.setVisible(true);
     }
+
+    static void loginLayout(JFrame loginUI, JLabel userName, JTextField username, JLabel passwd, JTextField password, JButton sure, JButton exit) {
+        GridBagLayout layout = new GridBagLayout();
+        GridBagConstraints constraints = new GridBagConstraints();
+        loginUI.setLayout(layout);
+        constraints.gridwidth = GridBagConstraints.RELATIVE;
+        constraints.gridheight = 1;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(userName,constraints);
+        loginUI.add(userName);
+
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridheight = 1;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(username,constraints);
+        loginUI.add(username);
+
+        constraints.gridwidth = GridBagConstraints.RELATIVE;
+        constraints.gridheight = GridBagConstraints.RELATIVE;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(passwd,constraints);
+        loginUI.add(passwd);
+
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridheight = GridBagConstraints.RELATIVE;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(password,constraints);
+        loginUI.add(password);
+
+        constraints.gridwidth = GridBagConstraints.RELATIVE;
+        constraints.gridheight = GridBagConstraints.REMAINDER;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(sure,constraints);
+        loginUI.add(sure);
+
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridheight = GridBagConstraints.REMAINDER;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        layout.setConstraints(exit,constraints);
+        loginUI.add(exit);
+
+
+    }
 }
