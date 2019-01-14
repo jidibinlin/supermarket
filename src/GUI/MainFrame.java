@@ -105,7 +105,7 @@ public class MainFrame {
 
     private JButton[] productFuncButtonadd(Table table){
         JButton [] selectFunc={
-                new FuncButton().createSelectButton("按类查询商品","selectApponitedProductInfo",new ProductManage(),null,table,"商品",new String()),
+                new FuncButton().createSelectButton("按类查询商品","selectApponitedProductInfo",new ProductManage(),null,table,"商品类",new String()),
                 new FuncButton().createSelectButton("价格-商品匹配","selectApponitedPriceProduct",new ProductManage(),null,table,"指定价格",new String()),
                 new FuncButton().createSelectButton("供应商全局查询","selectManuOfProduct",new ProductManage(),null,table,new String(),new String()),
                 new FuncButton().createSelectButton("商品-供应商匹配","selectManuOfApponitedProduct",new ProductManage(),null,table,"商品名",new String()),
@@ -118,10 +118,8 @@ public class MainFrame {
     private JButton[] employeeFuncButtonadd(Table table) {
         JButton[] selectFunc = {
                 new FuncButton().createSelectButton("工种查询", "jobKindQuery", new EmployeeManage(), null, table, "工种", new String()),
-                new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "职位", new String()),
-                new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工编号", new String()),
                 new FuncButton().createSelectButton("薪水-职位匹配", "appointedSalaryCheck", new EmployeeManage(), null, table, "薪水", new String()),
-                new FuncButton().createSelectButton("工种-薪水匹配", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工姓名", new String()),
+                new FuncButton().createSelectButton("员工工种薪水查询", "appointedEmNameCheck", new EmployeeManage(), null, table, "员工姓名", new String()),
                 new FuncButton().createSelectButton("性别-部门匹配", "appointedSexCheckDpartment", new EmployeeManage(), null, table, "员工性别", new String()),
                 new FuncButton().createSelectButton("员工信息查询", "selectEmployeeInfoByName", new EmployeeManage(), null, table, "员工姓名", new String()),
         };
