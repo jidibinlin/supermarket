@@ -91,7 +91,7 @@ public class MainFrame {
         JButton [] selecFunc={
                 new FuncButton().createSelectButton("销量统计","selesVolumeOrder",new FinanceManage(),new FinanceManage(),table,new String(),new String()),
                 new FuncButton().createSelectButton("某日销量","apponitedDateCheck",new FinanceManage(),new FinanceManage(),table,"日期",new String()),
-                new FuncButton().createSelectButton("销量比较","apppnitedProductCompare",new FinanceManage(),new FinanceManage(),table,"产品名1","产品名2"),
+                new FuncButton().createSelectButton("销量比较","apponitedProductCompare",new FinanceManage(),new FinanceManage(),table,"产品名1","产品名2"),
                 new FuncButton().createSelectButton("同类产品销量","compareWithSameKind",new FinanceManage(),null,table,"类型",new String()),
                 new FuncButton().createSelectButton("整体盈利","wholeProfitManage",new FinanceManage(),null,table,new String(),new String()),
                 new FuncButton().createSelectButton("日期段盈利","apponitedProfitManage",new FinanceManage(),null,table,"起始日期","截止日期"),
@@ -131,9 +131,9 @@ public class MainFrame {
     private JButton[] guestInfoButtonadd(Table table){
         JButton [] selectFunc={
                 new FuncButton().createSelectButton("等级—客户匹配","selectGuestByViplevel",new GuestInfoManage(),null,table,"vip等级",new String()),
-                new FuncButton().createSelectButton("积分-客户匹配","checkScoreByGuestNum",new GuestInfoManage(),null,table,"积分分数",new String()),
-                new FuncButton().createSelectButton("客户码-积分匹配","checkScoreByGuestName",new GuestInfoManage(),null,table,"客户码",new String()),
-                new FuncButton().createSelectButton("客户名-积分匹配","selectGuestByAppointedScore",new GuestInfoManage(),null,table,"客户名",new String()),
+                new FuncButton().createSelectButton("积分-客户匹配","selectGuestByAppointedScore",new GuestInfoManage(),null,table,"积分分数",new String()),
+                new FuncButton().createSelectButton("客户码-积分匹配","checkScoreByGuestNum",new GuestInfoManage(),null,table,"客户码",new String()),
+                new FuncButton().createSelectButton("客户名-积分匹配","checkScoreByGuestName",new GuestInfoManage(),null,table,"客户名",new String()),
                 new FuncButton().createSelectButton("vip查询","connectGuestWithVIP",new GuestInfoManage(),null,table,new String(),new String()),
                 new FuncButton().createSelectButton("客户-金钱比匹配","checkMoneyRateByName",new GuestInfoManage(),null,table,"客户姓名",new String()),
                 new FuncButton().createSelectButton("等级-兑换比匹配","checkMoneyRateAppointedLevel",new GuestInfoManage(),null,table,"vip等级",new String()),

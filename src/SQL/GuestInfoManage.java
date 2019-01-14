@@ -99,10 +99,10 @@ public class GuestInfoManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" guestNum,guestName,score ", " Guest ", " guestNum='"+guestNum+"' ", "  ", "  ");
-            result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
+            seResult = sql.select(" guestNum,guestName,score ", " Guest ", " guestNum='"+guestNum+"' ", " ; ", "  ");
+            //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("guestNum");
             title.add("guestName");
             title.add("score");
@@ -125,10 +125,10 @@ public class GuestInfoManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" guestNum,guestName,score ", " Guest ", " guestNum='" + guestName + "' ", "  ", "  ");
-            result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
+            seResult = sql.select(" guestNum,guestName,score ", " Guest ", " guestName='" + guestName + "' ", "  ", "  ");
+            //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
-            rs = stmt.executeQuery(result);
+            rs = stmt.executeQuery(seResult);
             title.add("guestNum");
             title.add("guestName");
             title.add("score");
