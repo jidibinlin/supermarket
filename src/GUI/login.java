@@ -39,10 +39,11 @@ public class login {
                     } else {
                         JDialog fail = new JDialog(loginUI, true);
                         JLabel notice = new JLabel("密码或用户名错误");
+                        notice.setSize(new Dimension(40,20));
                         fail.setLocationRelativeTo(loginUI);
                         fail.setLayout(new FlowLayout());
                         fail.add(notice);
-                        fail.setPreferredSize(new Dimension(40,20));
+                        fail.setSize(150,60);
                         fail.setVisible(true);
                     }
                 }
