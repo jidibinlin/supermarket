@@ -362,7 +362,7 @@ class TableEvent extends MouseAdapter {
                             }
                         }
 
-                        for (; addstart <= addend; addstart++) {
+                        for (; addstart < addend; addstart++) {
                             String data = "(";
                             for (int i = 0; i < column; i++) {
                                 if (i == column - 1) {
