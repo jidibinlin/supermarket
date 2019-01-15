@@ -129,12 +129,13 @@ public class MainFrame {
 
     private JButton[] storeManaeFuncButtonadd(Table table){
         JButton[] selectFunc={
-                new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,new String(),new String()),
-                new FuncButton().createSelectButton("供货商查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商编号",new String()),
-                new FuncButton().createSelectButton("商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品编号",new String()),
-                new FuncButton().createSelectButton("供货商信息","manuInfoSelect",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("供货商信息","manuInfoSelectByName",new StoreManage(),null,table,"供货商名",new String()),
+                new FuncButton().createSelectButton("所有商品库存量","AllProductsRemain",new StoreManage(),null,table,"",new String()),
+                new FuncButton().createSelectButton("指定商品库存量","AppointedProductsRemain",new StoreManage(),null,table,"商品名",new String()),
+                new FuncButton().createSelectButton("指定商品类库存","ConutsAppointedType",new StoreManage(),null,table,"商品类",new String()),
                 new FuncButton().createSelectButton("供货商产品查询","selectAllProductFromApponitedManu",new StoreManage(),null,table,"供货商名",new String()),
-                new FuncButton().createSelectButton("某类商品供货信息","selectSameKindManu",new StoreManage(),null,table,"商品类名",new String()),
+                new FuncButton().createSelectButton("某商品厂家信息","selectSameKindManu",new StoreManage(),null,table,"商品名（模糊查询）",new String()),
+                new FuncButton().createSelectButton("指定库存量以上商品","AppointedRemainProduct",new StoreManage(),null,table,"库存量",new String()),
         };
         return selectFunc;
     }
