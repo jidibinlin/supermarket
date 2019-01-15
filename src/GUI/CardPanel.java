@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class CardPanel {
     private JPanel CardPanel = new JPanel();
-    private JPanel[] CardPanel_funcPanel = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel()};
+    private JPanel[] CardPanel_funcPanel = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel()};
     private CardLayout layout = null;
 
     public JPanel getCardPanel() {
@@ -27,6 +27,7 @@ public class CardPanel {
         CardPanel_funcPanel[2].setBackground(color.getColor("brown"));
         CardPanel_funcPanel[3].setBackground(color.getColor("green"));
         CardPanel_funcPanel[4].setBackground(color.getColor("orange"));
+        CardPanel_funcPanel[5].setBackground(color.getColor("pink"));
         layout = Layout.mainInterfaceLayout(CardPanel, CardPanel_funcPanel);//设置卡片布局
     }
 
@@ -35,7 +36,7 @@ public class CardPanel {
 class ControlPanel {
     private JPanel controlPanel = new JPanel();
     private JButton[] tab = {new JButton("商品管理"), new JButton("员工管理"), new JButton("库存管理"),
-            new JButton("财务管理"), new JButton("客户信息管理")};
+            new JButton("财务管理"), new JButton("客户信息管理"),new JButton("基本表")};
 
     public JPanel getControlPanel() {
         return this.controlPanel;
@@ -52,8 +53,8 @@ class ControlPanel {
         Font f = new Font("Fonts/Go Mono for Powerline.ttf", Font.BOLD, 20);//选项卡自体设置
         layout.setHgap(3);
         layout.setHgap(3);
-        String[] Scolor = {"blue", "grey", "brown", "green", "orange"};
-        for (int i = 0; i < 5; i++) {
+        String[] Scolor = {"blue", "grey", "brown", "green", "orange","pink"};
+        for (int i = 0; i < 6; i++) {
             tab[i].setPreferredSize(new Dimension(100, 60));
             this.controlPanel.add(tab[i]);
             tab[i].setVisible(true);
