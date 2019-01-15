@@ -213,12 +213,12 @@ public class GuestInfoManage {
         try {
             data.removeAllElements();
             title.removeAllElements();
-            seResult = sql.select(" Guest.Viplevel,VIP.transRate ", " Guest,VIP ", " Guest.Viplevel='"+viplevel+"' and Guest.VipLevel=VIP.Viplevel; ", "  ", "  ");
+            seResult = sql.select(" distinct Guest.Viplevel,VIP.transRate ", " Guest,VIP ", " Guest.Viplevel='"+viplevel+"' and Guest.VipLevel=VIP.Viplevel; ", "  ", "  ");
             //result = sql.select("  ", " , ", seResult, "  ", " ; ", "  ", "  ");
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(seResult);
-            title.add("Guest.Viplevel");
-            title.add("VIP.transRate");
+            title.add("Viplevel");
+            title.add("transRate");
             while (rs.next()) {
                 Vector row = new Vector();
                 row.add(rs.getString("Guest.Viplevel"));
