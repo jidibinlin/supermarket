@@ -26,7 +26,9 @@ public class login_sql {
             result = sql.login(userid);
             stmt = connect.getConnection().createStatement();
             rs = stmt.executeQuery(result);
-            resultString=rs.getString(1);
+            if(rs.next()){
+                resultString=rs.getString(1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
