@@ -29,8 +29,8 @@ public class login {
                 if (e.getButton() == MouseEvent.BUTTON1) {
 
                     password=new login_sql().Login(userNameInput.getText());
-
-                    if (passwordInput.getPassword().equals(password)) {
+                    String passwordIn= String.valueOf(passwordInput.getPassword());
+                    if (passwordIn.equals(password)) {
                         loginUI.dispose();
                         GUI g = new GUI();//important
                         g.integrate();//important
