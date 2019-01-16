@@ -3,9 +3,7 @@ import GUI.login;
 
 public class Main {
     public static void main(String[] args) {
-        String Username = "boss";
-        String Passwd = "123456";
-        login log = new login(Username, Passwd);
+        login log = new login();
         log.logInUi();
     }
 }

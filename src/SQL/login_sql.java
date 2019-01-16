@@ -18,7 +18,6 @@ public class login_sql {
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    //LOGIN
     public String Login(String userid) {
         int reInt;
         String resultString = null;

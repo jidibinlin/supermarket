@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import SQL.*;
 
 public class login {
     JTextField userNameInput = new JTextField();//用户名输入框
@@ -11,13 +12,7 @@ public class login {
     JFrame loginUI = new JFrame();
     JButton sure = new JButton("登陆");
     JButton exit = new JButton("退出");
-    String username = null;
     String password = null;
-
-    public login(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public void logInUi() {
         loginUI.setSize(250, 200);
@@ -32,7 +27,10 @@ public class login {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-                    if (userNameInput.getText().equals(username) && passwordInput.getText().equals(password)) {
+
+                    password=new login_sql().Login(userNameInput.getText());
+
+                    if (passwordInput.getPassword().equals(password)) {
                         loginUI.dispose();
                         GUI g = new GUI();//important
                         g.integrate();//important
