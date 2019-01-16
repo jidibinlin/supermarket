@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 
 public class login {
     JTextField userNameInput = new JTextField();//用户名输入框
-    JTextField passwordInput = new JTextField();
+    JPasswordField passwordInput = new JPasswordField();
     JFrame loginUI = new JFrame();
     JButton sure = new JButton("登陆");
     JButton exit = new JButton("退出");

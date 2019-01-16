@@ -155,7 +155,7 @@ class Layout {//各个窗口的布局管理
         table.setVisible(true);
     }
 
-    static void loginLayout(JFrame loginUI, JLabel userName, JTextField username, JLabel passwd, JTextField password, JButton sure, JButton exit) {
+    static void loginLayout(JFrame loginUI, JLabel userName, JTextField username, JLabel passwd, JPasswordField password, JButton sure, JButton exit) {
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         loginUI.setLayout(layout);
