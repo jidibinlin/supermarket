@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class login {
+public class login_sql {
     Statement stmt = null;
     ResultSet rs = null;
     String seResult;
