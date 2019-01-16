@@ -27,7 +27,7 @@ public class FuncPanel {
     public void selectFuncPanel(JButton[] selecFunc, int counts) {
         funcScrollPanel[0].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         funcScrollPanel[0].setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        funcpanel[0].setBackground(new ColorDefined().getColor("blue"));
+        funcpanel[0].setBackground(new Color(224, 222, 229));
         funcScrollPanel[0].setViewportView(funcpanel[0]);
         Layout.selectFuncLayout(funcpanel[0], counts);
         for (int i = 0; i < counts; i++) {
