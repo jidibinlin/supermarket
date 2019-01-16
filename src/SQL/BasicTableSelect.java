@@ -30,7 +30,6 @@ public class BasicTableSelect {
             case "Purchase":sql_result=Purchase();break;
             case "Shopping":sql_result=Shopping();break;
             case "VIP":sql_result=VIP();break;
-            case "login":password=Login(par1);break;
         }
         return sql_result;
     }
