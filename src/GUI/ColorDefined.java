@@ -8,6 +8,7 @@ public class ColorDefined {
     private Color brown = new Color(224, 160, 158);
     private Color green = new Color(179, 197, 135);
     private Color orange = new Color(243, 244, 246);
+    private Color pink = new Color(247, 201, 233);
 
 
     private Color[] sefunCol={
@@ -42,6 +43,8 @@ public class ColorDefined {
                 return this.green;
             case "orange":
                 return this.orange;
+            case "pink":
+                return this.pink;
         }
         return this.blue;
     }

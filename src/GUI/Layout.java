@@ -38,6 +38,7 @@ class Layout {//各个窗口的布局管理
         CardPanel.add("库存管理", CardPael_funcPanel[2]);
         CardPanel.add("财务管理", CardPael_funcPanel[3]);
         CardPanel.add("客户信息管理", CardPael_funcPanel[4]);
+        CardPanel.add("基本表",CardPael_funcPanel[5]);
         return layout;
     }
 
@@ -57,15 +58,57 @@ class Layout {//各个窗口的布局管理
 
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.gridheight = 1;
-        constraints.weightx = 8;
+        constraints.weightx = 20;
         constraints.weighty = 10;
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(0, 0, 10, 0);
         layout.setConstraints(funchild[1], constraints);
         gspve.add(funchild[1]);
 
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
+//        constraints.gridwidth = 1;
+//        constraints.gridheight = 1;
+//        constraints.weightx = 1;
+//        constraints.weighty = 1;
+//        constraints.fill = GridBagConstraints.BOTH;
+//        constraints.insets = new Insets(0, 0, 0, 10);
+//        layout.setConstraints(funchild[2], constraints);
+//        gspve.add(funchild[2]);
+//
+//        constraints.gridwidth = GridBagConstraints.REMAINDER;
+//        constraints.gridheight = 1;
+//        constraints.weightx = 8;
+//        constraints.weighty = 1;
+//        constraints.fill = GridBagConstraints.BOTH;
+//        constraints.insets = new Insets(0, 0, 0, 0);
+//        layout.setConstraints(funchild[3], constraints);
+//        gspve.add(funchild[3]);
+        return funchild;
+    }
+    static JScrollPane[] funcLayout2(JPanel gspve, JScrollPane[] funchild) {//功能模块布局管理
+        GridBagLayout layout = new GridBagLayout();
+        gspve.setLayout(layout);
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridwidth = GridBagConstraints.RELATIVE;
+        constraints.gridheight = GridBagConstraints.REMAINDER;
+        constraints.weightx = 1;
+        constraints.weighty = 10;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(0, 0, 10, 10);
+        layout.setConstraints(funchild[0], constraints);
+        gspve.add(funchild[0]);
+
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridheight = GridBagConstraints.RELATIVE;
+        constraints.weightx = 20;
+        constraints.weighty = 10;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(0, 0, 10, 0);
+        layout.setConstraints(funchild[1], constraints);
+        gspve.add(funchild[1]);
+
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridheight = GridBagConstraints.REMAINDER;
         constraints.weightx = 1;
         constraints.weighty = 1;
         constraints.fill = GridBagConstraints.BOTH;
@@ -73,17 +116,16 @@ class Layout {//各个窗口的布局管理
         layout.setConstraints(funchild[2], constraints);
         gspve.add(funchild[2]);
 
-        constraints.gridwidth = GridBagConstraints.REMAINDER;
-        constraints.gridheight = 1;
-        constraints.weightx = 8;
-        constraints.weighty = 1;
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(0, 0, 0, 0);
-        layout.setConstraints(funchild[3], constraints);
-        gspve.add(funchild[3]);
+//        constraints.gridwidth = GridBagConstraints.REMAINDER;
+//        constraints.gridheight = 1;
+//        constraints.weightx = 8;
+//        constraints.weighty = 1;
+//        constraints.fill = GridBagConstraints.BOTH;
+//        constraints.insets = new Insets(0, 0, 0, 0);
+//        layout.setConstraints(funchild[3], constraints);
+//        gspve.add(funchild[3]);
         return funchild;
     }
-
     static void selectFuncLayout(JPanel funcpanel, int counts) {
         GridLayout layout = new GridLayout(counts, 1);
         funcpanel.setLayout(layout);
