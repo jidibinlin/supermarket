@@ -10,13 +10,14 @@ public class BasicTableSelect {
     ResultSet rs = null;
     String seResult;
     String result;
+    String password;
     SQLwords sql = new SQLwords();
     Vector data = new Vector();
     Vector title = new Vector();
     Vector[] resu = {data, title};
     Vector[] sql_result;
 
-    public Vector[] select_result(String sqlName) {
+    public Vector[] select_result(String sqlName,String par1) {
 
         switch (sqlName) {
             case "Department":sql_result=Department();break;
@@ -29,6 +30,7 @@ public class BasicTableSelect {
             case "Purchase":sql_result=Purchase();break;
             case "Shopping":sql_result=Shopping();break;
             case "VIP":sql_result=VIP();break;
+            case "login":password=Login(par1);break;
         }
         return sql_result;
     }
@@ -395,6 +397,26 @@ public class BasicTableSelect {
         }
         return resultString;
     }
+
+    //LOGIN
+    public String Login(String userid) {
+        int reInt;
+        String resultString = null;
+        try {
+            result = sql.login(userid);
+            stmt = connect.getConnection().createStatement();
+            rs = stmt.executeQuery(result);
+            resultString=rs.getString(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connect.release(stmt);
+        }
+        return resultString;
+    }
+
+
+
 
 
 }

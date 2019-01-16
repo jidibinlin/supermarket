@@ -9,6 +9,12 @@ public class SQLwords {
 
 
     //select 方法
+    public String login(String userid) {
+        result = "select aes_decrypt(userpassword,'key') from Administrators where userid='"+userid+"';"
+        ;
+        return result;
+    }
+
     public String select(String targets, String tables) {
         result = " select " + targets + " from "+tables+";" ;
         return result;
